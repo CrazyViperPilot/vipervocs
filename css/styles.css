@@ -1,0 +1,312 @@
+/* CSS Custom Properties (Material You Tokens) */
+:root[data-theme="light"] {
+  --color-surface: #f8f4ff;
+  --color-surface-var: #ece6f0;
+  --color-accent: #6750A4;
+  --color-on-accent: #ffffff;
+  --color-card-bg: #ffffff;
+  --color-card-border: #cac4d0;
+  --color-text: #1c1b1f;
+  --color-text-secondary: #49454f;
+  --color-success: #386a20;
+  --color-error: #ba1a1a;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+:root[data-theme="dark"] {
+  --color-surface: #1c1b1f;
+  --color-surface-var: #2b2930;
+  --color-accent: #d0bcff;
+  --color-on-accent: #381e72;
+  --color-card-bg: #2b2930;
+  --color-card-border: #49454f;
+  --color-text: #e6e1e5;
+  --color-text-secondary: #cac4d0;
+  --color-success: #8dd461;
+  --color-error: #ffb4ab;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  touch-action: manipulation; /* Touch optimization */
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.logo-area h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.controls-area {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.material-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-card-border);
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:root[data-theme="light"] .icon-sun { display: none; }
+:root[data-theme="dark"] .icon-moon { display: none; }
+
+/* Progress */
+.progress-container {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-pill {
+  width: 100%;
+  max-width: 400px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--color-surface-var);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Game Board */
+.game-board {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.column-left, .column-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* Cards */
+.card {
+  min-height: 56px;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: var(--color-card-bg);
+  border: 2px solid var(--color-card-border);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card:active {
+  transform: scale(0.96);
+}
+
+/* Selected State */
+.card.selected {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface-var);
+  transform: scale(1.02);
+}
+
+/* Error State */
+.card.error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+  animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Success State */
+.card.success {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  animation: pop-success 0.4s ease-out both;
+}
+
+.card.success::after {
+  content: "✔";
+  position: absolute;
+  right: 12px;
+  font-size: 1.2rem;
+  color: var(--color-success);
+}
+
+/* Animations */
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+@keyframes pop-success {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); background-color: var(--color-surface-var); }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.fade-slide-in {
+  animation: fadeSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal */
+.completion-modal {
+  margin: auto;
+  padding: 32px;
+  border-radius: 28px;
+  border: none;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.completion-modal::backdrop {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+}
+
+.completion-modal h2 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: var(--color-accent);
+}
+
+.stats {
+  text-align: left;
+  margin-bottom: 24px;
+  background: var(--color-surface-var);
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.stats p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-card-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-var);
+}
+
+@media (max-width: 600px) {
+  .controls-area {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+}

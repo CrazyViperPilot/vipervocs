@@ -1,0 +1,10 @@
+{
+  "name": "vipervocs",
+  "version": "1.0.0",
+  "description": "ViperVocs PWA",
+  "scripts": {
+    "dev": "npx serve ."
+  },
+  "author": "",
+  "license": "ISC"
+}
