@@ -60,6 +60,22 @@ function initGame(lessonKey = "seasons_months_weekdays", targetLang = "pl") {
   // Render
   renderGrid();
   updateProgress();
+  renderRules(lessonData);
+}
+
+// Show grammar rules under the cards (only for lessons that provide them)
+function renderRules(lessonData) {
+  const section = document.getElementById("lesson-rules");
+  const body = document.getElementById("rules-body");
+  if (!section || !body) return;
+
+  if (lessonData && lessonData.rules) {
+    body.textContent = lessonData.rules; // textContent keeps line breaks via CSS white-space
+    section.hidden = false;
+  } else {
+    body.textContent = "";
+    section.hidden = true;
+  }
 }
 
 function fillActivePairs() {
