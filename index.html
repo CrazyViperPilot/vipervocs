@@ -49,6 +49,15 @@
         </div>
     </main>
 
+    <!-- Grammatik-Regeln (nur bei Verb-Lektionen sichtbar) -->
+    <section id="lesson-rules" class="lesson-rules" hidden>
+        <button type="button" id="rules-toggle" class="rules-toggle" aria-expanded="true" aria-controls="rules-body">
+            <span class="rules-title">📘 Grammatik: So wird die Form gebildet</span>
+            <span class="rules-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div id="rules-body" class="rules-body"></div>
+    </section>
+
     <!-- Completion Modal -->
     <dialog id="completion-modal" class="completion-modal">
         <div class="modal-content">
