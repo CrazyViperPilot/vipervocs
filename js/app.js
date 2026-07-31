@@ -45,6 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
   lessonSelect.addEventListener("change", startCurrentLesson);
   languageSelect.addEventListener("change", startCurrentLesson);
 
+  // --- Collapsible grammar rules ---
+  const rulesToggle = document.getElementById("rules-toggle");
+  const rulesBody = document.getElementById("rules-body");
+  if (rulesToggle && rulesBody) {
+    rulesToggle.addEventListener("click", () => {
+      const expanded = rulesToggle.getAttribute("aria-expanded") === "true";
+      rulesToggle.setAttribute("aria-expanded", String(!expanded));
+      rulesBody.classList.toggle("collapsed", expanded);
+    });
+  }
+
   const btnReplay = document.getElementById("btn-replay");
   const btnMenu = document.getElementById("btn-menu");
   const modal = document.getElementById("completion-modal");
