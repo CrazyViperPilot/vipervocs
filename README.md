@@ -28,7 +28,7 @@ App und /vocs schicken ihren Stand dorthin, der Server führt zusammen (pro Wort
 
 ## Server (dogado, phpexpert.de/vocs)
 
-Jeder Push auf `main` lädt die App per GitHub Action (`.github/workflows/deploy.yml`) hoch. Einmalig einrichten unter GitHub → Settings → Secrets and variables → Actions:
+Jeder Push auf `main` lädt die App per GitHub Action (`.github/workflows/deploy.yml`) hoch. Einmalig einrichten unter GitHub → Settings → Environments → **Dogado** (Environment secrets):
 
 | Secret | Inhalt |
 |---|---|

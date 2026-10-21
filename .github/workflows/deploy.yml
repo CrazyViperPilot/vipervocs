@@ -1,9 +1,9 @@
 # Uploads the web app and the PHP API to dogado (phpexpert.de/vocs) on every push to main.
 #
-# Repository secrets (Settings → Secrets and variables → Actions):
+# Secrets of the environment "Dogado" (Settings → Environments → Dogado):
 #   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD  – FTP access from the dogado customer area
 #   VOCS_KEY                                 – your own key for the stats API
-# Optional repository variables:
+# Optional variables (same environment):
 #   FTP_DIR       target folder on the FTP server, with trailing slash (default: vocs/)
 #   FTP_PROTOCOL  ftps (default) or ftp
 #   FTP_SECURITY  strict (default) or loose, if the FTPS certificate does not match the host name
@@ -19,6 +19,7 @@ concurrency: deploy
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: Dogado
     steps:
       - name: Check secrets
         id: check
