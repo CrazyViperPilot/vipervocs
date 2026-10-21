@@ -1,8 +1,11 @@
 // Learning stats per Polish word, stored in this browser (localStorage).
-// Same format as progress/stats.json written by the /vocs skill (see js/srs.js).
-// On start the app merges progress/stats.json from the server, so practice
-// from /vocs counts here too.
+// Same format as the stats of the /vocs skill (see js/srs.js).
+// With a server (api/stats.php) the stats are synced there: the app posts its
+// stats, the server merges and returns the result. Without one (GitHub Pages)
+// the app only reads progress/stats.json.
 const STATS_KEY = "vipervocs-stats";
+const SERVER_KEY = "vipervocs-key";
+const API_URL = "api/stats.php";
 
 const vocabStats = {
   load() {
@@ -25,6 +28,7 @@ const vocabStats = {
     const data = this.load();
     vocabSrs.update(data.words, pl, de, correct);
     this.save(data);
+    this.scheduleSync();
   },
 
   merge(other) {
@@ -32,12 +36,51 @@ const vocabStats = {
     this.save(vocabSrs.merge(this.load(), other));
   },
 
-  // Pulls in the stats the /vocs skill committed to the repo. Silent if offline.
-  async syncFromRepo() {
+  serverKey() {
+    try { return localStorage.getItem(SERVER_KEY) || ""; } catch (e) { return ""; }
+  },
+
+  setServerKey(key) {
+    try { localStorage.setItem(SERVER_KEY, key.trim()); } catch (e) { /* not persisted */ }
+  },
+
+  // "ok" | "key" (key missing or wrong) | "offline" | "repo" (no server, read progress/stats.json)
+  syncState: "offline",
+  lastSync: null,
+
+  async sync({ keepalive = false } = {}) {
+    try {
+      const body = JSON.stringify(this.load());
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Vocs-Key": this.serverKey() },
+        body,
+        cache: "no-store",
+        keepalive: keepalive && body.length < 60000, // browsers cap keepalive bodies at 64 KB
+      });
+      if (res.status === 401) return (this.syncState = "key");
+      if (res.ok) {
+        this.merge(await res.json());
+        this.lastSync = new Date();
+        return (this.syncState = "ok");
+      }
+      // 404/405: static hosting without PHP (GitHub Pages)
+      if (res.status !== 404 && res.status !== 405) return (this.syncState = "offline");
+    } catch (e) {
+      return (this.syncState = "offline");
+    }
+    // No server (e.g. GitHub Pages): at least read the stats from the repo.
     try {
       const res = await fetch("progress/stats.json", { cache: "no-cache" });
       if (res.ok) this.merge(await res.json());
-    } catch (e) { /* offline or not deployed with the repo */ }
+    } catch (e) { /* offline */ }
+    return (this.syncState = "repo");
+  },
+
+  // Sync a few seconds after the last answer, so a round makes one request.
+  scheduleSync() {
+    clearTimeout(this.syncTimer);
+    this.syncTimer = setTimeout(() => this.sync(), 3000);
   },
 
   summary(totalPairs, top = 10) {

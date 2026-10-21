@@ -1,6 +1,6 @@
 // Bump when the list below changes. Content updates arrive without a bump:
 // files come from the cache right away and are refreshed in the background.
-const CACHE_NAME = 'vipervocs-v6';
+const CACHE_NAME = 'vipervocs-v7';
 const urlsToCache = [
   './',
   './index.html',
@@ -34,6 +34,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+  if (req.url.includes('/api/')) return; // server sync: never cached
 
   // Learning stats: always fresh from the network, cache only as offline fallback.
   if (req.url.includes('/progress/stats.json')) {

@@ -1,6 +1,6 @@
 ---
 name: vocs
-description: Kurze Polnisch-Vokabelrunde (5 Wörter) aus ViperVocs mit Lernstatistik in progress/stats.json. Nutzen, wenn Daniel /vocs aufruft oder Vokabeln üben will.
+description: Kurze Polnisch-Vokabelrunde (5 Wörter) aus ViperVocs mit Lernstatistik auf dem ViperVocs-Server. Nutzen, wenn Daniel /vocs aufruft oder Vokabeln üben will.
 argument-hint: "[Anzahl] [Lektions-Key]"
 model: haiku
 allowed-tools: Bash(node .claude/skills/vocs/vocs.mjs:*), Bash(git add progress/stats.json), Bash(git commit -m:*), Bash(git pull:*), Bash(git push:*)
@@ -9,11 +9,11 @@ allowed-tools: Bash(node .claude/skills/vocs/vocs.mjs:*), Bash(git add progress/
 # /vocs – Vokabelrunde
 
 Du fragst Daniel Polnisch-Vokabeln ab. Sprich Deutsch, kurz und freundlich, handytauglich. Keine langen Erklärungen.
-Alle Befehle laufen im Wurzelordner des vipervocs-Repos. Der Lernstand wird auf PC und Handy (claude.ai) genutzt und über GitHub abgeglichen.
+Alle Befehle laufen im Wurzelordner des vipervocs-Repos. Der Lernstand liegt auf dem Server (phpexpert.de/vocs) und wird von Web-App, PC und Handy (claude.ai) geteilt. Das Skript liest und schreibt ihn selbst; den Schlüssel holt es aus `$VOCS_KEY` oder `.claude/skills/vocs/.key`.
 
 ## Ablauf
 
-0. **Aktualisieren** (still): `git pull --rebase --autostash -q`. Schlägt das fehl (offline, kein Remote), einfach weitermachen.
+0. **Aktualisieren** (still, nur für neue Vokabeln): `git pull --rebase --autostash -q`. Schlägt das fehl (offline, kein Remote), einfach weitermachen.
 
 1. **Wörter holen.** Führe aus (Argumente aus `$ARGUMENTS` übernehmen: eine Zahl = Anzahl, ein Wort wie `duo_animals` = Lektion):
    `node .claude/skills/vocs/vocs.mjs pick 5`
@@ -39,9 +39,10 @@ Alle Befehle laufen im Wurzelordner des vipervocs-Repos. Der Lernstand wird auf 
    `node .claude/skills/vocs/vocs.mjs record "wojna=1" "przemoc=0" ...`
    (den `pl`-Text exakt aus Schritt 1 verwenden, in Anführungszeichen).
 
-5. **Commit & Push.** Danach:
+5. **Nur falls nötig: Commit & Push.** Endet die `record`-Ausgabe mit „Gespeichert: Server“, ist nichts weiter zu tun.
+   Steht dort „nur lokal … → committen“ (Server nicht erreichbar oder kein Schlüssel), sichere den Stand im Repo:
    `git add progress/stats.json`, `git commit -m "vocs: Lernstand aktualisieren"`, `git push -q`.
-   Wird der Push abgelehnt: `git pull --rebase -q` und erneut `git push -q`. Klappt der Push gar nicht, kurz sagen, dass der Stand nur lokal gespeichert ist.
+   Wird der Push abgelehnt: `git pull --rebase -q` und erneut `git push -q`. Sag kurz, dass der Server nicht erreichbar war; der Stand wird beim nächsten erreichbaren Lauf automatisch auf den Server übernommen.
 
 6. **Abschluss** in 2–3 Zeilen: „Runde: 4/5 richtig“, für die falschen Wörter die Zeile aus der `record`-Ausgabe (Quote, „wieder am …“), und der Hinweis, dass `/vocs` eine neue Runde startet.
 

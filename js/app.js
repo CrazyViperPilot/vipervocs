@@ -125,9 +125,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  document.getElementById("stats-open").addEventListener("click", () => {
+  // --- Server sync ---
+  const syncText = {
+    ok: () => `☁️ Synchronisiert ${vocabStats.lastSync.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })}`,
+    key: () => "🔑 Schlüssel fehlt oder ist falsch",
+    offline: () => "📴 Server nicht erreichbar – wird später nachgeholt",
+    repo: () => "Kein Server – Stand aus /vocs nur gelesen",
+  };
+  const keyForm = document.getElementById("sync-key-form");
+  const keyInput = document.getElementById("sync-key");
+
+  function renderSync() {
+    document.getElementById("sync-status").textContent = syncText[vocabStats.syncState]();
+    keyForm.hidden = vocabStats.syncState !== "key";
+  }
+
+  keyForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    vocabStats.setServerKey(keyInput.value);
+    keyInput.value = "";
+    await vocabStats.sync();
     renderStats();
+    renderSync();
+  });
+
+  document.getElementById("stats-open").addEventListener("click", async () => {
+    renderStats();
+    renderSync();
     statsModal.showModal();
+    await vocabStats.sync();
+    renderStats();
+    renderSync();
   });
   document.getElementById("stats-close").addEventListener("click", () => statsModal.close());
   document.getElementById("stats-export").addEventListener("click", () => vocabStats.exportFile());
@@ -143,9 +171,14 @@ document.addEventListener("DOMContentLoaded", () => {
     statsImport.value = "";
   });
 
-  // Start the game once the stats from /vocs are merged (at most 1.5 s, then start anyway).
-  Promise.race([vocabStats.syncFromRepo(), new Promise(r => setTimeout(r, 1500))])
+  // Start the game once the stats are synced (at most 1.5 s, then start anyway).
+  Promise.race([vocabStats.sync(), new Promise(r => setTimeout(r, 1500))])
     .then(startCurrentLesson);
+
+  // Send what is still pending when the app goes to the background.
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") vocabStats.sync({ keepalive: true });
+  });
 
   // --- Service Worker Registration ---
   // Relative path, so the app also works under a sub path (e.g. GitHub Pages).

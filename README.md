@@ -19,9 +19,25 @@ Leitner-System (`js/srs.js`, gemeinsam für App und Skill): pro Wort ein Fach 0�
 Richtig → ein Fach höher, wieder fällig nach 1, 2, 4, 8, 16, 32 Tagen; falsch → Fach 0, sofort wieder fällig.
 In der App zählt pro Runde nur der erste Versuch je Wort.
 
-- `/vocs` speichert in `progress/stats.json` und committet/pusht das.
-- Die App speichert im Browser (`localStorage`) und führt beim Start `progress/stats.json` vom Server dazu (pro Wort gilt der neuere Eintrag).
-- 📊 zeigt den Lernstand; Export/Import sichert bzw. führt Stände zwischen Geräten zusammen.
+Der Lernstand liegt auf dem Server (`api/stats.php` → `api/data/stats.json`, mit täglichem Backup der letzten 14 Tage).
+App und /vocs schicken ihren Stand dorthin, der Server führt zusammen (pro Wort gilt der neuere Eintrag) und gibt das Ergebnis zurück.
+
+- **App:** Beim ersten Start im 📊-Dialog den Server-Schlüssel eingeben. Danach synchronisiert sie beim Start, wenige Sekunden nach jeder Antwort und beim Schließen. Offline übt sie mit der Kopie im Browser weiter.
+- **/vocs:** liest den Schlüssel aus `$VOCS_KEY` oder `.claude/skills/vocs/.key` (nicht im Repo). Ist der Server nicht erreichbar, landet der Stand in `progress/stats.json` und wird beim nächsten Mal auf den Server übernommen.
+- Ohne PHP (z. B. GitHub Pages) liest die App nur `progress/stats.json`.
+
+## Server (dogado, phpexpert.de/vocs)
+
+Jeder Push auf `main` lädt die App per GitHub Action (`.github/workflows/deploy.yml`) hoch. Einmalig einrichten unter GitHub → Settings → Secrets and variables → Actions:
+
+| Secret | Inhalt |
+|---|---|
+| `FTP_SERVER` | FTP-Host aus dem dogado-Kundenbereich |
+| `FTP_USERNAME` / `FTP_PASSWORD` | FTP-Zugang |
+| `VOCS_KEY` | selbst ausgedachter Schlüssel für die Lernstand-API |
+
+Optionale Variables: `FTP_DIR` (Zielordner, Standard `vocs/`), `FTP_PROTOCOL` (`ftps`/`ftp`), `FTP_SECURITY` (`strict`/`loose`).
+Der Server speichert nur den SHA-256 des Schlüssels (`api/config.php`, wird beim Deploy erzeugt). PHP 7.4+ reicht, keine Datenbank.
 
 ## /vocs (Claude)
 
@@ -35,9 +51,10 @@ Für claude.ai auf dem Handy: `mobile-skill/vocs/SKILL.md`.
 |---|---|
 | `js/vocabulary.js` | alle Lektionen (`lessons`) |
 | `js/srs.js` | Leitner-Fächer, Wortauswahl, Statistik (Browser + Node) |
-| `js/stats.js` | Lernstand im Browser, Abgleich mit `progress/stats.json` |
+| `js/stats.js` | Lernstand im Browser, Abgleich mit dem Server |
 | `js/game.js` | Matching-Spiel |
 | `js/app.js` | Header, Dialoge, Start |
-| `sw.js` | Offline-Cache (stale-while-revalidate) |
+| `sw.js` | Offline-Cache (stale-while-revalidate, `api/` nie gecacht) |
+| `api/stats.php` | Lernstand-API auf dem Server |
 
 `requirements.md`, `architecture.md` und `implementation_plan.md` sind die ursprünglichen Planungsdokumente.

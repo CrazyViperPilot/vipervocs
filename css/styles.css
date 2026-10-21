@@ -487,6 +487,45 @@ body {
   border-bottom: none;
 }
 
+.sync-status {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.sync-key-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sync-key-form[hidden] {
+  display: none;
+}
+
+.sync-key-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-card-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.sync-key-form input:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.sync-key-form .btn-primary {
+  padding: 10px 16px;
+}
+
 .stats-note {
   font-size: 0.8rem;
   line-height: 1.45;

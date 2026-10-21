@@ -1,0 +1,67 @@
+# Uploads the web app and the PHP API to dogado (phpexpert.de/vocs) on every push to main.
+#
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD  – FTP access from the dogado customer area
+#   VOCS_KEY                                 – your own key for the stats API
+# Optional repository variables:
+#   FTP_DIR       target folder on the FTP server, with trailing slash (default: vocs/)
+#   FTP_PROTOCOL  ftps (default) or ftp
+#   FTP_SECURITY  strict (default) or loose, if the FTPS certificate does not match the host name
+name: Deploy to dogado
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency: deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secrets
+        id: check
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -n "$FTP_SERVER" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::FTP-Secrets fehlen – Deploy übersprungen."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ready == 'true'
+
+      - name: Write server config
+        if: steps.check.outputs.ready == 'true'
+        env:
+          VOCS_KEY: ${{ secrets.VOCS_KEY }}
+        run: |
+          if [ -z "$VOCS_KEY" ]; then echo "::error::Secret VOCS_KEY fehlt."; exit 1; fi
+          hash=$(printf '%s' "$VOCS_KEY" | sha256sum | cut -d' ' -f1)
+          printf "<?php\nreturn ['key_sha256' => '%s'];\n" "$hash" > api/config.php
+
+      - name: Upload via FTP
+        if: steps.check.outputs.ready == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          security: ${{ vars.FTP_SECURITY || 'strict' }}
+          server-dir: ${{ vars.FTP_DIR || 'vocs/' }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .claude/**
+            mobile-skill/**
+            progress/**
+            node_modules/**
+            api/data/*.json
+            *.md
+            LICENSE
+            package.json

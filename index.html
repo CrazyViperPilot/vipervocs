@@ -90,7 +90,12 @@
             </div>
             <h3 class="stats-subtitle">Am schwächsten</h3>
             <ul id="stats-weakest" class="stats-weakest"></ul>
-            <p class="stats-note">Gespeichert in diesem Browser. Beim Start kommt der Stand aus /vocs (progress/stats.json) automatisch dazu. Export sichert den Stand als Datei, Import führt eine Datei mit dem Stand hier zusammen (pro Wort gilt der neuere Eintrag).</p>
+            <p id="sync-status" class="sync-status"></p>
+            <form id="sync-key-form" class="sync-key-form" hidden>
+                <input id="sync-key" type="password" autocomplete="current-password" placeholder="Server-Schlüssel" required>
+                <button type="submit" class="btn-primary">Speichern</button>
+            </form>
+            <p class="stats-note">Der Lernstand liegt auf dem Server und wird mit /vocs geteilt. Dieser Browser hat eine Kopie, damit die App auch offline läuft. Export sichert den Stand als Datei, Import führt eine Datei mit dem Stand hier zusammen (pro Wort gilt der neuere Eintrag).</p>
             <div class="modal-actions">
                 <button id="stats-export" class="btn-primary">Export</button>
                 <label class="btn-secondary stats-import">Import
