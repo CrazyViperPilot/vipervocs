@@ -26,6 +26,7 @@
             <select id="language-select" class="material-select">
                 <option value="pl">Polnisch</option>
             </select>
+            <button id="stats-open" class="icon-btn" aria-label="Lernstand anzeigen">📊</button>
             <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
                 <span class="icon-moon">🌙</span>
                 <span class="icon-sun">☀️</span>
@@ -74,7 +75,30 @@
         </div>
     </dialog>
 
+    <!-- Lernstand (nur auf diesem Gerät, Export/Import als Datei) -->
+    <dialog id="stats-modal" class="completion-modal stats-modal">
+        <div class="modal-content">
+            <h2>Dein Lernstand</h2>
+            <div class="stats">
+                <p>📚 <span id="stats-words">0</span> Wörter geübt</p>
+                <p>🔁 <span id="stats-asked">0</span> Abfragen</p>
+                <p>🎯 Quote: <span id="stats-rate">–</span></p>
+            </div>
+            <h3 class="stats-subtitle">Am schwächsten</h3>
+            <ul id="stats-weakest" class="stats-weakest"></ul>
+            <p class="stats-note">Gespeichert nur in diesem Browser. Über Export sicherst du den Stand als Datei, über Import holst du ihn auf ein anderes Gerät. Import ersetzt den Stand hier.</p>
+            <div class="modal-actions">
+                <button id="stats-export" class="btn-primary">Export</button>
+                <label class="btn-secondary stats-import">Import
+                    <input id="stats-import" type="file" accept="application/json,.json" hidden>
+                </label>
+                <button id="stats-close" class="btn-secondary">Schließen</button>
+            </div>
+        </div>
+    </dialog>
+
     <!-- Scripts -->
+    <script src="js/stats.js"></script>
     <script src="js/vocabulary.js"></script>
     <script src="js/game.js"></script>
     <script src="js/app.js"></script>

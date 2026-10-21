@@ -1,10 +1,11 @@
-const CACHE_NAME = 'vipervocs-v3';
+const CACHE_NAME = 'vipervocs-v4';
 const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
   '/css/styles.css',
   '/js/app.js',
+  '/js/stats.js',
   '/js/vocabulary.js',
   '/js/game.js',
   '/assets/icons/icon-192.png',

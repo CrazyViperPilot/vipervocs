@@ -186,7 +186,10 @@ function checkMatch() {
 function handleSuccess(id, leftCard, rightCard) {
   leftCard.classList.add("success");
   rightCard.classList.add("success");
-  
+
+  const pair = gameState.activePairs.find(p => p.id === id);
+  if (pair) vocabStats.record(pair.target, pair.de, true);
+
   if (navigator.vibrate) {
     navigator.vibrate(50);
   }
@@ -218,7 +221,13 @@ function handleSuccess(id, leftCard, rightCard) {
 
 function handleFailure(leftId, rightId, leftCard, rightCard) {
   gameState.errorCount++;
-  
+
+  // Both pairs involved in a wrong match count as a failed attempt.
+  for (const pid of [leftId, rightId]) {
+    const pair = gameState.activePairs.find(p => p.id === pid);
+    if (pair) vocabStats.record(pair.target, pair.de, false);
+  }
+
   leftCard.classList.add("error");
   rightCard.classList.add("error");
 

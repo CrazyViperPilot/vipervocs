@@ -72,6 +72,47 @@ document.addEventListener("DOMContentLoaded", () => {
     startCurrentLesson();
   });
 
+  // --- Lernstand ---
+  const statsModal = document.getElementById("stats-modal");
+  const statsImport = document.getElementById("stats-import");
+
+  function renderStats() {
+    const s = vocabStats.summary();
+    document.getElementById("stats-words").textContent = s.words;
+    document.getElementById("stats-asked").textContent = s.asked;
+    document.getElementById("stats-rate").textContent = s.asked ? `${Math.round((s.correct / s.asked) * 100)} %` : "–";
+    const list = document.getElementById("stats-weakest");
+    list.innerHTML = "";
+    if (!s.weakest.length) {
+      const li = document.createElement("li");
+      li.textContent = "Noch keine Fehler – weiter so!";
+      list.appendChild(li);
+    }
+    for (const w of s.weakest) {
+      const li = document.createElement("li");
+      li.textContent = `${w.pl} – ${w.de} (${w.correct}/${w.asked})`;
+      list.appendChild(li);
+    }
+  }
+
+  document.getElementById("stats-open").addEventListener("click", () => {
+    renderStats();
+    statsModal.showModal();
+  });
+  document.getElementById("stats-close").addEventListener("click", () => statsModal.close());
+  document.getElementById("stats-export").addEventListener("click", () => vocabStats.exportFile());
+  statsImport.addEventListener("change", async () => {
+    const file = statsImport.files[0];
+    if (!file) return;
+    try {
+      await vocabStats.importFile(file);
+      renderStats();
+    } catch (e) {
+      document.getElementById("stats-weakest").textContent = `Import fehlgeschlagen: ${e.message}`;
+    }
+    statsImport.value = "";
+  });
+
   // Start the game initially
   startCurrentLesson();
 

@@ -369,6 +369,44 @@ body {
   display: none;
 }
 
+/* Lernstand dialog */
+.stats-subtitle {
+  font-size: 1rem;
+  text-align: left;
+  margin-bottom: 8px;
+  color: var(--color-text-secondary);
+}
+
+.stats-weakest {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+}
+
+.stats-weakest li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.stats-note {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.stats-modal .modal-actions {
+  flex-wrap: wrap;
+}
+
+.stats-import {
+  display: inline-flex;
+  align-items: center;
+}
+
 @media (max-width: 600px) {
   .app-header {
     padding: 12px 16px;
