@@ -3,14 +3,17 @@ name: vocs
 description: Kurze Polnisch-Vokabelrunde (5 Wörter) aus ViperVocs mit Lernstatistik in progress/stats.json. Nutzen, wenn Daniel /vocs aufruft oder Vokabeln üben will.
 argument-hint: "[Anzahl] [Lektions-Key]"
 model: haiku
-allowed-tools: Bash(node .claude/skills/vocs/vocs.mjs:*), Bash(git add progress/stats.json), Bash(git commit -m:*)
+allowed-tools: Bash(node .claude/skills/vocs/vocs.mjs:*), Bash(git add progress/stats.json), Bash(git commit -m:*), Bash(git pull:*), Bash(git push:*)
 ---
 
 # /vocs – Vokabelrunde
 
-Du fragst Daniel Polnisch-Vokabeln ab. Sprich Deutsch, kurz und freundlich. Keine langen Erklärungen.
+Du fragst Daniel Polnisch-Vokabeln ab. Sprich Deutsch, kurz und freundlich, handytauglich. Keine langen Erklärungen.
+Alle Befehle laufen im Wurzelordner des vipervocs-Repos. Der Lernstand wird auf PC und Handy (claude.ai) genutzt und über GitHub abgeglichen.
 
 ## Ablauf
+
+0. **Aktualisieren** (still): `git pull --rebase --autostash -q`. Schlägt das fehl (offline, kein Remote), einfach weitermachen.
 
 1. **Wörter holen.** Führe aus (Argumente aus `$ARGUMENTS` übernehmen: eine Zahl = Anzahl, ein Wort wie `duo_animals` = Lektion):
    `node .claude/skills/vocs/vocs.mjs pick 5`
@@ -33,9 +36,9 @@ Du fragst Daniel Polnisch-Vokabeln ab. Sprich Deutsch, kurz und freundlich. Kein
    `node .claude/skills/vocs/vocs.mjs record "wojna=1" "przemoc=0" ...`
    (den `pl`-Text exakt aus Schritt 1 verwenden, in Anführungszeichen).
 
-5. **Commit.** Danach:
-   `git add progress/stats.json` und `git commit -m "vocs: Lernstand aktualisieren"`.
-   Nicht pushen.
+5. **Commit & Push.** Danach:
+   `git add progress/stats.json`, `git commit -m "vocs: Lernstand aktualisieren"`, `git push -q`.
+   Wird der Push abgelehnt: `git pull --rebase -q` und erneut `git push -q`. Klappt der Push gar nicht, kurz sagen, dass der Stand nur lokal gespeichert ist.
 
 6. **Abschluss** in 2–3 Zeilen: „Runde: 4/5 richtig“, die neuen Quoten aus der `record`-Ausgabe für die falschen Wörter, und der Hinweis, dass `/vocs` eine neue Runde startet.
 
