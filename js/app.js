@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function setTheme(themeName) {
     document.documentElement.dataset.theme = themeName;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = themeName === "dark" ? "#0b0d14" : "#ffffff";
     localStorage.setItem("theme", themeName);
   }
 
