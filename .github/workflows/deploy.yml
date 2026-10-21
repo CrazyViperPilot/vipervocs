@@ -4,7 +4,8 @@
 #   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD  – FTP access from the dogado customer area
 #   VOCS_KEY                                 – your own key for the stats API
 # Optional variables (same environment):
-#   FTP_DIR       target folder on the FTP server, with trailing slash (default: vocs/)
+#   FTP_DIR       target folder relative to the FTP login, with trailing slash (default: ./,
+#                 the login h26331_vocs already starts in /httpdocs/vocs)
 #   FTP_PROTOCOL  ftps (default) or ftp
 #   FTP_SECURITY  strict (default) or loose, if the FTPS certificate does not match the host name
 name: Deploy to dogado
@@ -52,7 +53,7 @@ jobs:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FTP_DIR: ${{ vars.FTP_DIR || 'vocs/' }}
+          FTP_DIR: ${{ vars.FTP_DIR || './' }}
           FTP_PROTOCOL: ${{ vars.FTP_PROTOCOL || 'ftps' }}
           FTP_SECURITY: ${{ vars.FTP_SECURITY || 'strict' }}
         run: |

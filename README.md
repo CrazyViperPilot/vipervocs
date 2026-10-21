@@ -36,7 +36,7 @@ Jeder Push auf `main` lädt die App per GitHub Action (`.github/workflows/deploy
 | `FTP_USERNAME` / `FTP_PASSWORD` | FTP-Zugang |
 | `VOCS_KEY` | selbst ausgedachter Schlüssel für die Lernstand-API |
 
-Optionale Variables: `FTP_DIR` (Zielordner, Standard `vocs/`), `FTP_PROTOCOL` (`ftps`/`ftp`), `FTP_SECURITY` (`strict`/`loose`).
+Optionale Variables: `FTP_DIR` (Zielordner relativ zum FTP-Login, Standard `./` – der Login `h26331_vocs` startet schon in `/httpdocs/vocs`), `FTP_PROTOCOL` (`ftps`/`ftp`), `FTP_SECURITY` (`strict`/`loose`).
 Der Server speichert nur den SHA-256 des Schlüssels (`api/config.php`, wird beim Deploy erzeugt). PHP 7.4+ reicht, keine Datenbank.
 
 ## /vocs (Claude)
