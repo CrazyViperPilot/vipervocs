@@ -1,6 +1,6 @@
 // Bump when the list below changes. Content updates arrive without a bump:
 // files come from the cache right away and are refreshed in the background.
-const CACHE_NAME = 'vipervocs-v7';
+const CACHE_NAME = 'vipervocs-v8';
 const urlsToCache = [
   './',
   './index.html',

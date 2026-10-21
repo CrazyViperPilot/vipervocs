@@ -44,25 +44,32 @@ jobs:
           hash=$(printf '%s' "$VOCS_KEY" | sha256sum | cut -d' ' -f1)
           printf "<?php\nreturn ['key_sha256' => '%s'];\n" "$hash" > api/config.php
 
+      # lftp instead of a Node FTP action: it handles FTPS servers that require
+      # TLS session reuse on the data connection (dogado resets it otherwise).
       - name: Upload via FTP
         if: steps.check.outputs.ready == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
-          security: ${{ vars.FTP_SECURITY || 'strict' }}
-          server-dir: ${{ vars.FTP_DIR || 'vocs/' }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
-            .claude/**
-            mobile-skill/**
-            progress/**
-            node_modules/**
-            api/data/*.json
-            *.md
-            LICENSE
-            package.json
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_DIR: ${{ vars.FTP_DIR || 'vocs/' }}
+          FTP_PROTOCOL: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          FTP_SECURITY: ${{ vars.FTP_SECURITY || 'strict' }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp > /dev/null
+          # Only the files the web app needs; api/data/ on the server is never touched (no --delete).
+          mkdir site
+          cp -r index.html manifest.json sw.js css js assets api site/
+          ssl=$([ "$FTP_PROTOCOL" = "ftp" ] && echo false || echo true)
+          verify=$([ "$FTP_SECURITY" = "loose" ] && echo no || echo yes)
+          lftp --env-password -u "$FTP_USERNAME" "$FTP_SERVER" <<EOF
+          set ftp:ssl-force $ssl
+          set ftp:ssl-protect-data $ssl
+          set ssl:verify-certificate $verify
+          set ftp:passive-mode true
+          set net:timeout 20
+          set net:max-retries 2
+          mkdir -p -f $FTP_DIR
+          mirror --reverse --no-perms --verbose site/ $FTP_DIR
+          bye
+          EOF
