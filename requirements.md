@@ -1,3 +1,5 @@
+> **Historisches Planungsdokument** aus der ersten Version. Der aktuelle Stand steht in der [README](README.md).
+
 # Requirements Document – ViperVocs
 *Version 1.1 – aktualisiert gemäß Feedback-Review*
 

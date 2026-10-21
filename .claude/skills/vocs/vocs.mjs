@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // Picks vocabulary for a /vocs round and keeps the learning stats in progress/stats.json.
+// Word choice and the Leitner boxes come from js/srs.js, the same code the web app uses.
 //
 //   node .claude/skills/vocs/vocs.mjs pick [n] [--lesson <key>]
 //   node .claude/skills/vocs/vocs.mjs record "<pl>=1" "<pl>=0" ...
@@ -10,29 +11,25 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const VOCAB = path.join(ROOT, "js/vocabulary.js");
+const SRS = path.join(ROOT, "js/srs.js");
 const STATS = path.join(ROOT, "progress/stats.json");
+
+const srs = new Function(`${fs.readFileSync(SRS, "utf8")}; return vocabSrs;`)();
 
 function loadLessons() {
   const src = fs.readFileSync(VOCAB, "utf8");
   return new Function(`${src}; return lessons;`)();
 }
 
-// All pairs in file order, one entry per Polish word (first occurrence wins).
 function loadPairs() {
-  const pairs = new Map();
-  for (const [key, lesson] of Object.entries(loadLessons())) {
-    for (const p of lesson.pairs) {
-      if (!pairs.has(p.pl)) pairs.set(p.pl, { pl: p.pl, de: p.de, lesson: key, label: lesson.labelDe });
-    }
-  }
-  return pairs;
+  return new Map(srs.collectPairs(loadLessons()).map(p => [p.pl, p]));
 }
 
 function loadStats() {
   try {
-    return JSON.parse(fs.readFileSync(STATS, "utf8"));
+    return srs.merge(JSON.parse(fs.readFileSync(STATS, "utf8")), null);
   } catch {
-    return { version: 1, words: {} };
+    return { version: 2, words: {} };
   }
 }
 
@@ -42,39 +39,24 @@ function saveStats(stats) {
   fs.writeFileSync(STATS, JSON.stringify({ ...stats, words }, null, 2) + "\n");
 }
 
-const accuracy = s => (s.asked ? s.correct / s.asked : 0);
-const today = () => new Date().toISOString().slice(0, 10);
-
 function pick(n, lessonKey) {
   const stats = loadStats();
-  let pool = [...loadPairs().values()];
-  if (lessonKey) pool = pool.filter(p => p.lesson === lessonKey);
-  if (!pool.length) throw new Error(`Keine Vokabeln gefunden${lessonKey ? ` für Lektion ${lessonKey}` : ""}.`);
+  const pairs = [...loadPairs().values()];
+  if (lessonKey && !pairs.some(p => p.lesson === lessonKey)) throw new Error(`Keine Vokabeln gefunden für Lektion ${lessonKey}.`);
 
-  const st = p => stats.words[p.pl];
-  // Weak: asked before and under 80 % correct, worst and longest ago first.
-  const weak = pool.filter(p => st(p) && accuracy(st(p)) < 0.8)
-    .sort((a, b) => accuracy(st(a)) - accuracy(st(b)) || st(a).last.localeCompare(st(b).last));
-  // New: never asked, random across all lessons.
-  const fresh = pool.filter(p => !st(p)).sort(() => Math.random() - 0.5);
-  // Review: everything else, least recently asked first.
-  const review = pool.filter(p => st(p) && accuracy(st(p)) >= 0.8)
-    .sort((a, b) => st(a).last.localeCompare(st(b).last));
-
-  const chosen = [];
-  const take = (list, max) => { for (const p of list) { if (chosen.length >= n || max-- <= 0) break; if (!chosen.includes(p)) chosen.push(p); } };
-  take(weak, 2);
-  take(fresh, 2);
-  take(review, 1);
-  take(weak, n); take(fresh, n); take(review, n);
-
-  return chosen.map(p => ({
-    pl: p.pl,
-    de: p.de,
-    lesson: p.label,
-    ask: Math.random() < 0.5 ? "de>pl" : "pl>de",
-    seen: st(p) ? `${st(p).correct}/${st(p).asked}` : "neu",
-  }));
+  return srs.pick(pairs, stats.words, n, { lesson: lessonKey }).map(p => {
+    const s = stats.words[p.pl];
+    const out = {
+      pl: p.pl,
+      de: p.de,
+      lesson: p.label,
+      ask: Math.random() < 0.5 ? "de>pl" : "pl>de",
+      seen: s ? `${s.correct}/${s.asked}, Fach ${s.box}` : "neu",
+    };
+    // Other Polish words with the same German meaning are also correct for de>pl.
+    if (p.alt.length) out.ok = p.alt;
+    return out;
+  });
 }
 
 function record(args) {
@@ -87,31 +69,21 @@ function record(args) {
     const ok = arg.slice(i + 1);
     if (i < 1 || !["0", "1"].includes(ok)) throw new Error(`Ungültig: "${arg}" (erwartet "<pl>=1" oder "<pl>=0")`);
     if (!pairs.has(pl)) throw new Error(`Unbekanntes Wort: "${pl}"`);
-    const s = stats.words[pl] ||= { de: pairs.get(pl).de, asked: 0, correct: 0, last: "" };
-    s.asked += 1;
-    s.correct += Number(ok);
-    s.last = today();
-    out.push(`${pl}: ${s.correct}/${s.asked}`);
+    const s = srs.update(stats.words, pl, pairs.get(pl).de, ok === "1");
+    out.push(`${pl}: ${s.correct}/${s.asked}, Fach ${s.box}, wieder am ${s.due}`);
   }
   saveStats(stats);
   return out;
 }
 
 function summary(top) {
-  const stats = loadStats();
-  const entries = Object.entries(stats.words);
-  const asked = entries.reduce((n, [, s]) => n + s.asked, 0);
-  const correct = entries.reduce((n, [, s]) => n + s.correct, 0);
-  const total = loadPairs().size;
-  const weakest = entries.filter(([, s]) => accuracy(s) < 1)
-    .sort(([, a], [, b]) => accuracy(a) - accuracy(b) || b.asked - a.asked)
-    .slice(0, top)
-    .map(([pl, s]) => `${pl} (${s.de}): ${s.correct}/${s.asked}`);
+  const s = srs.summary(loadStats().words, loadPairs().size, top);
   return {
-    geuebt: `${entries.length} von ${total} Wörtern`,
-    abfragen: asked,
-    quote: asked ? `${Math.round((correct / asked) * 100)} %` : "–",
-    schwaechste: weakest,
+    geuebt: `${s.words} von ${s.total} Wörtern`,
+    heute_faellig: s.dueToday,
+    abfragen: s.asked,
+    quote: s.asked ? `${Math.round((s.correct / s.asked) * 100)} %` : "–",
+    schwaechste: s.weakest.map(w => `${w.pl} (${w.de}): ${w.correct}/${w.asked}, Fach ${w.box}`),
   };
 }
 

@@ -1,3 +1,5 @@
+> **Historisches Planungsdokument** aus der ersten Version. Der aktuelle Stand steht in der [README](README.md).
+
 # Implementierungsplan – ViperVocs PWA
 *Version 1.1 – aktualisiert gemäß Feedback-Review*
 

@@ -2,12 +2,13 @@
 <html lang="de" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ViperVocs</title>
     
     <!-- PWA Setup -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6750A4">
+    <link rel="icon" href="assets/icons/icon-192.png">
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
     
     <!-- Styles -->
@@ -26,6 +27,7 @@
             <select id="language-select" class="material-select">
                 <option value="pl">Polnisch</option>
             </select>
+            <button id="tts-toggle" class="icon-btn" aria-label="Aussprache an/aus">🔊</button>
             <button id="stats-open" class="icon-btn" aria-label="Lernstand anzeigen">📊</button>
             <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
                 <span class="icon-moon">🌙</span>
@@ -38,7 +40,7 @@
         <div class="progress-pill">
             <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
         </div>
-        <div id="progress-text" class="progress-text">0 / 23 Paare</div>
+        <div id="progress-text" class="progress-text"></div>
     </div>
 
     <main class="game-board" id="game-board">
@@ -64,9 +66,10 @@
         <div class="modal-content">
             <h2>Lektion abgeschlossen! 🎉</h2>
             <div class="stats">
-                <p>✅ <span id="stat-pairs">23</span> Paare gelöst</p>
+                <p>✅ <span id="stat-pairs">0</span> Paare gelöst</p>
                 <p>❌ <span id="stat-errors">0</span> Fehlversuche</p>
                 <p>⏱ Zeit: <span id="stat-time">0:00</span></p>
+                <p>📅 Heute noch fällig: <span id="stat-due">0</span></p>
             </div>
             <div class="modal-actions">
                 <button id="btn-replay" class="btn-primary">Nochmal</button>
@@ -81,12 +84,13 @@
             <h2>Dein Lernstand</h2>
             <div class="stats">
                 <p>📚 <span id="stats-words">0</span> Wörter geübt</p>
+                <p>📅 <span id="stats-due">0</span> heute fällig</p>
                 <p>🔁 <span id="stats-asked">0</span> Abfragen</p>
                 <p>🎯 Quote: <span id="stats-rate">–</span></p>
             </div>
             <h3 class="stats-subtitle">Am schwächsten</h3>
             <ul id="stats-weakest" class="stats-weakest"></ul>
-            <p class="stats-note">Gespeichert nur in diesem Browser. Über Export sicherst du den Stand als Datei, über Import holst du ihn auf ein anderes Gerät. Import ersetzt den Stand hier.</p>
+            <p class="stats-note">Gespeichert in diesem Browser. Beim Start kommt der Stand aus /vocs (progress/stats.json) automatisch dazu. Export sichert den Stand als Datei, Import führt eine Datei mit dem Stand hier zusammen (pro Wort gilt der neuere Eintrag).</p>
             <div class="modal-actions">
                 <button id="stats-export" class="btn-primary">Export</button>
                 <label class="btn-secondary stats-import">Import
@@ -98,6 +102,7 @@
     </dialog>
 
     <!-- Scripts -->
+    <script src="js/srs.js"></script>
     <script src="js/stats.js"></script>
     <script src="js/vocabulary.js"></script>
     <script src="js/game.js"></script>

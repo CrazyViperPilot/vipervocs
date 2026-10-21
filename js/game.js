@@ -1,66 +1,75 @@
+const QUICK_ROUND = "__quick";
+const QUICK_ROUND_SIZE = 10;
+const BOARD_SIZE = 5;
+const RETRY_GAP = 2; // a missed pair comes back after this many new pairs
+
 const gameState = {
-  lessonPool: [],
-  retryQueue: [],
-  activePairs: [],
-  leftCards: [],
-  rightCards: [],
-  selectedLeft: null,
+  queue: [],          // pairs still to come
+  left: [],           // pair per left slot (null = empty)
+  right: [],          // pair per right slot
+  leftEls: [],
+  rightEls: [],
+  selectedLeft: null, // slot index
   selectedRight: null,
+  missed: new Set(),    // pair ids answered wrong at least once on the board
+  recorded: new Set(),  // Polish words already counted in the stats this round
   completedCount: 0,
   errorCount: 0,
   startTime: null,
-  targetLanguage: "pl",
-  totalPairs: 0,
-  isProcessing: false
+  totalPairs: 0
 };
 
 // Helper: Fisher-Yates Shuffle
 function shuffle(array) {
-  let currentIndex = array.length, randomIndex;
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
 
-// Helper: UUID for pairs
-function generateId() {
-  return Math.random().toString(36).substr(2, 9);
+let nextId = 0;
+function makePair(de, target) {
+  return { id: String(nextId++), de, target };
+}
+
+let allPairsCache = null;
+function allPairs() {
+  return allPairsCache || (allPairsCache = vocabSrs.collectPairs(lessons));
+}
+
+function buildPool(lessonKey, targetLang) {
+  if (lessonKey === QUICK_ROUND) {
+    return vocabSrs.pick(allPairs(), vocabStats.load().words, QUICK_ROUND_SIZE, { distinct: true })
+      .map(p => makePair(p.de, p.pl));
+  }
+  const lessonData = lessons[lessonKey];
+  if (!lessonData) return null;
+  return shuffle(lessonData.pairs.map(p => makePair(p.de, p[targetLang])));
 }
 
 // Initialize the Game
-function initGame(lessonKey = "seasons_months_weekdays", targetLang = "pl") {
-  const lessonData = lessons[lessonKey];
-  if (!lessonData) return;
+function initGame(lessonKey = QUICK_ROUND, targetLang = "pl") {
+  const pool = buildPool(lessonKey, targetLang);
+  if (!pool) return;
 
-  // Reset state
-  gameState.lessonPool = lessonData.pairs.map(p => ({
-    id: generateId(),
-    de: p.de,
-    target: p[targetLang]
-  }));
-  gameState.lessonPool = shuffle(gameState.lessonPool);
-  
-  gameState.retryQueue = [];
-  gameState.activePairs = [];
+  gameState.queue = pool;
+  gameState.missed = new Set();
+  gameState.recorded = new Set();
   gameState.completedCount = 0;
   gameState.errorCount = 0;
-  gameState.targetLanguage = targetLang;
-  gameState.totalPairs = gameState.lessonPool.length;
+  gameState.totalPairs = pool.length;
   gameState.startTime = Date.now();
   gameState.selectedLeft = null;
   gameState.selectedRight = null;
-  gameState.isProcessing = false;
 
-  // Initial fill
-  fillActivePairs();
-  
-  // Render
-  renderGrid();
+  const board = gameState.queue.splice(0, BOARD_SIZE);
+  gameState.left = shuffle([...board]);
+  gameState.right = shuffle([...board]);
+
+  buildBoard();
   updateProgress();
-  renderRules(lessonData);
+  renderRules(lessons[lessonKey]);
 }
 
 // Show grammar rules under the cards (only for lessons that provide them)
@@ -78,191 +87,187 @@ function renderRules(lessonData) {
   }
 }
 
-function fillActivePairs() {
-  // We need up to 5 pairs
-  while (gameState.activePairs.length < 5) {
-    if (gameState.lessonPool.length > 0) {
-      gameState.activePairs.push(gameState.lessonPool.pop());
-    } else if (gameState.retryQueue.length > 0) {
-      // Pull from retry queue if pool is empty
-      gameState.activePairs.push(gameState.retryQueue.shift());
-    } else {
-      break; // No more pairs available
+// Card elements are created once per round; afterwards only single slots change,
+// so the other cards keep their place.
+function buildBoard() {
+  for (const side of ["left", "right"]) {
+    const col = document.getElementById(side === "left" ? "col-left" : "col-right");
+    col.innerHTML = "";
+    const els = [];
+    for (let i = 0; i < BOARD_SIZE; i++) {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "card";
+      card.dataset.side = side;
+      card.dataset.slot = i;
+      card.addEventListener("click", () => handleCardClick(side, i));
+      col.appendChild(card);
+      els.push(card);
     }
+    gameState[side + "Els"] = els;
+  }
+  for (let i = 0; i < BOARD_SIZE; i++) {
+    renderSlot("left", i);
+    renderSlot("right", i);
   }
 }
 
-function renderGrid() {
-  const colLeft = document.getElementById("col-left");
-  const colRight = document.getElementById("col-right");
-  
-  colLeft.innerHTML = "";
-  colRight.innerHTML = "";
-
-  // Prepare shuffled lists for both columns
-  gameState.leftCards = shuffle([...gameState.activePairs]);
-  gameState.rightCards = shuffle([...gameState.activePairs]);
-
-  // Render Left
-  gameState.leftCards.forEach(pair => {
-    const card = document.createElement("div");
-    card.className = "card fade-slide-in";
-    card.textContent = pair.de;
-    card.dataset.id = pair.id;
-    card.dataset.side = "left";
-    if (gameState.selectedLeft === pair.id) card.classList.add("selected");
-    card.addEventListener("click", () => handleCardClick(card));
-    colLeft.appendChild(card);
-  });
-
-  // Render Right
-  gameState.rightCards.forEach(pair => {
-    const card = document.createElement("div");
-    card.className = "card fade-slide-in";
-    card.textContent = pair.target;
-    card.dataset.id = pair.id;
-    card.dataset.side = "right";
-    if (gameState.selectedRight === pair.id) card.classList.add("selected");
-    card.addEventListener("click", () => handleCardClick(card));
-    colRight.appendChild(card);
-  });
+function renderSlot(side, i) {
+  const el = gameState[side + "Els"][i];
+  const pair = gameState[side][i];
+  el.className = "card";
+  if (!pair) {
+    el.textContent = "";
+    el.classList.add("empty");
+    el.disabled = true;
+    return;
+  }
+  el.disabled = false;
+  el.textContent = side === "left" ? pair.de : pair.target;
+  el.lang = side === "left" ? "de" : "pl";
+  // restart the entry animation
+  void el.offsetWidth;
+  el.classList.add("fade-slide-in");
 }
 
-function handleCardClick(cardElement) {
-  if (gameState.isProcessing) return;
-
-  const side = cardElement.dataset.side;
-  const id = cardElement.dataset.id;
-
-  if (side === "left") {
-    if (gameState.selectedLeft === id) {
-      gameState.selectedLeft = null;
-      cardElement.classList.remove("selected");
-    } else {
-      // Deselect old
-      if (gameState.selectedLeft) {
-        const oldCard = document.querySelector(`.card[data-side="left"][data-id="${gameState.selectedLeft}"]`);
-        if (oldCard) oldCard.classList.remove("selected");
-      }
-      gameState.selectedLeft = id;
-      cardElement.classList.add("selected");
-    }
-  } else {
-    if (gameState.selectedRight === id) {
-      gameState.selectedRight = null;
-      cardElement.classList.remove("selected");
-    } else {
-      // Deselect old
-      if (gameState.selectedRight) {
-        const oldCard = document.querySelector(`.card[data-side="right"][data-id="${gameState.selectedRight}"]`);
-        if (oldCard) oldCard.classList.remove("selected");
-      }
-      gameState.selectedRight = id;
-      cardElement.classList.add("selected");
-    }
-  }
-
-  // Check if both selected
-  if (gameState.selectedLeft && gameState.selectedRight) {
-    checkMatch();
+function setSelected(side, slot) {
+  const key = side === "left" ? "selectedLeft" : "selectedRight";
+  const old = gameState[key];
+  if (old !== null) gameState[side + "Els"][old].classList.remove("selected");
+  gameState[key] = slot;
+  if (slot !== null) {
+    const el = gameState[side + "Els"][slot];
+    el.classList.remove("error");
+    el.classList.add("selected");
   }
 }
 
-function checkMatch() {
-  gameState.isProcessing = true;
-  const leftId = gameState.selectedLeft;
-  const rightId = gameState.selectedRight;
-  
-  const leftCard = document.querySelector(`.card[data-side="left"][data-id="${leftId}"]`);
-  const rightCard = document.querySelector(`.card[data-side="right"][data-id="${rightId}"]`);
+function handleCardClick(side, slot) {
+  const el = gameState[side + "Els"][slot];
+  if (!gameState[side][slot] || el.classList.contains("success")) return;
 
-  if (leftId === rightId) {
-    handleSuccess(leftId, leftCard, rightCard);
-  } else {
-    handleFailure(leftId, rightId, leftCard, rightCard);
+  const key = side === "left" ? "selectedLeft" : "selectedRight";
+  setSelected(side, gameState[key] === slot ? null : slot);
+
+  if (gameState.selectedLeft !== null && gameState.selectedRight !== null) {
+    checkMatch(gameState.selectedLeft, gameState.selectedRight);
   }
 }
 
-function handleSuccess(id, leftCard, rightCard) {
+function swap(list, a, b) {
+  [list[a], list[b]] = [list[b], list[a]];
+}
+
+function checkMatch(li, ri) {
+  setSelected("left", null);
+  setSelected("right", null);
+
+  const l = gameState.left[li];
+  const r = gameState.right[ri];
+
+  if (l.id === r.id) return handleSuccess(li, ri);
+
+  // Same text on two cards (e.g. one German word with two Polish translations):
+  // any card with the right text counts. Swap the identical-looking cards so
+  // the slots hold the solved pair.
+  if (l.target === r.target) {
+    swap(gameState.right, ri, gameState.right.indexOf(l));
+    return handleSuccess(li, ri);
+  }
+  if (l.de === r.de) {
+    swap(gameState.left, li, gameState.left.indexOf(r));
+    return handleSuccess(li, ri);
+  }
+  handleFailure(li, ri);
+}
+
+function recordOnce(pair, correct) {
+  if (gameState.recorded.has(pair.target)) return;
+  gameState.recorded.add(pair.target);
+  vocabStats.record(pair.target, pair.de, correct);
+}
+
+function handleSuccess(li, ri) {
+  const pair = gameState.left[li];
+  const leftCard = gameState.leftEls[li];
+  const rightCard = gameState.rightEls[ri];
   leftCard.classList.add("success");
   rightCard.classList.add("success");
 
-  const pair = gameState.activePairs.find(p => p.id === id);
-  if (pair) vocabStats.record(pair.target, pair.de, true);
+  recordOnce(pair, true);
+  speak(pair.target);
+  if (navigator.vibrate) navigator.vibrate(50);
 
-  if (navigator.vibrate) {
-    navigator.vibrate(50);
-  }
-
-  setTimeout(() => {
-    // Remove the pair from activePairs
-    const pairIndex = gameState.activePairs.findIndex(p => p.id === id);
-    if (pairIndex > -1) {
-      gameState.activePairs.splice(pairIndex, 1);
-    }
-    
+  if (gameState.missed.has(pair.id)) {
+    // Was wrong before: ask again shortly, as a fresh pair that has to be solved cleanly.
+    gameState.queue.splice(Math.min(RETRY_GAP, gameState.queue.length), 0, makePair(pair.de, pair.target));
+  } else {
     gameState.completedCount++;
     updateProgress();
-    
-    fillActivePairs();
-    
-    gameState.selectedLeft = null;
-    gameState.selectedRight = null;
-    
-    if (gameState.activePairs.length === 0) {
-      showCompletionScreen();
-    } else {
-      renderGrid();
-    }
-    
-    gameState.isProcessing = false;
-  }, 400); // wait for pop animation
-}
-
-function handleFailure(leftId, rightId, leftCard, rightCard) {
-  gameState.errorCount++;
-
-  // Both pairs involved in a wrong match count as a failed attempt.
-  for (const pid of [leftId, rightId]) {
-    const pair = gameState.activePairs.find(p => p.id === pid);
-    if (pair) vocabStats.record(pair.target, pair.de, false);
   }
 
-  leftCard.classList.add("error");
-  rightCard.classList.add("error");
+  setTimeout(() => replaceSlots(li, ri), 300); // wait for pop animation
+}
 
-  // If wrong, we push both actual items to retry queue (we push the left one as a representative)
-  // Actually, we just need to push the left card's pair object into retry queue, and maybe right card's pair object if we want both to be retried?
-  // Usually, just pushing the pair that was selected on the left to retry queue is enough to ensure it appears again. But since activePairs are currently active, they are already in play.
-  // Wait, if it's a failure, we need to move the pair from activePairs to retryQueue so it is replaced by a new one, keeping the game fresh.
-  
-  // Let's remove the leftId pair and rightId pair from activePairs and push them to retryQueue.
-  // Then fill active pairs to 5 again.
+function replaceSlots(li, ri) {
+  const next = gameState.queue.shift() || null;
+  gameState.left[li] = next;
+  gameState.right[ri] = next;
+  renderSlot("left", li);
+
+  // Don't give away the new pair: sometimes the new Polish card takes the place
+  // of another card on the right, which moves into the freed slot.
+  const others = gameState.right.map((p, i) => i).filter(i => i !== ri && gameState.right[i]
+    && !gameState.rightEls[i].classList.contains("success") && gameState.selectedRight !== i);
+  if (next && others.length && Math.random() < 0.5) {
+    const other = others[Math.floor(Math.random() * others.length)];
+    swap(gameState.right, ri, other);
+    renderSlot("right", other);
+  }
+  renderSlot("right", ri);
+
+  if (gameState.left.every(p => !p)) showCompletionScreen();
+}
+
+function handleFailure(li, ri) {
+  gameState.errorCount++;
+
+  // The German card is the word being looked for; only that one counts as wrong.
+  const pair = gameState.left[li];
+  gameState.missed.add(pair.id);
+  recordOnce(pair, false);
+
+  const leftCard = gameState.leftEls[li];
+  const rightCard = gameState.rightEls[ri];
+  for (const card of [leftCard, rightCard]) {
+    card.classList.remove("error");
+    void card.offsetWidth;
+    card.classList.add("error");
+  }
+  if (navigator.vibrate) navigator.vibrate([30, 40, 30]);
   setTimeout(() => {
-    // Remove from active
-    const leftPairObj = gameState.activePairs.find(p => p.id === leftId);
-    const rightPairObj = gameState.activePairs.find(p => p.id === rightId);
-    
-    gameState.activePairs = gameState.activePairs.filter(p => p.id !== leftId && p.id !== rightId);
-    
-    // Add to retry queue if not already there (we just add them to the end)
-    if (leftPairObj) gameState.retryQueue.push(leftPairObj);
-    // if rightPairObj is different and exists
-    if (rightPairObj && rightPairObj.id !== leftId) gameState.retryQueue.push(rightPairObj);
+    leftCard.classList.remove("error");
+    rightCard.classList.remove("error");
+  }, 600); // shake animation
+}
 
-    // Fill again
-    fillActivePairs();
-    
-    gameState.selectedLeft = null;
-    gameState.selectedRight = null;
-    
-    renderGrid();
-    gameState.isProcessing = false;
-  }, 600); // wait for shake animation
+// Reads the Polish word aloud (can be switched off in the header).
+function speak(text) {
+  if (!("speechSynthesis" in window)) return;
+  try {
+    if (localStorage.getItem("tts") === "off") return;
+  } catch (e) { /* storage blocked: keep speaking */ }
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "pl-PL";
+  const voice = speechSynthesis.getVoices().find(v => v.lang.toLowerCase().startsWith("pl"));
+  if (voice) u.voice = voice;
+  u.rate = 0.95;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
 }
 
 function updateProgress() {
-  const percent = (gameState.completedCount / gameState.totalPairs) * 100;
+  const percent = gameState.totalPairs ? (gameState.completedCount / gameState.totalPairs) * 100 : 0;
   document.getElementById("progress-fill").style.width = `${percent}%`;
   document.getElementById("progress-text").textContent = `${gameState.completedCount} / ${gameState.totalPairs} Paare`;
 }
@@ -278,12 +283,17 @@ function showCompletionScreen() {
   const modal = document.getElementById("completion-modal");
   document.getElementById("stat-pairs").textContent = gameState.totalPairs;
   document.getElementById("stat-errors").textContent = gameState.errorCount;
-  
+
   const timeElapsed = Date.now() - gameState.startTime;
   document.getElementById("stat-time").textContent = formatTime(timeElapsed);
-  
+
+  const due = vocabStats.summary(allPairs().length).dueToday;
+  document.getElementById("stat-due").textContent = due;
+
   modal.showModal();
 }
 
 // Expose init
 window.initGame = initGame;
+window.QUICK_ROUND = QUICK_ROUND;
+window.allVocabPairs = allPairs;

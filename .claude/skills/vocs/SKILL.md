@@ -18,7 +18,8 @@ Alle Befehle laufen im Wurzelordner des vipervocs-Repos. Der Lernstand wird auf 
 1. **Wörter holen.** Führe aus (Argumente aus `$ARGUMENTS` übernehmen: eine Zahl = Anzahl, ein Wort wie `duo_animals` = Lektion):
    `node .claude/skills/vocs/vocs.mjs pick 5`
    bzw. `node .claude/skills/vocs/vocs.mjs pick <n> --lesson <key>`.
-   Ausgabe: JSON-Liste mit `pl`, `de`, `lesson`, `ask` (`de>pl` oder `pl>de`) und `seen` (bisherige Quote oder `neu`).
+   Ausgabe: JSON-Liste mit `pl`, `de`, `lesson`, `ask` (`de>pl` oder `pl>de`), `seen` (bisherige Quote und Leitner-Fach oder `neu`) und optional `ok` (weitere polnische Wörter mit derselben deutschen Bedeutung).
+   Die Auswahl: zuerst fällige Wörter (Leitner-Wiederholung), dann bis zu 40 % neue Wörter aus den nächsten Lektionen.
 
 2. **Abfragen, ein Wort pro Nachricht.** Zeige nur die Frage, nie die Lösung:
    - `de>pl`: „**1/5** · Lektion · Wie heißt **‹de›** auf Polnisch?“
@@ -27,6 +28,8 @@ Alle Befehle laufen im Wurzelordner des vipervocs-Repos. Der Lernstand wird auf 
 
 3. **Bewerten** (merke dir pro Wort 1 = richtig, 0 = falsch):
    - Richtig: Bedeutung stimmt. Großschreibung, fehlender Artikel und deutsche Synonyme zählen als richtig.
+   - `de` kann mehrere Bedeutungen enthalten, getrennt durch „ / “: bei `pl>de` reicht eine davon.
+   - Bei `de>pl` zählt auch jedes Wort aus `ok` als richtig. Nenne dann kurz die gesuchte Form `pl`.
    - Polnisch ohne Sonderzeichen (z. B. „zrodlo“ statt „źródło“) zählt als richtig. Zeige kurz die korrekte Schreibweise.
    - Kleine Tippfehler (ein Buchstabe) zählen als richtig, mit Hinweis.
    - Falsches Wort, falsche Form oder „weiß nicht“ zählt als falsch. Nenne die Lösung.
@@ -40,8 +43,8 @@ Alle Befehle laufen im Wurzelordner des vipervocs-Repos. Der Lernstand wird auf 
    `git add progress/stats.json`, `git commit -m "vocs: Lernstand aktualisieren"`, `git push -q`.
    Wird der Push abgelehnt: `git pull --rebase -q` und erneut `git push -q`. Klappt der Push gar nicht, kurz sagen, dass der Stand nur lokal gespeichert ist.
 
-6. **Abschluss** in 2–3 Zeilen: „Runde: 4/5 richtig“, die neuen Quoten aus der `record`-Ausgabe für die falschen Wörter, und der Hinweis, dass `/vocs` eine neue Runde startet.
+6. **Abschluss** in 2–3 Zeilen: „Runde: 4/5 richtig“, für die falschen Wörter die Zeile aus der `record`-Ausgabe (Quote, „wieder am …“), und der Hinweis, dass `/vocs` eine neue Runde startet.
 
-Wenn Daniel „Statistik“ oder „wie gut bin ich“ fragt, führe `node .claude/skills/vocs/vocs.mjs stats` aus und fasse das Ergebnis kurz zusammen.
+Wenn Daniel „Statistik“ oder „wie gut bin ich“ fragt, führe `node .claude/skills/vocs/vocs.mjs stats` aus und fasse das Ergebnis kurz zusammen (inkl. „heute fällig“).
 
 Bricht Daniel mittendrin ab, speichere nur die bereits beantworteten Wörter.

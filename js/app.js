@@ -24,11 +24,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadTheme(); // Init theme
 
+  // --- Sound (Polish pronunciation) ---
+  const ttsToggle = document.getElementById("tts-toggle");
+  function ttsOn() {
+    try { return localStorage.getItem("tts") !== "off"; } catch (e) { return true; }
+  }
+  function renderTts() {
+    ttsToggle.textContent = ttsOn() ? "🔊" : "🔇";
+    ttsToggle.setAttribute("aria-pressed", String(ttsOn()));
+  }
+  ttsToggle.addEventListener("click", () => {
+    try { localStorage.setItem("tts", ttsOn() ? "off" : "on"); } catch (e) { /* not persisted */ }
+    renderTts();
+  });
+  renderTts();
+
   // --- Game Controls ---
   const lessonSelect = document.getElementById("lesson-select");
   const languageSelect = document.getElementById("language-select");
-  
-  // Populate the dropdown dynamically from the lessons object in vocabulary.js
+  languageSelect.hidden = languageSelect.options.length < 2; // only Polish for now
+
+  // First entry: quick round across all lessons (due + new words), then every lesson.
+  const quick = document.createElement("option");
+  quick.value = QUICK_ROUND;
+  quick.textContent = "⚡ Schnellrunde (fällige Wörter)";
+  lessonSelect.appendChild(quick);
   if (typeof lessons !== "undefined") {
     for (const [key, data] of Object.entries(lessons)) {
       const option = document.createElement("option");
@@ -37,12 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
       lessonSelect.appendChild(option);
     }
   }
-  
+
+  try {
+    const last = localStorage.getItem("lesson");
+    if (last && [...lessonSelect.options].some(o => o.value === last)) lessonSelect.value = last;
+  } catch (e) { /* start with the quick round */ }
+
   function startCurrentLesson() {
     window.initGame(lessonSelect.value, languageSelect.value);
   }
 
-  lessonSelect.addEventListener("change", startCurrentLesson);
+  lessonSelect.addEventListener("change", () => {
+    try { localStorage.setItem("lesson", lessonSelect.value); } catch (e) { /* not remembered */ }
+    startCurrentLesson();
+  });
   languageSelect.addEventListener("change", startCurrentLesson);
 
   // --- Collapsible grammar rules ---
@@ -67,9 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnMenu.addEventListener("click", () => {
     modal.close();
-    // In a larger app, this might open a menu overlay. 
-    // Here we just restart the lesson for simplicity.
-    startCurrentLesson();
+    lessonSelect.focus();
+    try { lessonSelect.showPicker(); } catch (e) { /* not supported: focus is enough */ }
   });
 
   // --- Lernstand ---
@@ -77,8 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const statsImport = document.getElementById("stats-import");
 
   function renderStats() {
-    const s = vocabStats.summary();
-    document.getElementById("stats-words").textContent = s.words;
+    const s = vocabStats.summary(window.allVocabPairs().length);
+    document.getElementById("stats-words").textContent = `${s.words} / ${s.total}`;
+    document.getElementById("stats-due").textContent = s.dueToday;
     document.getElementById("stats-asked").textContent = s.asked;
     document.getElementById("stats-rate").textContent = s.asked ? `${Math.round((s.correct / s.asked) * 100)} %` : "–";
     const list = document.getElementById("stats-weakest");
@@ -90,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     for (const w of s.weakest) {
       const li = document.createElement("li");
-      li.textContent = `${w.pl} – ${w.de} (${w.correct}/${w.asked})`;
+      li.textContent = `${w.pl} – ${w.de} (${w.correct}/${w.asked}, Fach ${w.box})`;
       list.appendChild(li);
     }
   }
@@ -113,17 +141,15 @@ document.addEventListener("DOMContentLoaded", () => {
     statsImport.value = "";
   });
 
-  // Start the game initially
-  startCurrentLesson();
+  // Start the game once the stats from /vocs are merged (at most 1.5 s, then start anyway).
+  Promise.race([vocabStats.syncFromRepo(), new Promise(r => setTimeout(r, 1500))])
+    .then(startCurrentLesson);
 
   // --- Service Worker Registration ---
+  // Relative path, so the app also works under a sub path (e.g. GitHub Pages).
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("/sw.js").then(registration => {
-        console.log("SW registered: ", registration);
-      }).catch(registrationError => {
-        console.log("SW registration failed: ", registrationError);
-      });
+    navigator.serviceWorker.register("sw.js").catch(err => {
+      console.log("SW registration failed: ", err);
     });
   }
 });
