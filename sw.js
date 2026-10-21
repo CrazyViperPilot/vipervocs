@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vipervocs-v2';
+const CACHE_NAME = 'vipervocs-v3';
 const urlsToCache = [
   '/',
   '/index.html',

@@ -1679,5 +1679,1162 @@ const lessons = {
       { de: "weil", pl: "ponieważ" },
       { de: "vielleicht", pl: "może" }
     ]
+  },
+  // ===================================================================
+  // Duolingo-Wortschatz (Import 21.10.2026) – Wörter aus dem Duolingo-Kurs,
+  // die oben noch fehlten. Grundformen, thematisch gruppiert.
+  // ===================================================================
+
+  duo_people_family_1: {
+    labelDe: "Personen & Familie I",
+    pairs: [
+      { de: "der Mann", pl: "mężczyzna" },
+      { de: "der Junge", pl: "chłopiec" },
+      { de: "die Frau", pl: "kobieta" },
+      { de: "das Mädchen", pl: "dziewczynka" },
+      { de: "der Mensch", pl: "człowiek" },
+      { de: "der Papa", pl: "tata" },
+      { de: "die Mama", pl: "mama" },
+      { de: "die Ehe", pl: "małżeństwo" },
+      { de: "der Elternteil", pl: "rodzic" },
+      { de: "die Geschwister (Pl.)", pl: "rodzeństwo" },
+      { de: "der Freund (romantisch)", pl: "chłopak" },
+      { de: "die Freundin", pl: "dziewczyna" },
+      { de: "der Bekannte", pl: "znajomy" }
+    ]
+  },
+
+  duo_people_family_2: {
+    labelDe: "Personen, Namen & Grüße",
+    pairs: [
+      { de: "der Freund", pl: "przyjaciel" },
+      { de: "die Person", pl: "osoba" },
+      { de: "der Nachbar", pl: "sąsiad" },
+      { de: "der Partner", pl: "partner" },
+      { de: "der Gast", pl: "gość" },
+      { de: "der Bürger", pl: "obywatel" },
+      { de: "der Nachname", pl: "nazwisko" },
+      { de: "der Vorname", pl: "imię" },
+      { de: "danke", pl: "dzięki" },
+      { de: "tschüss", pl: "pa" },
+      { de: "willkommen", pl: "witaj" },
+      { de: "auf Polnisch", pl: "po polsku" },
+      { de: "auf Englisch", pl: "po angielsku" }
+    ]
+  },
+
+  duo_people_groups: {
+    labelDe: "Gruppen & Mehrzahl",
+    pairs: [
+      { de: "die Mädchen (Pl.)", pl: "dziewczynki" },
+      { de: "die Jungen (Pl.)", pl: "chłopcy" },
+      { de: "die Frauen (Pl.)", pl: "kobiety" },
+      { de: "die Männer (Pl.)", pl: "mężczyźni" },
+      { de: "die Kinder (Pl.)", pl: "dzieci" },
+      { de: "die Leute (Pl.)", pl: "ludzie" },
+      { de: "die Damen (Pl.)", pl: "panie" },
+      { de: "die Herren (Pl.)", pl: "panowie" },
+      { de: "der Feind", pl: "wróg" },
+      { de: "die Gruppe", pl: "grupa" },
+      { de: "die Gesellschaft", pl: "społeczeństwo" },
+      { de: "das Opfer", pl: "ofiara" },
+      { de: "die Beziehung", pl: "związek" },
+      { de: "die Kultur", pl: "kultura" },
+      { de: "die Nation", pl: "naród" },
+      { de: "die Jugend", pl: "młodzież" },
+      { de: "das Paar", pl: "para" }
+    ]
+  },
+
+  duo_animals: {
+    labelDe: "Tiere II",
+    pairs: [
+      { de: "der Tiger", pl: "tygrys" },
+      { de: "die Krabbe", pl: "krab" },
+      { de: "die Spinne", pl: "pająk" },
+      { de: "der Pinguin", pl: "pingwin" },
+      { de: "die Schlange", pl: "wąż" },
+      { de: "die Schildkröte", pl: "żółw" },
+      { de: "die Fliege", pl: "mucha" },
+      { de: "der Delfin", pl: "delfin" },
+      { de: "der Affe", pl: "małpa" },
+      { de: "der Stier", pl: "byk" },
+      { de: "die Gans", pl: "gęś" },
+      { de: "der Schmetterling", pl: "motyl" },
+      { de: "die Hunde (Pl.)", pl: "psy" },
+      { de: "die Pferde (Pl.)", pl: "konie" },
+      { de: "die Katzen (Pl.)", pl: "koty" },
+      { de: "die Enten (Pl.)", pl: "kaczki" },
+      { de: "die Tiere (Pl.)", pl: "zwierzęta" }
+    ]
+  },
+
+  duo_food: {
+    labelDe: "Essen & Trinken II",
+    pairs: [
+      { de: "die Kekse (Pl.)", pl: "ciasteczka" },
+      { de: "die Mahlzeit", pl: "posiłek" },
+      { de: "das belegte Brot", pl: "kanapka" },
+      { de: "das Gemüse", pl: "warzywo" },
+      { de: "die Äpfel (Pl.)", pl: "jabłka" },
+      { de: "die belegten Brote (Pl.)", pl: "kanapki" },
+      { de: "der Keks", pl: "ciasteczko" },
+      { de: "die Fische (Pl.)", pl: "ryby" },
+      { de: "die Tomaten (Pl.)", pl: "pomidory" },
+      { de: "der Pfeffer", pl: "pieprz" },
+      { de: "die Paprika", pl: "papryka" },
+      { de: "der Kuchen", pl: "ciasto" },
+      { de: "der Joghurt", pl: "jogurt" },
+      { de: "das Eis (Speiseeis)", pl: "lody" },
+      { de: "der Geschmack", pl: "smak" },
+      { de: "die Schokolade", pl: "czekolada" },
+      { de: "das Bonbon", pl: "cukierek" },
+      { de: "die Pommes frites (Pl.)", pl: "frytka" },
+      { de: "die Frucht", pl: "owoc" },
+      { de: "der Alkohol", pl: "alkohol" },
+      { de: "das Öl", pl: "olej" },
+      { de: "das Schweinefleisch", pl: "wieprzowina" },
+      { de: "das Rindfleisch", pl: "wołowina" },
+      { de: "das Hähnchen", pl: "kurczak" },
+      { de: "der Vegetarier", pl: "wegetarianin" }
+    ]
+  },
+
+  duo_home_clothes_1: {
+    labelDe: "Haushalt & Kleidung I",
+    pairs: [
+      { de: "der Pulli", pl: "bluza" },
+      { de: "der Schuh", pl: "but" },
+      { de: "der Hut", pl: "kapelusz" },
+      { de: "die Kleidung", pl: "ubrania" },
+      { de: "die Unterhosen (Pl.)", pl: "majtki" },
+      { de: "die Schüssel", pl: "miska" },
+      { de: "das Radio", pl: "radio" },
+      { de: "die Uhr", pl: "zegar" },
+      { de: "das Handy", pl: "komórka" },
+      { de: "die Armbanduhr", pl: "zegarek" },
+      { de: "die Batterie", pl: "bateria" },
+      { de: "das Bettlaken", pl: "prześcieradło" },
+      { de: "der Schreibtisch", pl: "biurko" },
+      { de: "das Sofa", pl: "sofa" },
+      { de: "die Zahnpasta", pl: "pasta do zębów" },
+      { de: "die Badewanne", pl: "wanna" },
+      { de: "der Rasierer", pl: "golarka" },
+      { de: "die Seife", pl: "mydło" },
+      { de: "die Zahnbürste", pl: "szczoteczka do zębów" }
+    ]
+  },
+
+  duo_home_clothes_2: {
+    labelDe: "Haushalt & Kleidung II",
+    pairs: [
+      { de: "der Schwamm", pl: "gąbka" },
+      { de: "der Korb", pl: "kosz" },
+      { de: "der Regenschirm", pl: "parasol" },
+      { de: "die Geldbörse", pl: "portfel" },
+      { de: "die Tasche", pl: "torba" },
+      { de: "die Schachtel", pl: "pudełko" },
+      { de: "der Schlüssel", pl: "klucz" },
+      { de: "das Ding", pl: "rzecz" },
+      { de: "der Becher", pl: "kubek" },
+      { de: "die Pfanne", pl: "patelnia" },
+      { de: "die Zeitung", pl: "gazeta" },
+      { de: "die Zeitschrift", pl: "czasopismo" },
+      { de: "die Karte", pl: "kartka" },
+      { de: "die Schere", pl: "nożyczki" },
+      { de: "das Papier", pl: "papier" },
+      { de: "die Maschine", pl: "maszyna" },
+      { de: "die Flagge", pl: "flaga" },
+      { de: "die Klingel", pl: "dzwonek" }
+    ]
+  },
+
+  duo_time: {
+    labelDe: "Zeit & Kalender",
+    pairs: [
+      { de: "abends", pl: "wieczorem" },
+      { de: "heute", pl: "dziś" },
+      { de: "nachmittags", pl: "po południu" },
+      { de: "der Kalender", pl: "kalendarz" },
+      { de: "der Monat", pl: "miesiąc" },
+      { de: "das Jahr", pl: "rok" },
+      { de: "das Jahrhundert", pl: "wiek" },
+      { de: "das Datum", pl: "data" },
+      { de: "der Zeitraum", pl: "okres" },
+      { de: "die Jahreszeit", pl: "pora roku" },
+      { de: "die Sekunde", pl: "sekunda" },
+      { de: "der Geburtstag", pl: "urodziny" },
+      { de: "die Generation", pl: "pokolenie" },
+      { de: "das Jahrzehnt", pl: "dekada" },
+      { de: "die Party", pl: "impreza" },
+      { de: "der Moment", pl: "chwila" },
+      { de: "täglich", pl: "codziennie" },
+      { de: "die Jahre (Pl.)", pl: "lat" },
+      { de: "einmal", pl: "raz" },
+      { de: "damals", pl: "wtedy" },
+      { de: "gleich", pl: "zaraz" },
+      { de: "früher", pl: "kiedyś" }
+    ]
+  },
+
+  duo_quantities: {
+    labelDe: "Mengen & Pronomen",
+    pairs: [
+      { de: "dieser", pl: "ten" },
+      { de: "jener", pl: "tamten" },
+      { de: "kein", pl: "żaden" },
+      { de: "alle (Personen)", pl: "wszyscy" },
+      { de: "nichts", pl: "nic" },
+      { de: "alles", pl: "wszystko" },
+      { de: "niemand", pl: "nikt" },
+      { de: "jemand", pl: "ktoś" },
+      { de: "beide (Dinge)", pl: "oba" },
+      { de: "beide (gemischt)", pl: "oboje" },
+      { de: "beide (Männer)", pl: "obaj" },
+      { de: "jeder", pl: "każdy" },
+      { de: "weniger", pl: "mniej" },
+      { de: "mehr", pl: "więcej" },
+      { de: "die Summe", pl: "suma" },
+      { de: "die Zahl", pl: "liczba" },
+      { de: "viele", pl: "wiele" },
+      { de: "letzter", pl: "ostatni" },
+      { de: "die Minderheit", pl: "mniejszość" },
+      { de: "die Mehrheit", pl: "większość" },
+      { de: "die Hälfte", pl: "połowa" }
+    ]
+  },
+
+  duo_directions: {
+    labelDe: "Richtungen & Präpositionen",
+    pairs: [
+      { de: "zwischen", pl: "pomiędzy" },
+      { de: "außer", pl: "oprócz" },
+      { de: "bei", pl: "przy" },
+      { de: "gegenüber", pl: "naprzeciwko" },
+      { de: "inmitten", pl: "wśród" },
+      { de: "durch", pl: "przez" },
+      { de: "nah", pl: "blisko" },
+      { de: "gemäß", pl: "według" },
+      { de: "während", pl: "podczas" },
+      { de: "linker", pl: "lewy" },
+      { de: "unten", pl: "dół" },
+      { de: "rechter", pl: "prawy" },
+      { de: "der Westen", pl: "zachód" },
+      { de: "der Norden", pl: "północ" },
+      { de: "der Osten", pl: "wschód" }
+    ]
+  },
+
+  duo_places: {
+    labelDe: "Orte & Gebäude",
+    pairs: [
+      { de: "das Schwimmbad", pl: "basen" },
+      { de: "der Strand", pl: "plaża" },
+      { de: "das Zentrum", pl: "centrum" },
+      { de: "die Bar", pl: "bar" },
+      { de: "das Schloss", pl: "zamek" },
+      { de: "das Gebäude", pl: "budynek" },
+      { de: "die Region", pl: "region" },
+      { de: "der Ort", pl: "miejsce" },
+      { de: "die Bank (Sitz)", pl: "ławka" },
+      { de: "die Station", pl: "stacja" },
+      { de: "die Umgebung", pl: "okolica" },
+      { de: "der Weg", pl: "droga" },
+      { de: "die Vorderseite", pl: "przód" },
+      { de: "die Grenze", pl: "granica" },
+      { de: "die Allee", pl: "aleja" },
+      { de: "der Stadtteil", pl: "dzielnica" },
+      { de: "die Rückseite", pl: "tył" },
+      { de: "der Turm", pl: "wieża" },
+      { de: "das Gefängnis", pl: "więzienie" },
+      { de: "der Palast", pl: "pałac" },
+      { de: "der Hafen", pl: "port" },
+      { de: "das Gebiet", pl: "obszar" },
+      { de: "der Bauernhof", pl: "farma" },
+      { de: "der Zoo", pl: "zoo" }
+    ]
+  },
+
+  duo_countries: {
+    labelDe: "Länder & Nationalitäten II",
+    pairs: [
+      { de: "ins Ausland", pl: "za granicę" },
+      { de: "die Vereinigten Staaten (Pl.)", pl: "stany zjednoczone" },
+      { de: "Warschau", pl: "warszawa" },
+      { de: "Großbritannien", pl: "wielka brytania" },
+      { de: "amerikanisch", pl: "amerykański" },
+      { de: "französisch", pl: "francuski" },
+      { de: "international", pl: "międzynarodowy" },
+      { de: "britisch", pl: "brytyjski" },
+      { de: "europäisch", pl: "europejski" },
+      { de: "italienisch", pl: "włoski" },
+      { de: "der Deutsche", pl: "niemiec" },
+      { de: "der Franzose", pl: "francuz" },
+      { de: "der Amerikaner", pl: "amerykanin" },
+      { de: "der Italiener", pl: "włoch" }
+    ]
+  },
+
+  duo_travel: {
+    labelDe: "Reisen & Gepäck",
+    pairs: [
+      { de: "das Motorrad", pl: "motor" },
+      { de: "der Transport", pl: "transport" },
+      { de: "der Passagier", pl: "pasażer" },
+      { de: "der Flug", pl: "lot" },
+      { de: "die Ferien (Pl.)", pl: "wakacje" },
+      { de: "das Fahrzeug", pl: "pojazd" },
+      { de: "die Landkarte", pl: "mapa" },
+      { de: "der Reiseführer", pl: "przewodnik" },
+      { de: "der Rucksack", pl: "plecak" },
+      { de: "besichtigen", pl: "zwiedzać" },
+      { de: "der Tourist", pl: "turysta" },
+      { de: "das Ziel", pl: "cel" },
+      { de: "das Abenteuer", pl: "przygoda" },
+      { de: "der Ausflug", pl: "wycieczka" },
+      { de: "das Gepäck", pl: "bagaż" }
+    ]
+  },
+
+  duo_movement: {
+    labelDe: "Bewegung & Fortbewegung",
+    pairs: [
+      { de: "tragen (einmalig)", pl: "nieść" },
+      { de: "liegen", pl: "leżeć" },
+      { de: "stehen", pl: "stać" },
+      { de: "heben", pl: "podnosić" },
+      { de: "sitzen", pl: "siedzieć" },
+      { de: "fahren (lenken)", pl: "prowadzić" },
+      { de: "schwimmen (regelmäßig)", pl: "pływać" },
+      { de: "tragen (regelmäßig)", pl: "nosić" },
+      { de: "(hin)gehen", pl: "pójść" },
+      { de: "laufen (regelmäßig)", pl: "biegać" },
+      { de: "rennen", pl: "biec" },
+      { de: "gehen (regelmäßig)", pl: "chodzić" },
+      { de: "fahren (regelmäßig)", pl: "jeździć" },
+      { de: "fliegen (regelmäßig)", pl: "latać" },
+      { de: "fließen", pl: "płynąć" },
+      { de: "(hin)fahren", pl: "pojechać" }
+    ]
+  },
+
+  duo_professions: {
+    labelDe: "Berufe",
+    pairs: [
+      { de: "das Personal", pl: "personel" },
+      { de: "das Modell", pl: "model" },
+      { de: "der Direktor", pl: "dyrektor" },
+      { de: "der Arbeiter", pl: "robotnik" },
+      { de: "die Polizei", pl: "policja" },
+      { de: "der Künstler", pl: "artysta" },
+      { de: "die Sekretärin", pl: "sekretarka" },
+      { de: "der Soldat", pl: "żołnierz" },
+      { de: "der Schriftsteller", pl: "pisarz" },
+      { de: "der Kapitän", pl: "kapitan" },
+      { de: "der Richter", pl: "sędzia" },
+      { de: "der Schauspieler", pl: "aktor" },
+      { de: "der Wachmann", pl: "ochroniarz" },
+      { de: "der Architekt", pl: "architekt" }
+    ]
+  },
+
+  duo_body_health: {
+    labelDe: "Körper & Gesundheit",
+    pairs: [
+      { de: "der Patient", pl: "pacjent" },
+      { de: "die Hilfe", pl: "pomoc" },
+      { de: "die Behandlung", pl: "leczenie" },
+      { de: "die Pflege", pl: "opieka" },
+      { de: "die Operation", pl: "operacja" },
+      { de: "der Krankenwagen", pl: "karetka" },
+      { de: "das Gehirn", pl: "mózg" },
+      { de: "die Diät", pl: "dieta" },
+      { de: "das Blut", pl: "krew" },
+      { de: "der Unfall", pl: "wypadek" },
+      { de: "das Medikament", pl: "lek" },
+      { de: "das Virus", pl: "wirus" },
+      { de: "der Zustand", pl: "stan" },
+      { de: "die Haut", pl: "skóra" }
+    ]
+  },
+
+  duo_nature: {
+    labelDe: "Natur & Umwelt",
+    pairs: [
+      { de: "das Gras", pl: "trawa" },
+      { de: "die Welt", pl: "świat" },
+      { de: "der Regenbogen", pl: "tęcza" },
+      { de: "das Feuer", pl: "ogień" },
+      { de: "der Stern", pl: "gwiazda" },
+      { de: "der Mond", pl: "księżyc" },
+      { de: "der Planet", pl: "planeta" },
+      { de: "die Erde", pl: "ziemia" },
+      { de: "die Küste", pl: "wybrzeże" },
+      { de: "die Insel", pl: "wyspa" },
+      { de: "das Universum", pl: "wszechświat" },
+      { de: "das Licht", pl: "światło" },
+      { de: "das Feld", pl: "pole" },
+      { de: "die Luft", pl: "powietrze" },
+      { de: "das Klima", pl: "klimat" },
+      { de: "die Pflanze", pl: "roślina" },
+      { de: "das Blatt", pl: "liść" },
+      { de: "das Getreide", pl: "zboże" },
+      { de: "der Rauch", pl: "dym" },
+      { de: "die Wüste", pl: "pustynia" },
+      { de: "der Stein", pl: "kamień" },
+      { de: "die Umwelt", pl: "środowisko" },
+      { de: "der Horizont", pl: "horyzont" },
+      { de: "die Landschaft", pl: "krajobraz" },
+      { de: "der Sand", pl: "piasek" }
+    ]
+  },
+
+  duo_emotions: {
+    labelDe: "Gefühle & Charakter",
+    pairs: [
+      { de: "der Hass", pl: "nienawiść" },
+      { de: "die Wut", pl: "złość" },
+      { de: "die Scham", pl: "wstyd" },
+      { de: "die Traurigkeit", pl: "smutek" },
+      { de: "die Erinnerung", pl: "wspomnienie" },
+      { de: "der Geruch", pl: "zapach" },
+      { de: "der Mut", pl: "odwaga" },
+      { de: "der Respekt", pl: "szacunek" },
+      { de: "der Humor", pl: "humor" },
+      { de: "das Lächeln", pl: "uśmiech" },
+      { de: "die Freundschaft", pl: "przyjaźń" },
+      { de: "die Lust", pl: "ochota" },
+      { de: "der Stress", pl: "stres" },
+      { de: "die Persönlichkeit", pl: "osobowość" },
+      { de: "das Bedürfnis", pl: "potrzeba" },
+      { de: "die Ruhe", pl: "spokój" },
+      { de: "der Eindruck", pl: "wrażenie" },
+      { de: "die Überraschung", pl: "niespodzianka" }
+    ]
+  },
+
+  duo_verbs_daily_1: {
+    labelDe: "Alltagsverben I",
+    pairs: [
+      { de: "schneiden", pl: "kroić" },
+      { de: "berühren (ipf.)", pl: "dotykać" },
+      { de: "besuchen (ipf.)", pl: "odwiedzać" },
+      { de: "unterstützen", pl: "wspierać" },
+      { de: "produzieren", pl: "produkować" },
+      { de: "respektieren", pl: "szanować" },
+      { de: "erziehen (ipf.)", pl: "wychowywać" },
+      { de: "liefern", pl: "dostarczać" },
+      { de: "bekommen", pl: "dostać" },
+      { de: "einstellen", pl: "zatrudniać" },
+      { de: "vermissen", pl: "tęsknić" },
+      { de: "schauen", pl: "patrzeć" },
+      { de: "ändern (ipf.)", pl: "zmieniać" },
+      { de: "vertrauen", pl: "ufać" },
+      { de: "anbieten", pl: "oferować" },
+      { de: "glauben (ipf.)", pl: "wierzyć" },
+      { de: "leihen", pl: "pożyczać" },
+      { de: "reichen", pl: "podawać" },
+      { de: "zurücklassen", pl: "zostawiać" },
+      { de: "danken", pl: "dziękować" }
+    ]
+  },
+
+  duo_verbs_daily_2: {
+    labelDe: "Alltagsverben II",
+    pairs: [
+      { de: "wohnen", pl: "mieszkać" },
+      { de: "bitten", pl: "prosić" },
+      { de: "zählen", pl: "liczyć" },
+      { de: "benutzen (ipf.)", pl: "używać" },
+      { de: "leben", pl: "żyć" },
+      { de: "reparieren (ipf.)", pl: "naprawiać" },
+      { de: "erklären (ipf.)", pl: "wyjaśniać" },
+      { de: "aufpassen", pl: "uważać" },
+      { de: "zeichnen (ipf.)", pl: "rysować" },
+      { de: "das Kochen", pl: "gotowanie" },
+      { de: "das Lesen", pl: "czytanie" },
+      { de: "das Gehen", pl: "chodzenie" },
+      { de: "das Schreiben", pl: "pisanie" },
+      { de: "das Machen", pl: "robienie" },
+      { de: "das Helfen", pl: "pomaganie" },
+      { de: "das Sitzen", pl: "siedzenie" },
+      { de: "das Reisen", pl: "podróżowanie" },
+      { de: "das Trinken", pl: "picie" },
+      { de: "das Warten", pl: "czekanie" },
+      { de: "das Sprechen", pl: "mówienie" }
+    ]
+  },
+
+  duo_grammar_imperative: {
+    labelDe: "Grammatik: Imperativ",
+    rules:
+      "• Der Imperativ (du-Form) entsteht meist aus der 3. Person Plural Präsens ohne Endung: piją → pij!, mówią → mów!, robią → rób!\n" +
+      "• Verben auf -ać (-ają) bekommen -aj: słuchają → słuchaj!, czekają → czekaj!\n" +
+      "• Bei schwer sprechbaren Konsonanten kommt -ij/-yj dazu: zamkną → zamknij!\n" +
+      "• Unregelmäßig: bądź (sei!), weź (nimm!), idź (geh!), jedz (iss!). Vollendet = einmalige Handlung (zrób!), unvollendet = allgemein oder wiederholt (rób!).",
+    pairs: [
+      { de: "sag!", pl: "powiedz" },
+      { de: "geh!", pl: "idź" },
+      { de: "schließ!", pl: "zamknij" },
+      { de: "iss!", pl: "jedz" },
+      { de: "mach! (ipf.)", pl: "rób" },
+      { de: "sprich!", pl: "mów" },
+      { de: "mach! (pf.)", pl: "zrób" },
+      { de: "zeig!", pl: "pokaż" },
+      { de: "kauf!", pl: "kup" },
+      { de: "sei!", pl: "bądź" },
+      { de: "trink!", pl: "pij" },
+      { de: "pass auf!", pl: "uważaj" },
+      { de: "hör zu!", pl: "słuchaj" },
+      { de: "öffne!", pl: "otwórz" },
+      { de: "denk daran!", pl: "pamiętaj" },
+      { de: "bring!", pl: "przynieś" },
+      { de: "nimm! (ipf.)", pl: "bierz" },
+      { de: "schau!", pl: "patrz" },
+      { de: "hilf!", pl: "pomóż" },
+      { de: "nimm! (pf.)", pl: "weź" },
+      { de: "reich mir!", pl: "podaj" },
+      { de: "warte!", pl: "czekaj" }
+    ]
+  },
+
+  duo_verbs_comm_1: {
+    labelDe: "Verben: Handeln & Sagen I",
+    pairs: [
+      { de: "sein", pl: "być" },
+      { de: "versuchen (ipf.)", pl: "próbować" },
+      { de: "er sollte", pl: "powinien" },
+      { de: "zuhören", pl: "słuchać" },
+      { de: "hassen", pl: "nienawidzić" },
+      { de: "können", pl: "umieć" },
+      { de: "erlauben", pl: "pozwalać" },
+      { de: "sagen", pl: "powiedzieć" },
+      { de: "besuchen (pf.)", pl: "odwiedzić" },
+      { de: "helfen", pl: "pomóc" },
+      { de: "sich unterhalten", pl: "porozmawiać" },
+      { de: "aufräumen", pl: "posprzątać" },
+      { de: "kochen", pl: "ugotować" },
+      { de: "verkaufen", pl: "sprzedać" },
+      { de: "bringen", pl: "przynieść" },
+      { de: "zeigen", pl: "pokazać" },
+      { de: "nehmen", pl: "wziąć" },
+      { de: "schicken", pl: "wysłać" },
+      { de: "öffnen", pl: "otworzyć" },
+      { de: "schließen", pl: "zamknąć" },
+      { de: "ändern (pf.)", pl: "zmienić" },
+      { de: "sehen", pl: "zobaczyć" }
+    ]
+  },
+
+  duo_verbs_comm_2: {
+    labelDe: "Verben: Handeln & Sagen II",
+    pairs: [
+      { de: "zurückkehren", pl: "wrócić" },
+      { de: "hören", pl: "usłyszeć" },
+      { de: "anrufen", pl: "zadzwonić" },
+      { de: "nachdenken", pl: "pomyśleć" },
+      { de: "blicken", pl: "spojrzeć" },
+      { de: "anfangen", pl: "zacząć" },
+      { de: "geben", pl: "dać" },
+      { de: "gewinnen", pl: "wygrać" },
+      { de: "glauben (pf.)", pl: "uwierzyć" },
+      { de: "vorstellen", pl: "przedstawić" },
+      { de: "erklären (pf.)", pl: "wyjaśnić" },
+      { de: "ankommen", pl: "dotrzeć" },
+      { de: "berühren (pf.)", pl: "dotknąć" },
+      { de: "erziehen (pf.)", pl: "wychować" },
+      { de: "verlieren", pl: "zgubić" },
+      { de: "austrinken", pl: "wypić" },
+      { de: "antworten", pl: "odpowiedzieć" },
+      { de: "zeichnen (pf.)", pl: "narysować" },
+      { de: "benutzen (pf.)", pl: "użyć" },
+      { de: "reparieren (pf.)", pl: "naprawić" },
+      { de: "fragen", pl: "zapytać" },
+      { de: "versuchen (pf.)", pl: "spróbować" }
+    ]
+  },
+
+  duo_adjectives_1: {
+    labelDe: "Adjektive I",
+    pairs: [
+      { de: "anderer", pl: "inny" },
+      { de: "vorheriger", pl: "poprzedni" },
+      { de: "wichtig", pl: "ważny" },
+      { de: "arm", pl: "biedny" },
+      { de: "reich", pl: "bogaty" },
+      { de: "nächster", pl: "następny" },
+      { de: "normal", pl: "normalny" },
+      { de: "perfekt", pl: "idealny" },
+      { de: "ganz", pl: "cały" },
+      { de: "nett", pl: "miły" },
+      { de: "beliebt", pl: "popularny" },
+      { de: "wunderbar", pl: "wspaniały" },
+      { de: "schön", pl: "piękny" },
+      { de: "bequem", pl: "wygodny" },
+      { de: "langweilig", pl: "nudny" }
+    ]
+  },
+
+  duo_adjectives_2: {
+    labelDe: "Adjektive II",
+    pairs: [
+      { de: "kostenlos", pl: "darmowy" },
+      { de: "interessant", pl: "ciekawy" },
+      { de: "stark", pl: "silny" },
+      { de: "schwach", pl: "słaby" },
+      { de: "nass", pl: "mokry" },
+      { de: "trocken", pl: "suchy" },
+      { de: "fröhlich", pl: "wesoły" },
+      { de: "hölzern", pl: "drewniany" },
+      { de: "breit", pl: "szeroki" },
+      { de: "aus Metall", pl: "metalowy" },
+      { de: "schmal", pl: "wąski" },
+      { de: "berühmt", pl: "sławny" },
+      { de: "aus Plastik", pl: "plastikowy" },
+      { de: "erwachsen", pl: "dorosły" }
+    ]
+  },
+
+  duo_adjectives_more_1: {
+    labelDe: "Adjektive & Eigenschaften I",
+    pairs: [
+      { de: "durstig", pl: "spragniony" },
+      { de: "hungrig", pl: "głodny" },
+      { de: "modern", pl: "nowoczesny" },
+      { de: "echt", pl: "prawdziwy" },
+      { de: "ernst", pl: "poważny" },
+      { de: "eigen", pl: "własny" },
+      { de: "traditionell", pl: "tradycyjny" },
+      { de: "geschlossen", pl: "zamknięty" },
+      { de: "nötig", pl: "potrzebny" },
+      { de: "klug", pl: "mądry" },
+      { de: "offen", pl: "otwarty" },
+      { de: "frisch", pl: "świeży" },
+      { de: "süß", pl: "słodki" },
+      { de: "lustig", pl: "zabawny" },
+      { de: "solch", pl: "taki" },
+      { de: "fertig", pl: "gotowy" },
+      { de: "seltsam", pl: "dziwny" },
+      { de: "nützlich", pl: "przydatny" },
+      { de: "schrecklich", pl: "straszny" },
+      { de: "dick", pl: "gruby" },
+      { de: "schlank", pl: "szczupły" },
+      { de: "möglich", pl: "możliwy" }
+    ]
+  },
+
+  duo_adjectives_more_2: {
+    labelDe: "Adjektive & Eigenschaften II",
+    pairs: [
+      { de: "hart", pl: "twardy" },
+      { de: "weich", pl: "miękki" },
+      { de: "sicher", pl: "bezpieczny" },
+      { de: "gemeinsam", pl: "wspólny" },
+      { de: "unmöglich", pl: "niemożliwy" },
+      { de: "beruflich", pl: "zawodowy" },
+      { de: "ähnlich", pl: "podobny" },
+      { de: "mittlerer", pl: "średni" },
+      { de: "wild", pl: "dziki" },
+      { de: "effizient", pl: "wydajny" },
+      { de: "laut", pl: "głośny" },
+      { de: "privat", pl: "prywatny" },
+      { de: "solche", pl: "tacy" },
+      { de: "leise", pl: "cichy" },
+      { de: "gefährlich", pl: "niebezpieczny" },
+      { de: "behindert", pl: "niepełnosprawny" },
+      { de: "tief", pl: "głęboki" },
+      { de: "es ist kalt", pl: "zimno" },
+      { de: "es ist heiß", pl: "gorąco" },
+      { de: "einsam", pl: "samotny" },
+      { de: "empfindlich", pl: "wrażliwy" }
+    ]
+  },
+
+  duo_grammar_comparative: {
+    labelDe: "Grammatik: Komparativ",
+    rules:
+      "• Komparativ der Adjektive: Stamm + -szy oder -ejszy (szybki → szybszy, młody → młodszy, łatwy → łatwiejszy).\n" +
+      "• Lange Adjektive: bardziej (mehr) + Grundform, z.B. bardziej interesujący.\n" +
+      "• Adverbien: -ej oder -iej (szybko → szybciej, wolno → wolniej, rzadko → rzadziej).\n" +
+      "• Unregelmäßig: dobry → lepszy (besser), dobrze → lepiej, źle → gorzej.",
+    pairs: [
+      { de: "mehr", pl: "bardziej" },
+      { de: "höher", pl: "wyższy" },
+      { de: "niedriger", pl: "niższy" },
+      { de: "jünger", pl: "młodszy" },
+      { de: "wichtiger", pl: "ważniejszy" },
+      { de: "billiger", pl: "tańszy" },
+      { de: "länger", pl: "dłuższy" },
+      { de: "kürzer", pl: "krótszy" },
+      { de: "stärker", pl: "silniejszy" },
+      { de: "leichter", pl: "łatwiejszy" },
+      { de: "langsamer", pl: "wolniejszy" },
+      { de: "schwächer", pl: "słabszy" },
+      { de: "schneller", pl: "szybszy" },
+      { de: "schwieriger", pl: "trudniejszy" },
+      { de: "langsamer (Adv.)", pl: "wolniej" },
+      { de: "besser", pl: "lepiej" },
+      { de: "schneller (Adv.)", pl: "szybciej" },
+      { de: "schlechter", pl: "gorzej" },
+      { de: "früher", pl: "wcześniej" },
+      { de: "näher", pl: "bliżej" },
+      { de: "kälter", pl: "zimniej" },
+      { de: "wärmer", pl: "cieplej" },
+      { de: "öfter", pl: "częściej" },
+      { de: "weiter", pl: "dalej" },
+      { de: "seltener", pl: "rzadziej" }
+    ]
+  },
+
+  duo_conjunctions: {
+    labelDe: "Konjunktionen & Partikeln",
+    pairs: [
+      { de: "als", pl: "jako" },
+      { de: "weil", pl: "bo" },
+      { de: "oder", pl: "lub" },
+      { de: "also", pl: "więc" },
+      { de: "und", pl: "a" },
+      { de: "obwohl", pl: "chociaż" },
+      { de: "statt", pl: "zamiast" },
+      { de: "jedoch", pl: "jednak" },
+      { de: "weder", pl: "ani" },
+      { de: "zu", pl: "zbyt" },
+      { de: "gleichfalls", pl: "nawzajem" },
+      { de: "damit", pl: "żeby" },
+      { de: "wohl", pl: "chyba" }
+    ]
+  },
+
+  duo_adverbs: {
+    labelDe: "Adverbien",
+    pairs: [
+      { de: "wieder", pl: "znów" },
+      { de: "immer noch", pl: "wciąż" },
+      { de: "irgendwo", pl: "gdzieś" },
+      { de: "sogar", pl: "nawet" },
+      { de: "eher", pl: "raczej" },
+      { de: "wirklich", pl: "naprawdę" },
+      { de: "besonders", pl: "zwłaszcza" },
+      { de: "anders", pl: "inaczej" },
+      { de: "bestimmt", pl: "na pewno" },
+      { de: "völlig", pl: "zupełnie" },
+      { de: "schnell", pl: "szybko" },
+      { de: "langsam", pl: "wolno" },
+      { de: "ausgezeichnet", pl: "świetnie" },
+      { de: "weit", pl: "daleko" },
+      { de: "sauber", pl: "czysto" },
+      { de: "dunkel", pl: "ciemno" },
+      { de: "schmutzig", pl: "brudno" },
+      { de: "hell", pl: "jasno" },
+      { de: "langweilig (Adv.)", pl: "nudno" },
+      { de: "interessant (Adv.)", pl: "ciekawie" },
+      { de: "überall", pl: "wszędzie" },
+      { de: "nirgendwo", pl: "nigdzie" }
+    ]
+  },
+
+  duo_grammar_conditional: {
+    labelDe: "Grammatik: Konditional",
+    rules:
+      "• Bildung: Vergangenheitsform + Personalendung -bym (ich), -byś (du), -by (er/sie/es): pisał → pisałbym = ich würde schreiben.\n" +
+      "• Männlich -łbym (chciałbym), weiblich -łabym (chciałabym).\n" +
+      "• Die Endung kann auch vorn stehen: Ja bym chciał … = Ich würde gern …\n" +
+      "• gdyby = wenn (irreal): Gdybym miał czas, pomagałbym. = Wenn ich Zeit hätte, würde ich helfen.",
+    pairs: [
+      { de: "ich würde schreiben", pl: "pisałbym" },
+      { de: "wenn (irreal)", pl: "gdyby" },
+      { de: "ich würde lesen", pl: "czytałbym" },
+      { de: "ich wäre", pl: "byłbym" },
+      { de: "ich könnte", pl: "mógłbym" },
+      { de: "ich möchte", pl: "chciałbym" },
+      { de: "ich würde helfen", pl: "pomagałbym" },
+      { de: "ich würde (Partikel)", pl: "bym" },
+      { de: "ich würde benutzen", pl: "używałbym" },
+      { de: "ich würde sprechen", pl: "mówiłbym" },
+      { de: "ich würde lieber", pl: "wolałbym" },
+      { de: "ich müsste", pl: "musiałbym" }
+    ]
+  },
+
+  duo_verbs_states_1: {
+    labelDe: "Verben: Zustand & Denken I",
+    pairs: [
+      { de: "ausgeben", pl: "wydawać" },
+      { de: "sich kümmern", pl: "troszczyć" },
+      { de: "lächeln", pl: "uśmiechać" },
+      { de: "unterhalten", pl: "bawić" },
+      { de: "wehtun", pl: "boleć" },
+      { de: "pflegen", pl: "dbać" },
+      { de: "wachsen", pl: "rosnąć" },
+      { de: "regnen", pl: "padać" },
+      { de: "leiden", pl: "cierpieć" },
+      { de: "aussehen", pl: "wyglądać" },
+      { de: "existieren", pl: "istnieć" },
+      { de: "lieber mögen", pl: "woleć" },
+      { de: "halten", pl: "trzymać" },
+      { de: "erreichen", pl: "osiągnąć" },
+      { de: "betreffen", pl: "dotyczyć" },
+      { de: "planen", pl: "planować" },
+      { de: "mischen", pl: "mieszać" },
+      { de: "gehören", pl: "należeć" },
+      { de: "akzeptieren", pl: "akceptować" },
+      { de: "schaffen", pl: "tworzyć" }
+    ]
+  },
+
+  duo_verbs_states_2: {
+    labelDe: "Verben: Zustand & Denken II",
+    pairs: [
+      { de: "stammen", pl: "pochodzić" },
+      { de: "füllen", pl: "napełniać" },
+      { de: "enthalten", pl: "zawierać" },
+      { de: "küssen", pl: "całować" },
+      { de: "fallen", pl: "spadać" },
+      { de: "man kann", pl: "można" },
+      { de: "verursachen", pl: "powodować" },
+      { de: "verbringen", pl: "spędzać" },
+      { de: "vergleichen", pl: "porównywać" },
+      { de: "prüfen", pl: "sprawdzać" },
+      { de: "auswählen", pl: "wybierać" },
+      { de: "man muss", pl: "trzeba" },
+      { de: "kosten", pl: "kosztować" },
+      { de: "verdienen", pl: "zarabiać" },
+      { de: "verringern", pl: "zmniejszyć" },
+      { de: "erhöhen", pl: "zwiększyć" },
+      { de: "wiegen", pl: "ważyć" },
+      { de: "sich ausruhen", pl: "odpocząć" },
+      { de: "beenden", pl: "skończyć" }
+    ]
+  },
+
+  duo_school_1: {
+    labelDe: "Schule & Bildung I",
+    pairs: [
+      { de: "die Bildung", pl: "edukacja" },
+      { de: "die Unterrichtsstunde", pl: "lekcja" },
+      { de: "das Studium", pl: "studia" },
+      { de: "Lieblings-", pl: "ulubiony" },
+      { de: "die Geschichte", pl: "historia" },
+      { de: "der Kurs", pl: "kurs" },
+      { de: "das Beispiel", pl: "przykład" },
+      { de: "die Übung", pl: "ćwiczenie" },
+      { de: "der Test", pl: "test" },
+      { de: "der Titel", pl: "tytuł" },
+      { de: "die Präsentation", pl: "prezentacja" },
+      { de: "der Kugelschreiber", pl: "długopis" },
+      { de: "das Wissen", pl: "wiedza" },
+      { de: "das Kapitel", pl: "rozdział" }
+    ]
+  },
+
+  duo_school_2: {
+    labelDe: "Schule & Bildung II",
+    pairs: [
+      { de: "das Wort", pl: "słowo" },
+      { de: "das Semester", pl: "semestr" },
+      { de: "die Vorlesung", pl: "wykład" },
+      { de: "grundlegend", pl: "podstawowy" },
+      { de: "der Aufsatz", pl: "wypracowanie" },
+      { de: "der Professor", pl: "profesor" },
+      { de: "die Notiz", pl: "notatka" },
+      { de: "der Kindergarten", pl: "przedszkole" },
+      { de: "das Gymnasium", pl: "liceum" },
+      { de: "der Text", pl: "tekst" },
+      { de: "das Dokument", pl: "dokument" },
+      { de: "das Wörterbuch", pl: "słownik" },
+      { de: "die Mittelschule", pl: "gimnazjum" }
+    ]
+  },
+
+  duo_business_1: {
+    labelDe: "Wirtschaft & Geld I",
+    pairs: [
+      { de: "das Produkt", pl: "produkt" },
+      { de: "der Złoty", pl: "złoty" },
+      { de: "der Dollar", pl: "dolar" },
+      { de: "der Kredit", pl: "kredyt" },
+      { de: "die Marke", pl: "marka" },
+      { de: "das Angebot", pl: "oferta" },
+      { de: "das Geschäft", pl: "biznes" },
+      { de: "die Branche", pl: "branża" },
+      { de: "die Werbung", pl: "reklama" },
+      { de: "die Abteilung", pl: "dział" },
+      { de: "die Stelle", pl: "stanowisko" },
+      { de: "die Konkurrenz", pl: "konkurencja" },
+      { de: "der Vertrag", pl: "umowa" },
+      { de: "wert", pl: "warty" },
+      { de: "das Treffen", pl: "spotkanie" }
+    ]
+  },
+
+  duo_business_2: {
+    labelDe: "Wirtschaft & Geld II",
+    pairs: [
+      { de: "die Organisation", pl: "organizacja" },
+      { de: "die Kosten (Pl.)", pl: "koszt" },
+      { de: "die Wirtschaft", pl: "gospodarka" },
+      { de: "der Handel", pl: "handel" },
+      { de: "die Bestellung", pl: "zamówienie" },
+      { de: "die Unterschrift", pl: "podpis" },
+      { de: "die Investition", pl: "inwestycja" },
+      { de: "das Konto", pl: "konto" },
+      { de: "der Verkauf", pl: "sprzedaż" },
+      { de: "die Versicherung", pl: "ubezpieczenie" },
+      { de: "das Gold", pl: "złoto" },
+      { de: "die Karriere", pl: "kariera" },
+      { de: "die Fabrik", pl: "fabryka" },
+      { de: "die Dienstleistung", pl: "usługa" }
+    ]
+  },
+
+  duo_media: {
+    labelDe: "Medien & Kommunikation",
+    pairs: [
+      { de: "der Satz", pl: "zdanie" },
+      { de: "das Gespräch", pl: "rozmowa" },
+      { de: "der Kommentar", pl: "komentarz" },
+      { de: "die Kommunikation", pl: "komunikacja" },
+      { de: "die Information", pl: "informacja" },
+      { de: "der Kontakt", pl: "kontakt" },
+      { de: "das Fernsehen", pl: "telewizja" },
+      { de: "der Kanal", pl: "kanał" },
+      { de: "die Postkarte", pl: "pocztówka" },
+      { de: "die Einladung", pl: "zaproszenie" },
+      { de: "der Journalist", pl: "dziennikarz" },
+      { de: "die Presse", pl: "prasa" },
+      { de: "der Artikel", pl: "artykuł" },
+      { de: "die Diskussion", pl: "dyskusja" },
+      { de: "die Meinung", pl: "opinia" },
+      { de: "das Interview", pl: "wywiad" },
+      { de: "die Liste", pl: "lista" },
+      { de: "der Sinn", pl: "sens" },
+      { de: "die Datei", pl: "plik" },
+      { de: "der Zugang", pl: "dostęp" },
+      { de: "der Ordner", pl: "folder" },
+      { de: "der Brief", pl: "list" },
+      { de: "die Stimme", pl: "głos" }
+    ]
+  },
+
+  duo_abstract_concepts_1: {
+    labelDe: "Abstrakte Begriffe I",
+    pairs: [
+      { de: "die Form", pl: "kształt" },
+      { de: "der Tod", pl: "śmierć" },
+      { de: "der Teil", pl: "część" },
+      { de: "das Leben", pl: "życie" },
+      { de: "die Kraft", pl: "siła" },
+      { de: "das Mitglied", pl: "członek" },
+      { de: "die Art und Weise", pl: "sposób" },
+      { de: "das Projekt", pl: "projekt" },
+      { de: "die Vergangenheit", pl: "przeszłość" },
+      { de: "der Gedanke", pl: "myśl" },
+      { de: "der Fall", pl: "przypadek" },
+      { de: "die Zukunft", pl: "przyszłość" },
+      { de: "die Kontrolle", pl: "kontrola" },
+      { de: "die Beschreibung", pl: "opis" },
+      { de: "der Fehler", pl: "błąd" },
+      { de: "die Änderung", pl: "zmiana" },
+      { de: "die Schuld", pl: "wina" },
+      { de: "die Handlung", pl: "działanie" },
+      { de: "das Problem", pl: "problem" },
+      { de: "der Klang", pl: "dźwięk" }
+    ]
+  },
+
+  duo_abstract_concepts_2: {
+    labelDe: "Abstrakte Begriffe II",
+    pairs: [
+      { de: "der Inhalt", pl: "zawartość" },
+      { de: "der Wert", pl: "wartość" },
+      { de: "die Aussicht", pl: "widok" },
+      { de: "das Ergebnis", pl: "wynik" },
+      { de: "der Schutz", pl: "ochrona" },
+      { de: "die Option", pl: "opcja" },
+      { de: "die Produktion", pl: "produkcja" },
+      { de: "die Lösung", pl: "rozwiązanie" },
+      { de: "der Vorteil", pl: "zaleta" },
+      { de: "die Bahn", pl: "kolej" },
+      { de: "die Qualität", pl: "jakość" },
+      { de: "der Effekt", pl: "efekt" },
+      { de: "die Chance", pl: "szansa" },
+      { de: "die Menge", pl: "ilość" },
+      { de: "die Freiheit", pl: "wolność" },
+      { de: "die Sache", pl: "sprawa" },
+      { de: "der Preis", pl: "nagroda" },
+      { de: "die Rolle", pl: "rola" },
+      { de: "die Regel", pl: "zasada" },
+      { de: "die Auswahl", pl: "wybór" }
+    ]
+  },
+
+  duo_abstract_concepts_3: {
+    labelDe: "Abstrakte Begriffe III",
+    pairs: [
+      { de: "das Risiko", pl: "ryzyko" },
+      { de: "die Niederlage", pl: "porażka" },
+      { de: "der Name", pl: "nazwa" },
+      { de: "die Möglichkeit", pl: "możliwość" },
+      { de: "der Erfolg", pl: "sukces" },
+      { de: "die Ursache", pl: "przyczyna" },
+      { de: "die Macht", pl: "władza" },
+      { de: "der Rat", pl: "rada" },
+      { de: "die Erholung", pl: "odpoczynek" },
+      { de: "die Erfahrung", pl: "doświadczenie" },
+      { de: "das Thema", pl: "temat" },
+      { de: "die Idee", pl: "pomysł" },
+      { de: "die Sorte", pl: "rodzaj" },
+      { de: "das Ende", pl: "koniec" },
+      { de: "der Anfang", pl: "początek" },
+      { de: "die Situation", pl: "sytuacja" },
+      { de: "die Wahrheit", pl: "prawda" },
+      { de: "die Lüge", pl: "kłamstwo" },
+      { de: "der Traum", pl: "marzenie" }
+    ]
+  },
+
+  duo_abstract_concepts_4: {
+    labelDe: "Abstrakte Begriffe IV",
+    pairs: [
+      { de: "die Anstrengung", pl: "wysiłek" },
+      { de: "die Wirklichkeit", pl: "rzeczywistość" },
+      { de: "der Ausgang", pl: "wyjście" },
+      { de: "die Richtung", pl: "kierunek" },
+      { de: "das Interesse", pl: "zainteresowanie" },
+      { de: "der Eingang", pl: "wejście" },
+      { de: "das Geheimnis", pl: "sekret" },
+      { de: "das Glück", pl: "szczęście" },
+      { de: "der Nutzen", pl: "korzyść" },
+      { de: "der Versuch", pl: "próba" },
+      { de: "die Erlaubnis", pl: "pozwolenie" },
+      { de: "das Verhalten", pl: "zachowanie" },
+      { de: "der Charakter", pl: "charakter" },
+      { de: "der Wunsch", pl: "życzenie" },
+      { de: "die Verantwortung", pl: "odpowiedzialność" },
+      { de: "die Beziehung", pl: "relacja" },
+      { de: "der Zweifel", pl: "wątpliwość" },
+      { de: "der Beweis", pl: "dowód" },
+      { de: "die Folge", pl: "skutek" },
+      { de: "die Tradition", pl: "tradycja" },
+      { de: "die Anwesenheit", pl: "obecność" },
+      { de: "die Ehre", pl: "honor" }
+    ]
+  },
+
+  duo_abstract_concepts_5: {
+    labelDe: "Abstrakte Begriffe V",
+    pairs: [
+      { de: "der Prozess", pl: "proces" },
+      { de: "der Raum", pl: "przestrzeń" },
+      { de: "der Gefallen", pl: "przysługa" },
+      { de: "der Schatten", pl: "cień" },
+      { de: "die Frage", pl: "kwestia" },
+      { de: "der Witz", pl: "żart" },
+      { de: "das System", pl: "system" },
+      { de: "der Verstand", pl: "umysł" },
+      { de: "der Mord", pl: "morderstwo" },
+      { de: "die Kategorie", pl: "kategoria" },
+      { de: "der Punkt", pl: "punkt" },
+      { de: "die Stille", pl: "cisza" },
+      { de: "das Geschenk", pl: "prezent" },
+      { de: "der Lärm", pl: "hałas" },
+      { de: "die Gelegenheit", pl: "okazja" },
+      { de: "das Gefühl", pl: "poczucie" },
+      { de: "das Signal", pl: "sygnał" },
+      { de: "das Aussehen", pl: "wygląd" },
+      { de: "der Plan", pl: "plan" },
+      { de: "der Unterschied", pl: "różnica" },
+      { de: "die Eigenschaft", pl: "cecha" }
+    ]
+  },
+
+  duo_science_1: {
+    labelDe: "Wissenschaft & Mathe I",
+    pairs: [
+      { de: "die Wissenschaft", pl: "nauka" },
+      { de: "die Untersuchung", pl: "badanie" },
+      { de: "die Technologie", pl: "technologia" },
+      { de: "die Energie", pl: "energia" },
+      { de: "das Phänomen", pl: "zjawisko" },
+      { de: "die Analyse", pl: "analiza" },
+      { de: "das Detail", pl: "szczegół" },
+      { de: "die Definition", pl: "definicja" },
+      { de: "die Mathematik", pl: "matematyka" },
+      { de: "die Theorie", pl: "teoria" },
+      { de: "die Biologie", pl: "biologia" },
+      { de: "die Methode", pl: "metoda" },
+      { de: "die Länge", pl: "długość" },
+      { de: "der Begriff", pl: "pojęcie" },
+      { de: "die Elektrizität", pl: "elektryczność" },
+      { de: "die Geschwindigkeit", pl: "prędkość" },
+      { de: "die Physik", pl: "fizyka" },
+      { de: "das Labor", pl: "laboratorium" }
+    ]
+  },
+
+  duo_science_2: {
+    labelDe: "Wissenschaft & Mathe II",
+    pairs: [
+      { de: "die Philosophie", pl: "filozofia" },
+      { de: "die Entdeckung", pl: "odkrycie" },
+      { de: "die Chemie", pl: "chemia" },
+      { de: "der Wissenschaftler", pl: "naukowiec" },
+      { de: "die Entfernung", pl: "odległość" },
+      { de: "die Oberfläche", pl: "powierzchnia" },
+      { de: "die Funktion", pl: "funkcja" },
+      { de: "die Geografie", pl: "geografia" },
+      { de: "die Höhe", pl: "wysokość" },
+      { de: "die Größe", pl: "rozmiar" },
+      { de: "das Gas", pl: "gaz" },
+      { de: "der Antrag", pl: "wniosek" },
+      { de: "die Temperatur", pl: "temperatura" },
+      { de: "der Meter", pl: "metr" },
+      { de: "die Masse", pl: "masa" },
+      { de: "der Kilometer", pl: "kilometr" },
+      { de: "der Zentimeter", pl: "centymetr" }
+    ]
+  },
+
+  duo_politics_state: {
+    labelDe: "Politik & Staat",
+    pairs: [
+      { de: "die Politik", pl: "polityka" },
+      { de: "das Gericht", pl: "sąd" },
+      { de: "die Regierung", pl: "rząd" },
+      { de: "der Haushalt", pl: "budżet" },
+      { de: "der Premierminister", pl: "premier" },
+      { de: "die Steuer", pl: "podatek" },
+      { de: "der Präsident", pl: "prezydent" },
+      { de: "national", pl: "narodowy" },
+      { de: "die Strategie", pl: "strategia" },
+      { de: "der Krieg", pl: "wojna" },
+      { de: "der König", pl: "król" },
+      { de: "die Sicherheit", pl: "bezpieczeństwo" },
+      { de: "das Militär", pl: "wojsko" },
+      { de: "der Politiker", pl: "polityk" }
+    ]
+  },
+
+  duo_politics_society: {
+    labelDe: "Politik & Gesellschaft",
+    pairs: [
+      { de: "die Kampagne", pl: "kampania" },
+      { de: "der Abgeordnete", pl: "poseł" },
+      { de: "der Kandidat", pl: "kandydat" },
+      { de: "der Anführer", pl: "przywódca" },
+      { de: "die Wahl", pl: "wybory" },
+      { de: "das Parlament", pl: "parlament" },
+      { de: "die Krise", pl: "kryzys" },
+      { de: "der Streik", pl: "strajk" },
+      { de: "die Gewalt", pl: "przemoc" },
+      { de: "die Waffe", pl: "broń" },
+      { de: "der Konflikt", pl: "konflikt" },
+      { de: "das Verbrechen", pl: "przestępstwo" },
+      { de: "das Argument", pl: "argument" },
+      { de: "die Entscheidung", pl: "decyzja" },
+      { de: "der Staat", pl: "państwo" },
+      { de: "die Konferenz", pl: "konferencja" },
+      { de: "die Stiftung", pl: "fundacja" }
+    ]
   }
 };
