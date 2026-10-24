@@ -3,6 +3,7 @@
 # Secrets of the environment "Dogado" (Settings → Environments → Dogado):
 #   FTP_SERVER, FTP_USERNAME, FTP_PASSWORD  – FTP access from the dogado customer area
 #   VOCS_KEY                                 – your own key for the stats API
+#   FRUHNO_KEY (optional)                    – key for the Fruhno API (fruhno/), defaults to VOCS_KEY
 # Optional variables (same environment):
 #   FTP_DIR       target folder relative to the FTP login, with trailing slash (default: ./,
 #                 the login h26331_vocs already starts in /httpdocs/vocs)
@@ -40,10 +41,14 @@ jobs:
         if: steps.check.outputs.ready == 'true'
         env:
           VOCS_KEY: ${{ secrets.VOCS_KEY }}
+          FRUHNO_KEY: ${{ secrets.FRUHNO_KEY }}
         run: |
           if [ -z "$VOCS_KEY" ]; then echo "::error::Secret VOCS_KEY fehlt."; exit 1; fi
           hash=$(printf '%s' "$VOCS_KEY" | sha256sum | cut -d' ' -f1)
           printf "<?php\nreturn ['key_sha256' => '%s'];\n" "$hash" > api/config.php
+          # Fruhno (fruhno/) uses its own key FRUHNO_KEY, falling back to VOCS_KEY.
+          fhash=$(printf '%s' "${FRUHNO_KEY:-$VOCS_KEY}" | sha256sum | cut -d' ' -f1)
+          printf "<?php\nreturn ['key_sha256' => '%s'];\n" "$fhash" > fruhno/config.php
 
       # lftp instead of a Node FTP action: it handles FTPS servers that require
       # TLS session reuse on the data connection (dogado resets it otherwise).
@@ -60,7 +65,7 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq lftp > /dev/null
           # Only the files the web app needs; api/data/ on the server is never touched (no --delete).
           mkdir site
-          cp -r index.html manifest.json sw.js css js assets api site/
+          cp -r index.html manifest.json sw.js css js assets api fruhno site/
           ssl=$([ "$FTP_PROTOCOL" = "ftp" ] && echo false || echo true)
           verify=$([ "$FTP_SECURITY" = "loose" ] && echo no || echo yes)
           lftp --env-password -u "$FTP_USERNAME" "$FTP_SERVER" <<EOF

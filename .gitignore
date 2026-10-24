@@ -4,3 +4,5 @@ api/data/*.json
 # Local key for /vocs (see README)
 .claude/skills/vocs/.key
 node_modules/
+fruhno/config.php
+fruhno/data/*.json
