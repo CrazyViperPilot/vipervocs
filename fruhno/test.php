@@ -57,4 +57,18 @@ $before = count($g['hands'][$victim]);
 check(fr_play($g, $p, 0, [4, FR_WILD4], 3) === null, 'play +4');
 check($g['turnName'] === $victim && count($g['hands'][$victim]) === $before + 4, 'victim draws 4 and is on turn');
 check($g['color'] === 3, 'wished color applies');
+// +2 stacking: +2 on +2 passes the sum on; only +2 is playable on an open chain; drawing takes the sum and keeps the turn
+$g = fr_new_game(FR_NAMES);
+$a = $g['turnName']; $b = $g['order'][fr_next($g, $g['turnIdx'])];
+$g['color'] = 0; $g['discard'][] = [0, 5]; $g['drawn'] = null; $g['pending'] = 0;
+$g['hands'][$a] = [[0, FR_DRAW2], [0, 1], [0, 2]];
+$g['hands'][$b] = [[1, FR_DRAW2], [4, FR_WILD4], [1, 3], [0, 4]];
+check(fr_play($g, $a, 0, [0, FR_DRAW2], -1) === null, 'play +2');
+check($g['turnName'] === $b && $g['pending'] === 2, 'next player on turn with 2 pending');
+check(fr_playable($g, $b) === [0], 'only +2 playable on chain (not +4)');
+$c = $g['order'][fr_next($g, $g['turnIdx'])];
+$before = count($g['hands'][$b]);
+check(fr_play($g, $b, 0, [1, FR_DRAW2], -1) === null && $g['pending'] === 4 && $g['turnName'] === $c, '+2 on +2 gives 4');
+$before = count($g['hands'][$c]);
+check(fr_draw_action($g, $c) === null && count($g['hands'][$c]) === $before + 4 && $g['pending'] === 0 && $g['turnName'] === $c, 'draw takes sum, keeps turn');
 echo "OK ($totalTurns turns)\n";

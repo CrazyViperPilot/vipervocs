@@ -44,6 +44,8 @@ function fr_sort_hand(&$hand) {
 }
 
 function fr_can_play($card, $g, $hand) {
+    // Open +2 chain: only another +2 (any color) may be played, everything else must draw the sum.
+    if (!empty($g['pending'])) return $card[0] !== 4 && $card[1] === FR_DRAW2;
     if ($card[0] === 4) {
         if ($card[1] === FR_WILD4) {
             foreach ($hand as $h) if ($h[0] === $g['color']) return false;
@@ -103,10 +105,9 @@ function fr_apply_card(&$g, $card, $p) {
             fr_set_turn($g, $n === 2 ? $p : fr_next($g, $p));
             break;
         case FR_DRAW2:
-            $v = fr_next($g, $p);
-            fr_draw($g, $g['order'][$v], 2);
-            // With 2 players the victim is not skipped, so the player never plays twice in a row.
-            fr_set_turn($g, $n === 2 ? $v : fr_next($g, $p, 2));
+            // House rule: +2 can be stacked; the next player draws the sum (not skipped) unless they add another +2.
+            $g['pending'] = (isset($g['pending']) ? $g['pending'] : 0) + 2;
+            fr_set_turn($g, fr_next($g, $p));
             break;
         case FR_WILD4:
             // House rule: the victim draws 4 but is not skipped; they must play the wished color or draw.
@@ -123,7 +124,7 @@ function fr_new_game($names, $startIdx = 0) {
     $deck = fr_deck();
     shuffle($deck);
     $g = ['order' => array_values($names), 'dir' => 1, 'hands' => [], 'draw' => $deck, 'discard' => [],
-          'color' => 0, 'turnIdx' => 0, 'turnName' => '', 'drawn' => null, 'called' => [], 'uno' => null];
+          'color' => 0, 'pending' => 0, 'turnIdx' => 0, 'turnName' => '', 'drawn' => null, 'called' => [], 'uno' => null];
     foreach ($g['order'] as $name) {
         $g['hands'][$name] = [];
         fr_draw($g, $name, 7);
@@ -155,7 +156,10 @@ function fr_play(&$g, $name, $index, $card, $color) {
     if ($c[0] === 4) $text .= ' und wünscht sich ' . FR_COLOR_TEXT[$color];
     if ($c[1] === FR_SKIP) $text .= " – $victim setzt aus";
     elseif ($c[1] === FR_REVERSE) $text .= $two ? " – $name ist nochmal dran" : ' – Richtung wechselt';
-    elseif ($c[1] === FR_DRAW2) $text .= " – $victim zieht 2 Karten" . ($two ? '' : ' und setzt aus');
+    elseif ($c[1] === FR_DRAW2) {
+        $sum = (isset($g['pending']) ? $g['pending'] : 0) + 2;
+        $text .= " – $victim muss $sum Karten ziehen oder eine +2 drauflegen";
+    }
     elseif ($c[1] === FR_WILD4) $text .= " – $victim zieht 4 Karten und ist dran";
     fr_event($g, $text);
     array_splice($g['hands'][$name], $index, 1);
@@ -173,6 +177,13 @@ function fr_draw_action(&$g, $name) {
     if ($g['turnName'] !== $name) return 'Du bist nicht dran';
     if ($g['drawn'] !== null) return 'Schon gezogen';
     $g['uno'] = null;
+    if (!empty($g['pending'])) {
+        // Take the whole +2 chain; the turn stays with this player, who may then play normally.
+        fr_event($g, "$name zieht {$g['pending']} Karten");
+        fr_draw($g, $name, $g['pending']);
+        $g['pending'] = 0;
+        return null;
+    }
     fr_event($g, "$name zieht eine Karte");
     $card = fr_draw($g, $name, 1);
     $hand = $g['hands'][$name];

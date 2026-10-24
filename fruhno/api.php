@@ -306,7 +306,7 @@ if ($error !== null) $out['error'] = $error;
 if ($st['game']) {
     $g = $st['game'];
     $out['game'] = ['order' => $g['order'], 'turn' => $g['turnName'], 'dir' => $g['dir'], 'color' => $g['color'],
-        'top' => $g['discard'][count($g['discard']) - 1], 'drawCount' => count($g['draw']), 'drawn' => $g['drawn'],
+        'top' => $g['discard'][count($g['discard']) - 1], 'drawCount' => count($g['draw']), 'pending' => isset($g['pending']) ? $g['pending'] : 0, 'drawn' => $g['drawn'],
         'uno' => $g['uno'] ? ['name' => $g['uno']['name'], 'called' => $g['uno']['called']] : null];
     if ($me >= 0 && isset($g['hands'][$name])) {
         $out['game']['hand'] = $g['hands'][$name];
