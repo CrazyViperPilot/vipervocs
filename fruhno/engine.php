@@ -103,11 +103,16 @@ function fr_apply_card(&$g, $card, $p) {
             fr_set_turn($g, $n === 2 ? $p : fr_next($g, $p));
             break;
         case FR_DRAW2:
-        case FR_WILD4:
             $v = fr_next($g, $p);
-            fr_draw($g, $g['order'][$v], $card[1] === FR_DRAW2 ? 2 : 4);
+            fr_draw($g, $g['order'][$v], 2);
             // With 2 players the victim is not skipped, so the player never plays twice in a row.
             fr_set_turn($g, $n === 2 ? $v : fr_next($g, $p, 2));
+            break;
+        case FR_WILD4:
+            // House rule: the victim draws 4 but is not skipped; they must play the wished color or draw.
+            $v = fr_next($g, $p);
+            fr_draw($g, $g['order'][$v], 4);
+            fr_set_turn($g, $v);
             break;
         default:
             fr_set_turn($g, fr_next($g, $p));
@@ -151,7 +156,7 @@ function fr_play(&$g, $name, $index, $card, $color) {
     if ($c[1] === FR_SKIP) $text .= " – $victim setzt aus";
     elseif ($c[1] === FR_REVERSE) $text .= $two ? " – $name ist nochmal dran" : ' – Richtung wechselt';
     elseif ($c[1] === FR_DRAW2) $text .= " – $victim zieht 2 Karten" . ($two ? '' : ' und setzt aus');
-    elseif ($c[1] === FR_WILD4) $text .= " – $victim zieht 4 Karten" . ($two ? '' : ' und setzt aus');
+    elseif ($c[1] === FR_WILD4) $text .= " – $victim zieht 4 Karten und ist dran";
     fr_event($g, $text);
     array_splice($g['hands'][$name], $index, 1);
     $g['discard'][] = $c;

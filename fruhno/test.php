@@ -47,4 +47,14 @@ foreach ([2, 3] as $n) foreach ([FR_DRAW2, FR_WILD4, FR_WILD] as $w) {
     check(fr_play($g, $p, 0, $g['hands'][$p][0], 2) === null, "play $w");
     check($g['turnName'] !== $p, "after card $w with $n players another player is on turn");
 }
+// +4 house rule: the victim draws 4 and is on turn (3 players)
+$g = fr_new_game(FR_NAMES);
+$p = $g['turnName'];
+$g['color'] = 0; $g['discard'][] = [0, 5]; $g['drawn'] = null;
+$g['hands'][$p] = [[4, FR_WILD4], [1, 1], [1, 2]];
+$victim = $g['order'][fr_next($g, $g['turnIdx'])];
+$before = count($g['hands'][$victim]);
+check(fr_play($g, $p, 0, [4, FR_WILD4], 3) === null, 'play +4');
+check($g['turnName'] === $victim && count($g['hands'][$victim]) === $before + 4, 'victim draws 4 and is on turn');
+check($g['color'] === 3, 'wished color applies');
 echo "OK ($totalTurns turns)\n";
