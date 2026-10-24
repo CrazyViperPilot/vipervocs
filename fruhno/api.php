@@ -59,21 +59,20 @@ $now = microtime(true);
 $dirty = false;
 
 function player_idx($st, $n) { foreach ($st['players'] as $i => $p) if ($p['name'] === $n) return $i; return -1; }
-function add_chat(&$st, $name, $text, $sys = false) {
+function add_chat(&$st, $name, $text, $kind = 'msg') {
+    if ($kind === true) $kind = 'sys';
     $n = count($st['chat']) ? $st['chat'][count($st['chat']) - 1]['n'] + 1 : 1;
-    $st['chat'][] = ['n' => $n, 'name' => $name, 'text' => $text, 't' => time(), 'sys' => $sys];
-    $st['chat'] = array_slice($st['chat'], -30);
+    $st['chat'][] = ['n' => $n, 'name' => $name, 'text' => $text, 't' => time(), 'kind' => $kind, 'sys' => $kind !== 'msg'];
+    $st['chat'] = array_slice($st['chat'], -60);
 }
-const FR_COLOR_WISH = ['Süßes 🍯', 'Backwaren 🥐', 'Getränke ☕', 'Belag 🧀'];
 const FR_CHAT_TTL = 300;
-function announce_wish(&$st, $name) {
-    $g = $st['game'];
-    $top = $g['discard'][count($g['discard']) - 1];
-    if ($top[0] !== 4) return;
-    $what = $top[1] === FR_WILD4 ? ' (+4)' : '';
-    add_chat($st, $name, "$name wünscht sich " . FR_COLOR_WISH[$g['color']] . $what, true);
+// Moves the game's collected event texts into the chat as quiet action lines.
+function drain_events(&$st) {
+    if (empty($st['game']['events'])) return;
+    foreach ($st['game']['events'] as $t) add_chat($st, '', $t, 'act');
+    $st['game']['events'] = [];
 }
-function add_log(&$st, $text) { $st['log'][] = $text; $st['log'] = array_slice($st['log'], -6); }
+function add_log(&$st, $text, $kind = 'act') { $st['log'][] = $text; $st['log'] = array_slice($st['log'], -6); add_chat($st, '', $text, $kind); }
 function schedule_bot(&$st, $now) {
     $g = $st['game'];
     if ($st['phase'] !== 'playing' || !$g) return;
@@ -89,7 +88,7 @@ function finish_if_won(&$st) {
     $st['phase'] = 'finished';
     $st['winner'] = $w;
     $st['points'] = $pts;
-    add_log($st, "$w gewinnt die Runde (+$pts)");
+    add_log($st, "🏆 $w gewinnt die Runde (+$pts)", 'sys');
 }
 function reset_all(&$st) {
     $chat = $st['chat'];
@@ -159,12 +158,10 @@ function tick_bots(&$st, $now, &$dirty) {
         $i = player_idx($st, $n);
         if ($i < 0 || empty($st['players'][$i]['bot'])) { $st['botAt'] = 0; unset($g); return; }
         $wasCalled = !empty($g['called'][$n]);
-        $discards = count($g['discard']);
-        $err = fr_bot_move($g, $n);
+                $err = fr_bot_move($g, $n);
         if (!$wasCalled && !empty($g['called'][$n]) && count($g['hands'][$n]) === 1) add_chat($st, $n, "$n ruft Fruhno! 🥐 Nur noch eine Karte", true);
         unset($g);
-        if (count($st['game']['discard']) > $discards) announce_wish($st, $n);
-        add_log($st, "$n spielt");
+        drain_events($st);
         $st['version']++; $st['updated'] = time(); $dirty = true;
         finish_if_won($st);
         $st['botAt'] = 0;
@@ -247,12 +244,13 @@ if ($action !== null) {
             if ($action === 'play') {
                 $card = isset($body['card']) && is_array($body['card']) && count($body['card']) === 2 ? [(int)$body['card'][0], (int)$body['card'][1]] : [-1, -1];
                 $error = fr_play($g, $name, (int)(isset($body['index']) ? $body['index'] : -1), $card, (int)(isset($body['color']) ? $body['color'] : -1));
-                if (!$error) { add_log($st, "$name legt eine Karte"); announce_wish($st, $name); finish_if_won($st); }
+                if (!$error) { drain_events($st); finish_if_won($st); }
             } elseif ($action === 'draw') {
                 $error = fr_draw_action($g, $name);
-                if (!$error) add_log($st, "$name zieht");
+                if (!$error) drain_events($st);
             } elseif ($action === 'pass') {
                 $error = fr_pass($g, $name);
+                if (!$error) drain_events($st);
             } elseif ($action === 'fruhno') {
                 if (count($g['hands'][$name]) > 2) { $error = 'Zu früh'; break; }
                 if (empty($g['called'][$name])) add_chat($st, $name, "$name ruft Fruhno! 🥐 Nur noch eine Karte", true);
@@ -263,7 +261,7 @@ if ($action !== null) {
                 $victim = $g['uno']['name'];
                 fr_draw($g, $victim, 2);
                 $g['uno'] = null;
-                add_log($st, "$name erwischt $victim (+2)");
+                add_log($st, "$name erwischt $victim (+2)", 'sys');
             } elseif ($action === 'skip') {
                 if ($st['host'] !== $name) { $error = 'Nur der Host kann überspringen'; break; }
                 $g['uno'] = null;

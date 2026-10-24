@@ -8,6 +8,17 @@ const FR_SKIP = 10, FR_REVERSE = 11, FR_DRAW2 = 12, FR_WILD = 13, FR_WILD4 = 14;
 const FR_NAMES = ['Daniel', 'Lea', 'Kira'];
 const FR_MAX_PLAYERS = 3;
 
+const FR_COLOR_TEXT = ['Süßes 🍯', 'Backwaren 🥐', 'Getränke ☕', 'Belag 🧀'];
+const FR_SPECIAL_TEXT = [10 => 'Verschlafen', 11 => 'Rührei wenden', 12 => 'Doppelte Portion (+2)', 13 => 'Frühstücksbuffet', 14 => 'Großes Buffet (+4)'];
+
+function fr_card_text($c) {
+    if ($c[0] === 4) return FR_SPECIAL_TEXT[$c[1]];
+    return FR_COLOR_TEXT[$c[0]] . ' ' . ($c[1] <= 9 ? $c[1] : FR_SPECIAL_TEXT[$c[1]]);
+}
+
+// Human-readable events (played card, draws, skips) are collected here and turned into chat lines by the API.
+function fr_event(&$g, $text) { $g['events'][] = $text; }
+
 function fr_deck() {
     $deck = [];
     for ($c = 0; $c < 4; $c++) {
@@ -132,12 +143,21 @@ function fr_play(&$g, $name, $index, $card, $color) {
     if (!in_array($index, fr_playable($g, $name), true)) return 'Diese Karte passt nicht';
     $c = $hand[$index];
     if ($c[0] === 4 && !in_array($color, [0, 1, 2, 3], true)) return 'Farbe fehlt';
+    $p = $g['turnIdx'];
+    $victim = $g['order'][fr_next($g, $p)];
+    $two = count($g['order']) === 2;
+    $text = "$name legt " . fr_card_text($c);
+    if ($c[0] === 4) $text .= ' und wünscht sich ' . FR_COLOR_TEXT[$color];
+    if ($c[1] === FR_SKIP) $text .= " – $victim setzt aus";
+    elseif ($c[1] === FR_REVERSE) $text .= $two ? " – $name ist nochmal dran" : ' – Richtung wechselt';
+    elseif ($c[1] === FR_DRAW2) $text .= " – $victim zieht 2 Karten" . ($two ? '' : ' und setzt aus');
+    elseif ($c[1] === FR_WILD4) $text .= " – $victim zieht 4 Karten" . ($two ? '' : ' und setzt aus');
+    fr_event($g, $text);
     array_splice($g['hands'][$name], $index, 1);
     $g['discard'][] = $c;
     $g['color'] = $c[0] === 4 ? $color : $c[0];
     $left = count($g['hands'][$name]);
     $g['uno'] = $left === 1 ? ['name' => $name, 'called' => !empty($g['called'][$name])] : null;
-    $p = $g['turnIdx'];
     fr_apply_card($g, $c, $p);
     if ($left === 0) { $g['winner'] = $name; $g['uno'] = null; }
     return null;
@@ -148,6 +168,7 @@ function fr_draw_action(&$g, $name) {
     if ($g['turnName'] !== $name) return 'Du bist nicht dran';
     if ($g['drawn'] !== null) return 'Schon gezogen';
     $g['uno'] = null;
+    fr_event($g, "$name zieht eine Karte");
     $card = fr_draw($g, $name, 1);
     $hand = $g['hands'][$name];
     if ($card !== null && fr_can_play($card, $g, $hand)) {
@@ -160,6 +181,7 @@ function fr_draw_action(&$g, $name) {
 function fr_pass(&$g, $name) {
     if ($g['turnName'] !== $name) return 'Du bist nicht dran';
     if ($g['drawn'] === null) return 'Erst ziehen';
+    fr_event($g, "$name passt");
     fr_set_turn($g, fr_next($g, $g['turnIdx']));
     return null;
 }
