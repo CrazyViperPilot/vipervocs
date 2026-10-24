@@ -59,6 +59,11 @@ $now = microtime(true);
 $dirty = false;
 
 function player_idx($st, $n) { foreach ($st['players'] as $i => $p) if ($p['name'] === $n) return $i; return -1; }
+function add_chat(&$st, $name, $text, $sys = false) {
+    $n = count($st['chat']) ? $st['chat'][count($st['chat']) - 1]['n'] + 1 : 1;
+    $st['chat'][] = ['n' => $n, 'name' => $name, 'text' => $text, 't' => time(), 'sys' => $sys];
+    $st['chat'] = array_slice($st['chat'], -30);
+}
 function add_log(&$st, $text) { $st['log'][] = $text; $st['log'] = array_slice($st['log'], -6); }
 function schedule_bot(&$st, $now) {
     $g = $st['game'];
@@ -140,7 +145,9 @@ function tick_bots(&$st, $now, &$dirty) {
         $n = $g['turnName'];
         $i = player_idx($st, $n);
         if ($i < 0 || empty($st['players'][$i]['bot'])) { $st['botAt'] = 0; unset($g); return; }
+        $wasCalled = !empty($g['called'][$n]);
         $err = fr_bot_move($g, $n);
+        if (!$wasCalled && !empty($g['called'][$n]) && count($g['hands'][$n]) === 1) add_chat($st, $n, "$n ruft Fruhno! 🥐 Nur noch eine Karte", true);
         unset($g);
         add_log($st, "$n spielt");
         $st['version']++; $st['updated'] = time(); $dirty = true;
@@ -217,8 +224,7 @@ if ($action !== null) {
             if ($me < 0) { $error = 'Nicht im Spiel'; break; }
             $text = trim(mb_substr((string)(isset($body['text']) ? $body['text'] : ''), 0, 200));
             if ($text === '') break;
-            $st['chat'][] = ['n' => count($st['chat']) ? $st['chat'][count($st['chat']) - 1]['n'] + 1 : 1, 'name' => $name, 'text' => $text, 't' => time()];
-            $st['chat'] = array_slice($st['chat'], -30);
+            add_chat($st, $name, $text);
             break;
         case 'play': case 'draw': case 'pass': case 'fruhno': case 'catch': case 'skip':
             if ($st['phase'] !== 'playing' || $me < 0) { $error = 'Kein laufendes Spiel'; break; }
@@ -234,6 +240,7 @@ if ($action !== null) {
                 $error = fr_pass($g, $name);
             } elseif ($action === 'fruhno') {
                 if (count($g['hands'][$name]) > 2) { $error = 'Zu früh'; break; }
+                if (empty($g['called'][$name])) add_chat($st, $name, "$name ruft Fruhno! 🥐 Nur noch eine Karte", true);
                 $g['called'][$name] = true;
                 if ($g['uno'] && $g['uno']['name'] === $name) $g['uno']['called'] = true;
             } elseif ($action === 'catch') {
