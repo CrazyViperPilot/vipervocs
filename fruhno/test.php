@@ -1,5 +1,6 @@
 <?php
 // php fruhno/test.php – plays many random games with the engine and checks invariants.
+if (PHP_SAPI !== 'cli') { http_response_code(404); exit; }
 require __DIR__ . '/engine.php';
 
 function check($cond, $msg) { if (!$cond) { fwrite(STDERR, "FAIL: $msg\n"); exit(1); } }

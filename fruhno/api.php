@@ -43,7 +43,8 @@ $token = isset($_SERVER['HTTP_X_FRUHNO_TOKEN']) ? $_SERVER['HTTP_X_FRUHNO_TOKEN'
 
 $dataDir = isset($config['data_dir']) ? $config['data_dir'] : __DIR__ . '/data';
 if (!is_dir($dataDir) && !mkdir($dataDir, 0750, true)) fail(500, 'Datenordner nicht anlegbar');
-$fp = fopen($dataDir . '/state.json', 'c+');
+// The file name derives from the key hash, so it can't be guessed if the web server ignores .htaccess.
+$fp = fopen($dataDir . '/state-' . substr($config['key_sha256'], 0, 20) . '.json', 'c+');
 if (!$fp) fail(500, 'Datei nicht lesbar');
 flock($fp, LOCK_EX);
 
