@@ -64,6 +64,15 @@ function add_chat(&$st, $name, $text, $sys = false) {
     $st['chat'][] = ['n' => $n, 'name' => $name, 'text' => $text, 't' => time(), 'sys' => $sys];
     $st['chat'] = array_slice($st['chat'], -30);
 }
+const FR_COLOR_WISH = ['Süßes 🍯', 'Backwaren 🥐', 'Getränke ☕', 'Belag 🧀'];
+const FR_CHAT_TTL = 300;
+function announce_wish(&$st, $name) {
+    $g = $st['game'];
+    $top = $g['discard'][count($g['discard']) - 1];
+    if ($top[0] !== 4) return;
+    $what = $top[1] === FR_WILD4 ? ' (+4)' : '';
+    add_chat($st, $name, "$name wünscht sich " . FR_COLOR_WISH[$g['color']] . $what, true);
+}
 function add_log(&$st, $text) { $st['log'][] = $text; $st['log'] = array_slice($st['log'], -6); }
 function schedule_bot(&$st, $now) {
     $g = $st['game'];
@@ -115,6 +124,10 @@ function remove_player(&$st, $n) {
 // --- housekeeping: expire dead lobbies/games, drop long-gone players -----------------------------
 if ($st['phase'] !== 'none' && time() - $st['updated'] > FR_IDLE_RESET) { reset_all($st); $dirty = true; }
 
+// Chat messages disappear after five minutes.
+$kept = array_values(array_filter($st['chat'], function ($m) { return time() - $m['t'] < FR_CHAT_TTL; }));
+if (count($kept) !== count($st['chat'])) { $st['chat'] = $kept; $dirty = true; }
+
 $body = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $body = json_decode(file_get_contents('php://input'), true);
@@ -146,9 +159,11 @@ function tick_bots(&$st, $now, &$dirty) {
         $i = player_idx($st, $n);
         if ($i < 0 || empty($st['players'][$i]['bot'])) { $st['botAt'] = 0; unset($g); return; }
         $wasCalled = !empty($g['called'][$n]);
+        $discards = count($g['discard']);
         $err = fr_bot_move($g, $n);
         if (!$wasCalled && !empty($g['called'][$n]) && count($g['hands'][$n]) === 1) add_chat($st, $n, "$n ruft Fruhno! 🥐 Nur noch eine Karte", true);
         unset($g);
+        if (count($st['game']['discard']) > $discards) announce_wish($st, $n);
         add_log($st, "$n spielt");
         $st['version']++; $st['updated'] = time(); $dirty = true;
         finish_if_won($st);
@@ -232,7 +247,7 @@ if ($action !== null) {
             if ($action === 'play') {
                 $card = isset($body['card']) && is_array($body['card']) && count($body['card']) === 2 ? [(int)$body['card'][0], (int)$body['card'][1]] : [-1, -1];
                 $error = fr_play($g, $name, (int)(isset($body['index']) ? $body['index'] : -1), $card, (int)(isset($body['color']) ? $body['color'] : -1));
-                if (!$error) { add_log($st, "$name legt eine Karte"); finish_if_won($st); }
+                if (!$error) { add_log($st, "$name legt eine Karte"); announce_wish($st, $name); finish_if_won($st); }
             } elseif ($action === 'draw') {
                 $error = fr_draw_action($g, $name);
                 if (!$error) add_log($st, "$name zieht");

@@ -95,7 +95,8 @@ function fr_apply_card(&$g, $card, $p) {
         case FR_WILD4:
             $v = fr_next($g, $p);
             fr_draw($g, $g['order'][$v], $card[1] === FR_DRAW2 ? 2 : 4);
-            fr_set_turn($g, fr_next($g, $p, 2));
+            // With 2 players the victim is not skipped, so the player never plays twice in a row.
+            fr_set_turn($g, $n === 2 ? $v : fr_next($g, $p, 2));
             break;
         default:
             fr_set_turn($g, fr_next($g, $p));

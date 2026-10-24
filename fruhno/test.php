@@ -38,4 +38,13 @@ $g['hands']['Daniel'] = [[1, FR_REVERSE], [0, 0], [0, 1]];
 $g['discard'][] = [1, 5];
 fr_play($g, 'Daniel', 0, [1, FR_REVERSE], -1);
 check($g['turnName'] === 'Daniel', 'reverse acts as skip with 2 players');
+// +2/+4: the player who plays them is never on turn again right after (2 and 3 players)
+foreach ([2, 3] as $n) foreach ([FR_DRAW2, FR_WILD4, FR_WILD] as $w) {
+    $g = fr_new_game(array_slice(FR_NAMES, 0, $n));
+    $p = $g['turnName'];
+    $g['color'] = 0; $g['discard'][] = [0, 5]; $g['drawn'] = null;
+    $g['hands'][$p] = $w === FR_DRAW2 ? [[0, FR_DRAW2], [0, 1], [0, 2]] : [[4, $w], [1, 1], [1, 2]];
+    check(fr_play($g, $p, 0, $g['hands'][$p][0], 2) === null, "play $w");
+    check($g['turnName'] !== $p, "after card $w with $n players another player is on turn");
+}
 echo "OK ($totalTurns turns)\n";
