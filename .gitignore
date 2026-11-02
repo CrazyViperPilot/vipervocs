@@ -6,3 +6,5 @@ api/data/*.json
 node_modules/
 fruhno/config.php
 fruhno/data/*.json
+frontline/data/*
+!frontline/data/.htaccess
