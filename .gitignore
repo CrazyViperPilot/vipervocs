@@ -8,3 +8,5 @@ fruhno/config.php
 fruhno/data/*.json
 frontline/data/*
 !frontline/data/.htaccess
+simfurt/data/*
+!simfurt/data/.htaccess
