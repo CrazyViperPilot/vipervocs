@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const languageSelect = document.getElementById("language-select");
   languageSelect.hidden = languageSelect.options.length < 2; // only Polish for now
 
+  // Placeholder: on start the user picks a topic first, nothing starts automatically.
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Thema wählen …";
+  placeholder.disabled = true;
+  lessonSelect.appendChild(placeholder);
+
   // First entry: quick round across all lessons (due + new words), then every lesson.
   const quick = document.createElement("option");
   quick.value = QUICK_ROUND;
@@ -60,12 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  try {
-    const last = localStorage.getItem("lesson");
-    if (last && [...lessonSelect.options].some(o => o.value === last)) lessonSelect.value = last;
-  } catch (e) { /* start with the quick round */ }
+  lessonSelect.value = "";
+  const startHint = document.getElementById("start-hint");
 
   function startCurrentLesson() {
+    if (!lessonSelect.value) return;
+    if (startHint) startHint.hidden = true;
     window.initGame(lessonSelect.value, languageSelect.value);
   }
 
@@ -171,9 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
     statsImport.value = "";
   });
 
-  // Start the game once the stats are synced (at most 1.5 s, then start anyway).
-  Promise.race([vocabStats.sync(), new Promise(r => setTimeout(r, 1500))])
-    .then(startCurrentLesson);
+  // Sync stats in the background; the game starts once a topic is picked.
+  vocabStats.sync();
 
   // Send what is still pending when the app goes to the background.
   document.addEventListener("visibilitychange", () => {
