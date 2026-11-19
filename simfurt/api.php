@@ -1,6 +1,7 @@
 <?php
 // Simfurt Spielstand-API: drei Plätze, nur für Daniel (kein Login, kein Code).
 //
+//   GET  api.php?ping=1        → {"ok":true,"app":"simfurt"}  (Erreichbarkeit)
 //   GET  api.php?list=1        → {"slots": {"1": {meta}|null, "2": ..., "3": ...}}
 //   GET  api.php?slot=N        → {"meta": {...}, "data": "<base64 gzip>"} oder {"meta": null}
 //   POST api.php               → {"action":"save","slot":N,"meta":{...},"data":"<base64 gzip>"} | {"action":"delete","slot":N}
@@ -38,6 +39,8 @@ if (!is_dir($dir) && !mkdir($dir, 0750, true)) fail(500, 'Datenordner nicht anle
 $lock = fopen($dir . '/lock', 'c');
 if (!$lock || !flock($lock, LOCK_EX)) fail(500, 'Sperre nicht möglich');
 
+function sf_cut($s, $n) { return function_exists('mb_substr') ? mb_substr($s, 0, $n, 'UTF-8') : substr($s, 0, $n); }
+
 function slot_files($dir, $slot) { return [$dir . "/slot$slot.bin", $dir . "/slot$slot.meta.json"]; }
 
 function read_meta($dir, $slot) {
@@ -60,6 +63,7 @@ function get_slot($src) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (isset($_GET['ping'])) { echo json_encode(['ok' => true, 'app' => 'simfurt']); exit; }
     if (isset($_GET['list'])) {
         $out = [];
         foreach (SF_SLOTS as $s) $out[(string) $s] = read_meta($dir, $s);
@@ -101,9 +105,10 @@ if (substr($bytes, 0, 2) !== "\x1f\x8b") fail(400, 'Stand ist nicht gepackt (gzi
 // Nur bekannte Meta-Felder speichern.
 $clean = [
     'savedAt' => (float) $meta['savedAt'], 'format' => (int) $meta['format'],
-    'name' => isset($meta['name']) ? mb_substr((string) $meta['name'], 0, 24) : 'Simfurt',
+    'name' => isset($meta['name']) ? sf_cut((string) $meta['name'], 24) : 'Simfurt',
     'year' => (int) $meta['year'], 'month' => (int) $meta['month'], 'pop' => (int) $meta['pop'], 'money' => (int) $meta['money'],
-    'size' => strlen($bytes),
+    'mapSize' => isset($meta['mapSize']) ? (int) $meta['mapSize'] : (isset($meta['size']) && (int) $meta['size'] <= 256 ? (int) $meta['size'] : 64),
+    'bytes' => strlen($bytes),
 ];
 
 // Den bisherigen Stand als Rückfall behalten.
