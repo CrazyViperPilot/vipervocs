@@ -33,7 +33,7 @@ jobs:
             echo "::notice::FTP-Secrets fehlen – Deploy übersprungen."
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         if: steps.check.outputs.ready == 'true'
 
       - name: Write server config
@@ -60,7 +60,7 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq lftp > /dev/null
           # Only the files the web app needs; api/data/ on the server is never touched (no --delete).
           mkdir site
-          cp -r index.html manifest.json sw.js css js assets api site/
+          cp -r .htaccess index.html manifest.json sw.js css js assets api site/
           ssl=$([ "$FTP_PROTOCOL" = "ftp" ] && echo false || echo true)
           verify=$([ "$FTP_SECURITY" = "loose" ] && echo no || echo yes)
           lftp --env-password -u "$FTP_USERNAME" "$FTP_SERVER" <<EOF
@@ -74,3 +74,17 @@ jobs:
           mirror --reverse --no-perms --verbose site/ $FTP_DIR
           bye
           EOF
+
+      # Kurzer Check nach dem Upload: Startseite muss 200 liefern, die Statistik-API ohne Schlüssel 401.
+      - name: Check live URLs
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          fail=0
+          check() {
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$1")
+            echo "$1 → $code (erwartet $2)"
+            [ "$code" = "$2" ] || { echo "::error::$1 liefert $code statt $2"; fail=1; }
+          }
+          check https://phpexpert.de/vocs/ 200
+          check https://phpexpert.de/vocs/api/stats.php 401
+          exit $fail

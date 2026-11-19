@@ -1,0 +1,3 @@
+# Wurzel von phpexpert.de/vocs/. Wird vom Deploy-Workflow mit hochgeladen.
+# Ohne DirectoryIndex liefert der Webspace für /vocs/ (ohne index.html) nur „403 Zugriff verweigert“.
+DirectoryIndex index.html index.php
