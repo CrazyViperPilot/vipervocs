@@ -454,6 +454,14 @@ body {
   line-height: 1.6;
 }
 
+.rules-heading {
+  font-weight: 700;
+}
+
+.rules-heading:not(:first-child) {
+  margin-top: 10px;
+}
+
 .rules-body.collapsed {
   display: none;
 }

@@ -79,7 +79,14 @@ function renderRules(lessonData) {
   if (!section || !body) return;
 
   if (lessonData && lessonData.rules) {
-    body.textContent = lessonData.rules; // textContent keeps line breaks via CSS white-space
+    // One element per line; lines without a bullet are sub-headings.
+    body.textContent = "";
+    for (const line of lessonData.rules.split("\n")) {
+      const el = document.createElement("div");
+      el.textContent = line;
+      if (!line.startsWith("•")) el.className = "rules-heading";
+      body.appendChild(el);
+    }
     section.hidden = false;
   } else {
     body.textContent = "";

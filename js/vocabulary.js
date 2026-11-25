@@ -98,6 +98,18 @@ const lessons = {
   },
   possessive_pronouns: {
     labelDe: "Possessivpronomen",
+    rules:
+      "Possessivpronomen (zaimki dzierżawcze)\n" +
+      "• mój, twój, nasz, wasz, swój richten sich – wie im Deutschen – nach dem Besessenen und werden wie Adjektive gebeugt: mój dom, moja kawa, moje okno.\n" +
+      "• Plural: moi, twoi, nasi, wasi, swoi bei männlichen Personen (moi bracia), sonst moje, twoje, nasze, wasze, swoje (moje książki).\n" +
+      "• jego (sein), jej (ihr), ich (ihr, Plural) richten sich nur nach dem Besitzer und bleiben immer gleich: jego dom, jego kawa, z jego bratem.\n" +
+      "• jego gilt für Besitzer „er“ und „es“: dziecko i jego zabawka = das Kind und sein Spielzeug.\n" +
+      "• Höflich „Ihr“: Pana (Herr), Pani (Frau), Państwa (mehrere / gemischt) – ebenfalls unveränderlich: Pana paszport, Pani torba, Państwa pokój.\n" +
+      "• swój (der eigene) bezieht sich auf das Subjekt desselben Satzes, in jeder Person.\n" +
+      "• In der 3. Person ist swój Pflicht, sonst ändert sich der Sinn: Marek kocha swoją żonę (seine eigene) – Marek kocha jego żonę (die Frau eines anderen Mannes).\n" +
+      "• In der 1. und 2. Person ist swój möglich, aber nicht nötig: Mam swój / mój pokój.\n" +
+      "• swój steht nie im Subjekt selbst: Jego (nicht: swój) brat mieszka w Krakowie.\n" +
+      "• In den Fällen wie Adjektive: z moim bratem (Instr.), do mojej mamy (Gen.), w naszym domu (Lok.).",
     pairs: [
       { de: "mein (m)", pl: "mój" },
       { de: "meine (f)", pl: "moja" },
@@ -105,38 +117,50 @@ const lessons = {
       { de: "dein (m)", pl: "twój" },
       { de: "deine (f)", pl: "twoja" },
       { de: "dein (n)", pl: "twoje" },
-      { de: "sein (m/n)", pl: "jego" },
-      { de: "ihr (Sg.)", pl: "jej" },
+      { de: "sein (Besitzer: er/es)", pl: "jego" },
+      { de: "ihr (Besitzerin: sie)", pl: "jej" },
       { de: "unser (m)", pl: "nasz" },
       { de: "unsere (f)", pl: "nasza" },
       { de: "unser (n)", pl: "nasze" },
       { de: "euer (m)", pl: "wasz" },
       { de: "eure (f)", pl: "wasza" },
       { de: "euer (n)", pl: "wasze" },
-      { de: "ihr (Pl. - deren)", pl: "ich" },
+      { de: "ihr (Besitzer: sie Pl.)", pl: "ich" },
       { de: "Ihr (formell, Herr)", pl: "Pana" },
       { de: "Ihr (formell, Frau)", pl: "Pani" },
       { de: "Ihr (formell, Plural)", pl: "Państwa" },
-      { de: "sein/ihr eigenes (m)", pl: "swój" },
-      { de: "sein/ihr eigenes (f)", pl: "swoja" },
+      { de: "sein/ihr eigener (m)", pl: "swój" },
+      { de: "seine/ihre eigene (f)", pl: "swoja" },
       { de: "sein/ihr eigenes (n)", pl: "swoje" }
     ]
   },
   basic_verbs_1: {
     labelDe: "Grundverben I (Konjugationen)",
     rules:
-      "Präsens (Gegenwart) im Polnischen:\n" +
-      "• Verben werden nach Person und Zahl konjugiert; das Personalpronomen (ja, ty, on …) kann meist entfallen, weil die Endung die Person zeigt.\n" +
-      "• Typische Endungen: -ę/-am/-em (ich), -sz (du), -∅/-a/-e (er/sie/es), -my (wir), -cie (ihr), -ą/-ają (sie).\n" +
-      "• 'być' (sein) ist unregelmäßig: jestem, jesteś, jest, jesteśmy, jesteście, są.\n" +
-      "• Eine Form deckt sowohl 'ich mache' als auch 'ich bin am Machen' ab.",
+      "Präsens (czas teraźniejszy)\n" +
+      "• Das Verb zeigt Person und Zahl durch die Endung; das Pronomen (ja, ty, on …) lässt man meist weg: Mam czas. = Ich habe Zeit.\n" +
+      "• Es gibt nur eine Gegenwartsform: robię = ich mache / ich mache gerade.\n" +
+      "• Ein Präsens haben nur unvollendete Verben (→ Lektion Verbaspekt).\n" +
+      "Vier Endungsmuster (ich, du, er/sie/es, wir, ihr, sie):\n" +
+      "• -ę, -esz: -ę, -esz, -e, -emy, -ecie, -ą – piję, pijesz, pije, pijemy, pijecie, piją; ebenso idę, idziesz (iść), chcę, chcesz (chcieć).\n" +
+      "• -ę, -isz: -ę, -isz, -i, -imy, -icie, -ą – robię, robisz, robi, robimy, robicie, robią; ebenso mówię, mówisz; widzę, widzisz. Nach cz, sz, ż, rz steht y statt i: słyszę, słyszysz.\n" +
+      "• -am, -asz: -am, -asz, -a, -amy, -acie, -ają – mam, masz, ma, mamy, macie, mają (mieć).\n" +
+      "• -em, -esz: -em, -esz, -e, -emy, -ecie, -eją/-ą – rozumiem … rozumieją; unregelmäßig in der 3. Person Plural: jem … jedzą (jeść), wiem … wiedzą (wiedzieć).\n" +
+      "• Der Infinitiv verrät das Muster nicht sicher: Verben immer mit ich- und du-Form lernen (piję, pijesz).\n" +
+      "• Stammwechsel: ich- und sie-Plural-Form haben oft einen anderen Endkonsonanten als die übrigen Formen: idę/idą – idziesz, idzie; widzę/widzą – widzisz, widzi.\n" +
+      "• być ist unregelmäßig: jestem, jesteś, jest, jesteśmy, jesteście, są.\n" +
+      "Personen & Verneinung:\n" +
+      "• oni = Gruppe mit mindestens einem Mann, one = nur Frauen, Kinder, Tiere oder Dinge; die Präsensform ist dieselbe.\n" +
+      "• Höfliches „Sie“: Pan (Herr) / Pani (Frau) + 3. Person Singular, Państwo + 3. Person Plural: Czy Pan ma czas? = Haben Sie Zeit?\n" +
+      "• Verneinung: nie direkt vor das Verb: nie mam, nie wiem.\n" +
+      "• Ja/Nein-Frage: Czy + Aussagesatz (Czy masz czas?) oder nur durch die Satzmelodie.",
     pairs: [
       { de: "ich bin (sein)", pl: "ja jestem" },
       { de: "du bist", pl: "ty jesteś" },
       { de: "er/sie/es ist", pl: "on/ona/ono jest" },
       { de: "wir sind", pl: "my jesteśmy" },
       { de: "ihr seid", pl: "wy jesteście" },
-      { de: "sie/Sie sind", pl: "oni/one są" },
+      { de: "sie sind", pl: "oni/one są" },
       
       { de: "ich habe (haben)", pl: "ja mam" },
       { de: "du hast", pl: "ty masz" },
@@ -205,10 +229,27 @@ const lessons = {
   basic_verbs_2: {
     labelDe: "Grundverben II (Konjugationen)",
     rules:
-      "Präsens (Gegenwart) im Polnischen:\n" +
-      "• Verben werden nach Person und Zahl konjugiert; das Personalpronomen (ja, ty, on …) kann meist entfallen, weil die Endung die Person zeigt.\n" +
-      "• Typische Endungen: -ę/-am/-em (ich), -sz (du), -∅/-a/-e (er/sie/es), -my (wir), -cie (ihr), -ą/-ają (sie).\n" +
-      "• Modalverben (móc, musieć, chcieć) stehen meist mit einem Infinitiv: 'muszę pracować' = ich muss arbeiten.",
+      "Präsens (czas teraźniejszy)\n" +
+      "• Das Verb zeigt Person und Zahl durch die Endung; das Pronomen (ja, ty, on …) lässt man meist weg: Mam czas. = Ich habe Zeit.\n" +
+      "• Es gibt nur eine Gegenwartsform: robię = ich mache / ich mache gerade.\n" +
+      "• Ein Präsens haben nur unvollendete Verben (→ Lektion Verbaspekt).\n" +
+      "Vier Endungsmuster (ich, du, er/sie/es, wir, ihr, sie):\n" +
+      "• -ę, -esz: -ę, -esz, -e, -emy, -ecie, -ą – mogę, możesz, może, możemy, możecie, mogą (móc); ebenso biorę, bierzesz (brać), piszę, piszesz (pisać), daję, dajesz (dawać).\n" +
+      "• -ę, -isz: -ę, -isz, -i, -imy, -icie, -ą – lubię, lubisz, lubi …; ebenso myślę, myślisz; śpię, śpisz (spać). Ebenso muszę, musisz (musieć). Nach cz, sz, ż, rz steht y statt i: słyszę, słyszysz.\n" +
+      "• -am, -asz: -am, -asz, -a, -amy, -acie, -ają – czytam, czytasz, czyta, czytamy, czytacie, czytają.\n" +
+      "• -em, -esz: -em, -esz, -e, -emy, -ecie, -eją – rozumiem, rozumiesz, rozumie, rozumiemy, rozumiecie, rozumieją.\n" +
+      "• Der Infinitiv verrät das Muster nicht sicher (pisać → piszę, aber czytać → czytam; dawać → daję; spać → śpię): Verben immer mit ich- und du-Form lernen.\n" +
+      "• Stammwechsel: ich- und sie-Plural-Form haben oft einen anderen Stamm als die übrigen Formen: mogę/mogą – możesz; biorę/biorą – bierzesz.\n" +
+      "Modalverben:\n" +
+      "• móc (können, dürfen), musieć (müssen), chcieć (wollen), woleć (lieber wollen) + Infinitiv: Muszę pracować. Mogę wejść? = Darf ich hereinkommen?\n" +
+      "• „Können“ als erlernte Fähigkeit = umieć: Umiem pływać. = Ich kann schwimmen. Eine Sprache können: Mówię po polsku.\n" +
+      "• „Nicht dürfen“ (Verbot) = nie wolno, unpersönlich: Tu nie wolno palić. – „Nicht müssen“ = nie musieć: Nie musisz czekać.\n" +
+      "• lubić + Akkusativ (Lubię kawę) oder + Infinitiv (Lubię czytać). „Ich möchte“ = chciałbym / chciałabym (→ Konditional).\n" +
+      "Personen & Verneinung:\n" +
+      "• oni = Gruppe mit mindestens einem Mann, one = nur Frauen, Kinder, Tiere oder Dinge; die Präsensform ist dieselbe.\n" +
+      "• Höfliches „Sie“: Pan (Herr) / Pani (Frau) + 3. Person Singular, Państwo + 3. Person Plural: Czy Pan ma czas? = Haben Sie Zeit?\n" +
+      "• Verneinung: nie direkt vor das Verb: nie mam, nie wiem.\n" +
+      "• Ja/Nein-Frage: Czy + Aussagesatz (Czy masz czas?) oder nur durch die Satzmelodie.",
     pairs: [
       { de: "ich kann (können)", pl: "ja mogę" },
       { de: "du kannst", pl: "ty możesz" },
@@ -284,11 +325,25 @@ const lessons = {
   basic_verbs_1_past: {
     labelDe: "Grundverben I (Vergangenheit)",
     rules:
-      "Vergangenheit (Präteritum) im Polnischen:\n" +
-      "• Sie wird mit der sogenannten l-Form gebildet: Verbstamm + -ł-/-l- + Personalendung.\n" +
-      "• Sie richtet sich nach dem Geschlecht: maskulin -ł (robił), feminin -ła (robiła), neutrum -ło (robiło).\n" +
-      "• Im Plural: maskulin-persönlich -li (robili), sonst (Frauen/Dinge) -ły (robiły).\n" +
-      "• Deshalb gibt es zwei Ich-Formen: robiłem (Mann) / robiłam (Frau).",
+      "Vergangenheit (czas przeszły)\n" +
+      "• Es gibt nur eine Vergangenheitszeit; sie deckt Präteritum und Perfekt ab: robiłem = ich machte / ich habe gemacht.\n" +
+      "• Bildung: Infinitiv ohne -ć + ł + Endung; die Endung zeigt Person UND Geschlecht: robi-ć → robi-ł-em.\n" +
+      "Singular:\n" +
+      "• männlich: -łem (ich), -łeś (du), -ł (er) – robiłem, robiłeś, robił.\n" +
+      "• weiblich: -łam (ich), -łaś (du), -ła (sie) – robiłam, robiłaś, robiła.\n" +
+      "• sächlich: -ło (es) – robiło (ich-/du-Formen kommen praktisch nicht vor).\n" +
+      "Plural:\n" +
+      "• männlich-persönlich (Gruppe mit mindestens einem Mann): -liśmy, -liście, -li – robiliśmy, robiliście, robili.\n" +
+      "• sonst (nur Frauen, Kinder, Tiere, Dinge): -łyśmy, -łyście, -ły – robiłyśmy, robiłyście, robiły.\n" +
+      "• Betonung: -liśmy/-liście auf der drittletzten Silbe: roBIliśmy.\n" +
+      "Lautwechsel:\n" +
+      "• Verben auf -eć: e wird zu a, außer in der männlich-persönlichen Mehrzahl: mieć → miał, miała, mieli; wiedzieć → wiedział, wiedzieli; widzieć → widział, widzieli; chcieć → chciał, chcieli.\n" +
+      "• Unregelmäßig: iść → szedłem/szłam, szedł, szła, szło, szli, szły; jeść → jadłem/jadłam, jadł, jadła, jedli, jadły.\n" +
+      "• Aspekt: Die Verben dieser Lektion sind unvollendet (Vorgang, Gewohnheit). „Erledigt“ drückt der vollendete Partner aus: zrobiłem = ich habe (fertig) gemacht, zjadłam = ich habe aufgegessen, powiedziałem = ich habe gesagt.\n" +
+      "Weiteres:\n" +
+      "• Verneinung: nie vor das Verb: nie byłem, nie miałam.\n" +
+      "• Höflich: Pan był? / Pani była? / Państwo byli?\n" +
+      "• Umgangssprachlich kann die Personalendung an ein früheres Wort wandern: Gdzieś był? = Gdzie byłeś?",
     pairs: [
       { de: "ich war (sein)", pl: "ja byłem / byłam" },
       { de: "du warst", pl: "ty byłeś / byłaś" },
@@ -394,11 +449,25 @@ const lessons = {
   basic_verbs_2_past: {
     labelDe: "Grundverben II (Vergangenheit)",
     rules:
-      "Vergangenheit (Präteritum) im Polnischen:\n" +
-      "• Sie wird mit der sogenannten l-Form gebildet: Verbstamm + -ł-/-l- + Personalendung.\n" +
-      "• Sie richtet sich nach dem Geschlecht: maskulin -ł (mógł), feminin -ła (mogła), neutrum -ło (mogło).\n" +
-      "• Im Plural: maskulin-persönlich -li (mogli), sonst (Frauen/Dinge) -ły (mogły).\n" +
-      "• Deshalb gibt es zwei Ich-Formen: mogłem (Mann) / mogłam (Frau).",
+      "Vergangenheit (czas przeszły)\n" +
+      "• Es gibt nur eine Vergangenheitszeit; sie deckt Präteritum und Perfekt ab: robiłem = ich machte / ich habe gemacht.\n" +
+      "• Bildung: Infinitiv ohne -ć + ł + Endung; die Endung zeigt Person UND Geschlecht: robi-ć → robi-ł-em.\n" +
+      "Singular:\n" +
+      "• männlich: -łem (ich), -łeś (du), -ł (er) – robiłem, robiłeś, robił.\n" +
+      "• weiblich: -łam (ich), -łaś (du), -ła (sie) – robiłam, robiłaś, robiła.\n" +
+      "• sächlich: -ło (es) – robiło (ich-/du-Formen kommen praktisch nicht vor).\n" +
+      "Plural:\n" +
+      "• männlich-persönlich (Gruppe mit mindestens einem Mann): -liśmy, -liście, -li – robiliśmy, robiliście, robili.\n" +
+      "• sonst (nur Frauen, Kinder, Tiere, Dinge): -łyśmy, -łyście, -ły – robiłyśmy, robiłyście, robiły.\n" +
+      "• Betonung: -liśmy/-liście auf der drittletzten Silbe: roBIliśmy.\n" +
+      "Lautwechsel:\n" +
+      "• Verben auf -eć: e wird zu a, außer in der männlich-persönlichen Mehrzahl: musieć → musiał, musieli; myśleć → myślał, myśleli; rozumieć → rozumiał, rozumieli.\n" +
+      "• móc (Infinitiv auf -c): mógł nur in der er-Form, sonst o: mogłem, mogłam, mogła, mogli, mogły.\n" +
+      "• Aspekt: dawać und brać sind unvollendet: dawałem = ich gab (öfter) / war beim Geben. Eine einmalige, erledigte Handlung drückt der vollendete Partner aus: dałem (dać), wziąłem/wzięłam (wziąć) = ich habe gegeben/genommen; przeczytałem, napisałem.\n" +
+      "Weiteres:\n" +
+      "• Verneinung: nie vor das Verb: nie byłem, nie miałam.\n" +
+      "• Höflich: Pan był? / Pani była? / Państwo byli?\n" +
+      "• Umgangssprachlich kann die Personalendung an ein früheres Wort wandern: Gdzieś był? = Gdzie byłeś?",
     pairs: [
       { de: "ich konnte (können)", pl: "ja mogłem / mogłam" },
       { de: "du konntest", pl: "ty mogłeś / mogłaś" },
@@ -486,7 +555,7 @@ const lessons = {
       { de: "sie schrieb", pl: "ona pisała" },
       { de: "es schrieb", pl: "ono pisało" },
       { de: "wir schrieben", pl: "my pisaliśmy / pisałyśmy" },
-      { de: "ihr schriebet", pl: "wy pisaliście / pisałyście" },
+      { de: "ihr schriebt", pl: "wy pisaliście / pisałyście" },
       { de: "sie schrieben (m)", pl: "oni pisali" },
       { de: "sie schrieben (f/n)", pl: "one pisały" },
       
@@ -504,11 +573,22 @@ const lessons = {
   basic_verbs_1_future: {
     labelDe: "Grundverben I (Zukunft)",
     rules:
-      "Zukunft (Futur) im Polnischen:\n" +
-      "• 'być' (sein) hat eine eigene einfache Zukunftsform: będę, będziesz, będzie, będziemy, będziecie, będą.\n" +
-      "• Alle anderen unvollendeten Verben bilden die Zukunft zusammengesetzt: Zukunftsform von 'być' + Infinitiv. Beispiel: będę robić = ich werde machen.\n" +
-      "• Alternativ steht statt des Infinitivs die l-Form (wie in der Vergangenheit), die sich nach Geschlecht richtet: będę robił (m) / będę robiła (f).\n" +
-      "• Das Personalpronomen (ja, ty …) kann meist entfallen, weil 'być' die Person schon zeigt.",
+      "Zukunft (czas przyszły)\n" +
+      "Unvollendete Verben – zusammengesetzte Zukunft:\n" +
+      "• Zukunft von być + Infinitiv: będę robić = ich werde machen.\n" +
+      "• oder być + l-Form (wie Vergangenheit, 3. Person): będę robił (m) / będę robiła (f); Plural: będziemy robili (männlich-persönlich) / będziemy robiły (sonst). Beide Varianten bedeuten dasselbe.\n" +
+      "• Formen von być: będę, będziesz, będzie, będziemy, będziecie, będą.\n" +
+      "Vollendete Verben – einfache Zukunft:\n" +
+      "• Sie haben kein Präsens; ihre Präsens-Endungen ergeben die Zukunft: zrobię = ich werde (fertig) machen, napiszę = ich werde schreiben.\n" +
+      "• będę + vollendetes Verb ist falsch (nicht: będę zrobić).\n" +
+      "Besonderheiten dieser Lektion:\n" +
+      "• być selbst hat nur die einfache Form: będę = ich werde sein (nie będę być).\n" +
+      "• mieć und chcieć meist mit l-Form: będę miał(a), będę chciał(a); będę mieć / będę chcieć ist auch richtig.\n" +
+      "• „Ich werde (hin)gehen“ sagt man meist vollendet: pójdę; będę iść ist selten. Ebenso: zjem (zjeść), wypiję (wypić), powiem (powiedzieć), zobaczę (zobaczyć).\n" +
+      "Weiteres:\n" +
+      "• Das Pronomen kann entfallen, weil będę … die Person zeigt.\n" +
+      "• Verneinung: nie vor będę: nie będę pić.\n" +
+      "• Wie im Deutschen steht für Geplantes oft das Präsens: Jutro idę do kina. = Morgen gehe ich ins Kino.",
     pairs: [
       { de: "ich werde sein (sein)", pl: "ja będę" },
       { de: "du wirst sein", pl: "ty będziesz" },
@@ -584,11 +664,21 @@ const lessons = {
   basic_verbs_2_future: {
     labelDe: "Grundverben II (Zukunft)",
     rules:
-      "Zukunft (Futur) im Polnischen:\n" +
-      "• Alle Verben hier sind unvollendet und bilden die zusammengesetzte Zukunft: Zukunftsform von 'być' (będę, będziesz, będzie, będziemy, będziecie, będą) + Infinitiv.\n" +
-      "• Beispiel: będę czytać = ich werde lesen.\n" +
-      "• Statt des Infinitivs ist auch die l-Form möglich, die sich nach Geschlecht richtet: będę czytał (m) / będę czytała (f).\n" +
-      "• Bei vollendeten Verben (z. B. przeczytać) würde man dagegen die Präsens-Endungen für die Zukunft nutzen (przeczytam).",
+      "Zukunft (czas przyszły)\n" +
+      "Unvollendete Verben – zusammengesetzte Zukunft:\n" +
+      "• Zukunft von być + Infinitiv: będę robić = ich werde machen.\n" +
+      "• oder być + l-Form (wie Vergangenheit, 3. Person): będę robił (m) / będę robiła (f); Plural: będziemy robili (männlich-persönlich) / będziemy robiły (sonst). Beide Varianten bedeuten dasselbe.\n" +
+      "• Formen von być: będę, będziesz, będzie, będziemy, będziecie, będą.\n" +
+      "Vollendete Verben – einfache Zukunft:\n" +
+      "• Sie haben kein Präsens; ihre Präsens-Endungen ergeben die Zukunft: zrobię = ich werde (fertig) machen, napiszę = ich werde schreiben.\n" +
+      "• będę + vollendetes Verb ist falsch (nicht: będę zrobić).\n" +
+      "Besonderheiten dieser Lektion:\n" +
+      "• Modalverben meist mit l-Form: będę mógł/mogła, będę musiał(a); będę móc / będę musieć ist auch richtig.\n" +
+      "• Vollendete Partner mit einfacher Zukunft: przeczytam (przeczytać), napiszę (napisać), dam (dać), wezmę (wziąć), zrozumiem (zrozumieć), pomyślę (pomyśleć).\n" +
+      "Weiteres:\n" +
+      "• Das Pronomen kann entfallen, weil będę … die Person zeigt.\n" +
+      "• Verneinung: nie vor będę: nie będę pić.\n" +
+      "• Wie im Deutschen steht für Geplantes oft das Präsens: Jutro idę do kina. = Morgen gehe ich ins Kino.",
     pairs: [
       { de: "ich werde können (können)", pl: "ja będę móc" },
       { de: "du wirst können", pl: "ty będziesz móc" },
@@ -1336,15 +1426,66 @@ const lessons = {
   // A2-Grammatik & Situationen – kurze Lektionen mit Regel-Erklärung
   // ===================================================================
 
+  case_nominative: {
+    labelDe: "Fall: Nominativ & Plural (mianownik)",
+    rules:
+      "Nominativ (mianownik) – „wer? was?“\n" +
+      "• Polnisch hat 7 Fälle: Nominativ, Genitiv, Dativ, Akkusativ, Instrumental, Lokativ, Vokativ – zu jedem gibt es eine eigene Lektion.\n" +
+      "• Der Nominativ ist die Wörterbuchform und steht für das Subjekt (Koty śpią.) und nach to jest / to są (To są moje dzieci.).\n" +
+      "• Adjektive nach być stehen im Nominativ (Jestem zmęczony.), Nomen nach być dagegen im Instrumental (Jestem lekarzem.).\n" +
+      "Geschlecht an der Endung erkennen:\n" +
+      "• männlich: Konsonant (dom, kot, stół); einige Männerwörter auf -a (mężczyzna, kolega, tata).\n" +
+      "• weiblich: -a (kawa, mama), -i (pani); manche auf Konsonant, v. a. alle auf -ość (noc, rzecz, miłość).\n" +
+      "• sächlich: -o, -e, -ę, -um (okno, morze, imię, muzeum).\n" +
+      "Plural:\n" +
+      "• männlich (keine Personen) und weiblich mit hartem Stamm: -y (koty, stoły, kawy); nach k, g: -i (parki, książki, nogi).\n" +
+      "• weicher Stamm (auf -ć, -ń, -l, -j, -c, -cz, -sz, -rz, -ż …): -e (klucze, hotele, ulice, lekcje, noce); weiblich auf -ość: -i (miłości).\n" +
+      "• sächlich: -a (okna, miasta, pytania); -ę → -ona/-ęta (imiona, zwierzęta); -um → -a (muzea).\n" +
+      "• männlich-persönlich (Männer, gemischte Gruppen), mit Lautwechsel: -i/-y (student → studenci, Polak → Polacy, chłopiec → chłopcy), -owie (pan → panowie, syn → synowie), -e (nauczyciel → nauczyciele, lekarz → lekarze).\n" +
+      "• Unregelmäßig: człowiek → ludzie, dziecko → dzieci, brat → bracia, ręka → ręce, oko → oczy, ucho → uszy, rok → lata, tydzień → tygodnie.\n" +
+      "Adjektive & Pronomen:\n" +
+      "• Adjektiv Singular: -y/-i (m), -a (f), -e (n): nowy dom, nowa kawa, nowe okno.\n" +
+      "• Adjektiv Plural: männlich-persönlich -i/-y mit Lautwechsel (dobry → dobrzy, nowy → nowi, polski → polscy, duży → duzi), sonst -e (nowe domy, dobre koty).\n" +
+      "• oni (mit Mann) / one (sonst); ten → ci (männlich-persönlich) / te (sonst): ci panowie, te kobiety.",
+    pairs: [
+      { de: "Die Katzen schlafen.", pl: "Koty śpią." },
+      { de: "die Bücher", pl: "książki" },
+      { de: "die Fenster", pl: "okna" },
+      { de: "die Straßen", pl: "ulice" },
+      { de: "die Namen", pl: "imiona" },
+      { de: "die Studenten", pl: "studenci" },
+      { de: "die Polen (Personen)", pl: "Polacy" },
+      { de: "die Söhne", pl: "synowie" },
+      { de: "die Brüder", pl: "bracia" },
+      { de: "diese Herren", pl: "ci panowie" },
+      { de: "nette Leute", pl: "mili ludzie" },
+      { de: "gute Freunde", pl: "dobrzy przyjaciele" },
+      { de: "neue Häuser", pl: "nowe domy" },
+      { de: "Das sind meine Kinder.", pl: "To są moje dzieci." }
+    ]
+  },
   case_accusative: {
     labelDe: "Fall: Akkusativ (biernik)",
     rules:
-      "Akkusativ (biernik) – „wen/was?“:\n" +
-      "• Steht nach vielen Verben als direktes Objekt: mieć, lubić, widzieć, jeść, mieć … (mam kota = ich habe eine Katze).\n" +
-      "• Maskulin belebt bekommt -a (kot → kota, pies → psa), maskulin unbelebt bleibt wie der Nominativ (stół → stół).\n" +
-      "• Feminin auf -a wird zu -ę (kawa → kawę, książka → książkę).\n" +
-      "• Neutrum bleibt unverändert (okno → okno).\n" +
-      "• Nach Bewegungspräpositionen mit Ziel: na, w, przez + Akkusativ.",
+      "Akkusativ (biernik) – „wen? was?“\n" +
+      "Wann?\n" +
+      "• Direktes Objekt der meisten Verben: mieć, lubić, kochać, znać, widzieć, czytać, jeść, pić, kupować, odwiedzać … – Mam psa. Lubię kawę.\n" +
+      "• Nach Präpositionen: na (wohin: na pocztę; für eine Zeit: na tydzień), w (Wochentag: w poniedziałek), przez (durch; Dauer: przez godzinę), za (für: dziękuję za pomoc; in (Zeit): za tydzień), o (bitten um: proszę o pomoc), po (holen: idę po chleb).\n" +
+      "• nad, pod, przed, za, między mit Bewegung (wohin?) + Akkusativ: Kot wchodzi pod stół. Ohne Bewegung (wo?) → Instrumental.\n" +
+      "• Achtung Verneinung: Das Akkusativ-Objekt wird zum Genitiv: Mam kawę → Nie mam kawy.\n" +
+      "• Einige Verben verlangen den Genitiv statt Akkusativ: potrzebować, szukać, słuchać, używać, uczyć się, bać się (Potrzebuję czasu).\n" +
+      "Endungen Singular:\n" +
+      "• männlich belebt (Personen, Tiere) = Genitiv auf -a: kot → kota, pies → psa, brat → brata. Männerwörter auf -a wie weiblich: kolega → kolegę.\n" +
+      "• männlich unbelebt = Nominativ: stół, chleb, list, czas (umgangssprachlich manchmal -a: mam banana, piszę maila).\n" +
+      "• weiblich auf -a → -ę: kawa → kawę, książka → książkę; auf -i → -ią: pani → panią; auf Konsonant unverändert: noc, rzecz, miłość.\n" +
+      "• sächlich: unverändert: okno, pytanie, miasto.\n" +
+      "Endungen Plural:\n" +
+      "• männlich-persönlich = Genitiv Plural: Znam tych studentów. Widzę braci.\n" +
+      "• alle anderen = Nominativ Plural: Mam koty. Kupuję jabłka.\n" +
+      "Adjektive & Pronomen:\n" +
+      "• Adjektiv: m belebt -ego (dobrego kolegę), m unbelebt -y/-i (nowy stół), f -ą (dobrą kawę), n -e (nowe okno); Plural männlich-persönlich -ych/-ich, sonst -e.\n" +
+      "• ten → tego (belebt) / ten (unbelebt), ta → tę, to → to.\n" +
+      "• Personalpronomen: mnie, cię (betont ciebie), go (betont jego, nach Präposition niego), ją (nią), nas, was, ich (männlich-persönlich; nach Präposition nich) / je (sonst; nach Präposition nie).",
     pairs: [
       { de: "Ich habe einen Hund.", pl: "Mam psa." },
       { de: "Ich habe eine Katze.", pl: "Mam kota." },
@@ -1357,17 +1498,33 @@ const lessons = {
       { de: "Ich kaufe Brot.", pl: "Kupuję chleb." },
       { de: "Ich kenne diese Stadt.", pl: "Znam to miasto." },
       { de: "Ich schreibe einen Brief.", pl: "Piszę list." },
-      { de: "Ich brauche Zeit.", pl: "Potrzebuję czas." }
+      { de: "Ich besuche die Oma.", pl: "Odwiedzam babcię." }
     ]
   },
   case_genitive: {
     labelDe: "Fall: Genitiv (dopełniacz)",
     rules:
-      "Genitiv (dopełniacz) – „wessen? / von wem?“:\n" +
-      "• Steht nach der Verneinung eines Akkusativ-Objekts: mam czas → nie mam czasu.\n" +
-      "• Nach Mengenangaben: dużo, mało, trochę, kilo, butelka + Genitiv (dużo pracy).\n" +
-      "• Nach vielen Präpositionen: bez, dla, do, od, u, z (aus), obok.\n" +
-      "• Endungen (Sg.): maskulin -a/-u, feminin -y/-i, neutrum -a.",
+      "Genitiv (dopełniacz) – „wessen? wovon? von wem?“\n" +
+      "Wann?\n" +
+      "• Besitz und Zugehörigkeit, nachgestellt: dom ojca = das Haus des Vaters, filiżanka kawy.\n" +
+      "• Verneinung: Ein Akkusativ-Objekt wird zum Genitiv: Mam czas → Nie mam czasu. „Es gibt nicht / ist nicht da“ = nie ma + Genitiv: Nie ma chleba (Vergangenheit nie było, Zukunft nie będzie).\n" +
+      "• Mengen: dużo, mało, trochę, wiele, kilka, ile, kilo, butelka … + Genitiv; Zahlen ab 5: pięć kotów (→ Mengen & Verpackungen).\n" +
+      "• Präpositionen: bez (ohne), dla (für), do (zu, nach, bis), od (von, seit), u (bei Personen), z (aus, von … herab/weg), obok, koło, niedaleko (neben, nahe), podczas (während), według (laut), oprócz (außer), zamiast (statt), wśród (unter), naprzeciwko (gegenüber), około (etwa).\n" +
+      "• Verben: potrzebować, szukać, słuchać, używać, uczyć się, bać się, życzyć (+ Dativ der Person: Życzę ci szczęścia).\n" +
+      "• Datum: pierwszego maja = am 1. Mai.\n" +
+      "Endungen Singular:\n" +
+      "• männlich -a: Personen, Tiere und viele Dinge (kota, lekarza, chleba, noża). männlich -u: viele unbelebte und abstrakte Wörter, Stoffe (czasu, cukru, domu, sklepu). Am besten mitlernen.\n" +
+      "• weiblich -y: nach hartem Konsonanten und nach c, cz, sz, rz, ż (kawa → kawy, woda → wody, praca → pracy, noc → nocy).\n" +
+      "• weiblich -i: nach k, g, l, j und weichem Konsonanten (książka → książki, Polska → Polski, lekcja → lekcji, babcia → babci, miłość → miłości); pani bleibt pani.\n" +
+      "• sächlich -a: mleko → mleka, okno → okna, pytanie → pytania.\n" +
+      "Endungen Plural:\n" +
+      "• männlich: meist -ów (kotów, domów, studentów); weicher Stamm -i/-y (lekarzy, nauczycieli, pokoi).\n" +
+      "• weiblich & sächlich: meist ohne Endung, oft mit eingeschobenem e oder Vokalwechsel: kawa → kaw, książka → książek, okno → okien, jabłko → jabłek, szkoła → szkół, ręka → rąk; auf -anie/-enie: pytanie → pytań.\n" +
+      "• weiblich auf -ja/-ia und Konsonant: -i/-y (lekcji, nocy, miłości). pieniądze → pieniędzy.\n" +
+      "Adjektive & Pronomen:\n" +
+      "• Adjektiv: m/n -ego, f -ej, Plural -ych/-ich: dużo dobrej kawy, nie ma nowego domu, bez nowych książek.\n" +
+      "• ten/to → tego, ta → tej, Plural tych.\n" +
+      "• Personalpronomen: mnie, cię (ciebie), go (jego), jej, nas, was, ich – nach Präpositionen mit n-: u niego, dla niej, bez nich.",
     pairs: [
       { de: "Ich habe keine Zeit.", pl: "Nie mam czasu." },
       { de: "Ich habe kein Geld.", pl: "Nie mam pieniędzy." },
@@ -1386,11 +1543,25 @@ const lessons = {
   case_locative: {
     labelDe: "Fall: Lokativ (miejscownik)",
     rules:
-      "Lokativ (miejscownik) – „wo? / worüber?“:\n" +
-      "• Steht immer nach einer Präposition, nie allein.\n" +
-      "• Ortsangabe (wo, ohne Bewegung): w (in), na (auf/an), przy (bei).\n" +
-      "• Auch nach: o (über/um), po (nach).\n" +
-      "• Typische Endungen: oft -e (mit Konsonantenwechsel) oder -u; feminin -e/-i.",
+      "Lokativ (miejscownik) – „wo? worüber?“\n" +
+      "Wann? – NUR nach diesen Präpositionen:\n" +
+      "• w (in): w domu, w Polsce.\n" +
+      "• na (auf, an; auch bei Plätzen, Veranstaltungen, manchen Institutionen): na stole, na poczcie, na dworcu, na koncercie, na uniwersytecie.\n" +
+      "• przy (bei, an, neben): przy stole, przy oknie.\n" +
+      "• o (über ein Thema; um + Uhrzeit): mówić o rodzinie, o ósmej.\n" +
+      "• po (nach, zeitlich; herum/durch): po obiedzie, spacer po mieście.\n" +
+      "• Ort ohne Bewegung (wo?) → Lokativ; Ziel (wohin?) → do + Genitiv oder na/w + Akkusativ: Jestem w szkole. – Idę do szkoły.\n" +
+      "Endungen Singular:\n" +
+      "• m & n mit hartem Stamm: -e, der letzte Konsonant wird weich: t → cie (kot → kocie), d → dzie (samochód → samochodzie), st → ście (miasto → mieście), r → rze (teatr → teatrze), ł → le (stół → stole), n → nie (kino → kinie), ebenso s → sie, z → zie, m → mie, w → wie, b → bie, p → pie.\n" +
+      "• Oft wechselt auch der Vokal: ó → o (stół → stole, samochód → samochodzie), a → e (miasto → mieście).\n" +
+      "• m & n auf k, g, ch, auf weichen Konsonanten (l, j, ć, ń, c, cz, sz, rz, ż …) sowie dom, syn, pan: -u: w parku, w pociągu, w hotelu, w pokoju, na dworcu, w domu; sächlich auf -e: w mieszkaniu, na morzu.\n" +
+      "• weiblich mit hartem Stamm: -e mit Lautwechsel: szkoła → szkole, rodzina → rodzinie, kawa → kawie; k → c, g → dz, r → rz, ch → sz: Polska → w Polsce, noga → na nodze, siostra → o siostrze.\n" +
+      "• weiblich mit weichem Stamm, auf -i/-ia und auf Konsonant: -i/-y (wie Genitiv): praca → w pracy, ulica → na ulicy, babcia → o babci, lekcja → na lekcji, noc → w nocy.\n" +
+      "Plural: immer -ach: w miastach, na ulicach, o dzieciach (Ausnahmen: w Niemczech, we Włoszech).\n" +
+      "Adjektive & Pronomen:\n" +
+      "• Adjektiv: m/n -ym/-im, f -ej, Plural -ych/-ich: w dużym mieście, w małej szkole, w nowych domach.\n" +
+      "• Personalpronomen: o mnie, o tobie, o nim (er/es), o niej, o nas, o was, o nich.\n" +
+      "• Merke: zu Hause = w domu (Lokativ) – nach Hause = do domu (Genitiv); bei der Oma = u babci (u + Genitiv!).",
     pairs: [
       { de: "in der Stadt", pl: "w mieście" },
       { de: "in Polen", pl: "w Polsce" },
@@ -1403,17 +1574,27 @@ const lessons = {
       { de: "um acht Uhr", pl: "o ósmej" },
       { de: "im Kino", pl: "w kinie" },
       { de: "im Zug", pl: "w pociągu" },
-      { de: "bei der Oma (wo)", pl: "u babci" }
+      { de: "auf der Post", pl: "na poczcie" }
     ]
   },
   case_instrumental: {
     labelDe: "Fall: Instrumental (narzędnik)",
     rules:
-      "Instrumental (narzędnik) – „mit wem/womit?“:\n" +
-      "• Mittel/Begleitung nach z (mit): z kolegą = mit dem Freund.\n" +
-      "• Fortbewegungsmittel ohne Präposition: jadę autobusem = ich fahre mit dem Bus.\n" +
-      "• Nach 'być' bei Beruf/Identität: jestem nauczycielem = ich bin Lehrer.\n" +
-      "• Endungen (Sg.): maskulin/neutrum -em, feminin -ą.",
+      "Instrumental (narzędnik) – „mit wem? womit?“\n" +
+      "Wann?\n" +
+      "• Begleitung mit z (vor schwierigen Konsonantengruppen ze): z kolegą, kawa z mlekiem, ze mną.\n" +
+      "• Mittel und Werkzeug OHNE Präposition: piszę długopisem, płacę kartą, jadę autobusem.\n" +
+      "• Nomen nach być und zostać (werden) – Beruf, Nationalität, Rolle: Jestem nauczycielem. Chcę zostać lekarzem. Aber: nach to steht der Nominativ (To jest nauczyciel.), und Adjektive nach być stehen im Nominativ (Jestem zmęczony.).\n" +
+      "• Lage (wo?) nach nad (über), pod (unter), przed (vor), za (hinter), między (zwischen): przed domem, pod stołem. Mit Bewegung (wohin?) dagegen Akkusativ: Kot wchodzi pod stół.\n" +
+      "• Verben: interesować się (sich interessieren für), zajmować się (sich beschäftigen mit), opiekować się (sich kümmern um): Interesuję się sportem.\n" +
+      "• Weg und Zeit ohne Präposition: iść ulicą (die Straße entlang); latem, zimą, wiosną, jesienią (im Sommer …), wieczorem (am Abend).\n" +
+      "Endungen Singular:\n" +
+      "• männlich & sächlich: -em, nach k, g: -iem: bratem, oknem, autobusem, cukrem, pociągiem.\n" +
+      "• weiblich und Männerwörter auf -a: -ą: koleżanką, kartą, nocą, kolegą, mężczyzną.\n" +
+      "Endungen Plural: -ami (kolegami, książkami, oknami); nur wenige -mi: dziećmi, ludźmi, przyjaciółmi, pieniędzmi.\n" +
+      "Adjektive & Pronomen:\n" +
+      "• Adjektiv: m/n -ym/-im, f -ą, Plural -ymi/-imi: z dobrym kolegą, z miłą koleżanką, z nowymi książkami.\n" +
+      "• Personalpronomen: (ze) mną, tobą, nim (er/es), nią, nami, wami, nimi: między nami.",
     pairs: [
       { de: "mit dem Freund", pl: "z kolegą" },
       { de: "mit der Freundin", pl: "z koleżanką" },
@@ -1429,14 +1610,95 @@ const lessons = {
       { de: "zwischen uns", pl: "między nami" }
     ]
   },
+  case_dative: {
+    labelDe: "Fall: Dativ (celownik)",
+    rules:
+      "Dativ (celownik) – „wem?“\n" +
+      "Wann?\n" +
+      "• Indirektes Objekt (Empfänger): Daję mamie prezent. Kupuję bratu książkę.\n" +
+      "• Verben mit Dativ: pomagać (helfen), dziękować (danken), wierzyć (glauben), ufać (vertrauen), przeszkadzać (stören), życzyć (wünschen, Sache im Genitiv), podobać się (gefallen), smakować (schmecken).\n" +
+      "• Befinden und Gefühle, unpersönlich: Jest mi zimno / smutno / przykro. Co ci jest? = Was fehlt dir?\n" +
+      "• Gefallen: Podoba mi się ten film. = Der Film gefällt mir (der Film ist Subjekt).\n" +
+      "• Präpositionen: dzięki (dank), przeciw(ko) (gegen), wbrew (entgegen), ku (auf … zu).\n" +
+      "Endungen Singular:\n" +
+      "• männlich: meist -owi (nauczycielowi, lekarzowi, Markowi); einige kurze Wörter -u: brat → bratu, ojciec → ojcu, pan → panu, pies → psu, kot → kotu, chłopiec → chłopcu.\n" +
+      "• weiblich und Männerwörter auf -a: gleiche Form wie Lokativ: -e mit Lautwechsel (mama → mamie, siostra → siostrze, koleżanka → koleżance, kolega → koledze) bzw. -i/-y bei weichem Stamm (babcia → babci, pani → pani, noc → nocy).\n" +
+      "• sächlich: -u: dziecko → dziecku, okno → oknu.\n" +
+      "Endungen Plural: immer -om: dzieciom, kolegom, rodzicom.\n" +
+      "Adjektive & Pronomen:\n" +
+      "• Adjektiv: m/n -emu, f -ej, Plural -ym/-im: mojemu bratu, mojej mamie, moim dzieciom.\n" +
+      "• Personalpronomen kurz / betont: mi / mnie, ci / tobie, mu / jemu, jej, nam, wam, im. Nach Präposition mit n-: dzięki niemu, przeciwko nim.\n" +
+      "• Kurzform im Normalfall (Daj mi to.), Langform bei Betonung und am Satzanfang (Tobie to daję, nie jemu.).",
+    pairs: [
+      { de: "Ich gebe der Mutter ein Geschenk.", pl: "Daję mamie prezent." },
+      { de: "Ich helfe dem Bruder.", pl: "Pomagam bratu." },
+      { de: "Ich danke dem Lehrer.", pl: "Dziękuję nauczycielowi." },
+      { de: "Ich schicke dem Freund eine Nachricht.", pl: "Wysyłam koledze wiadomość." },
+      { de: "Ich sage der Oma die Wahrheit.", pl: "Mówię babci prawdę." },
+      { de: "Ich lese dem Kind ein Märchen vor.", pl: "Czytam dziecku bajkę." },
+      { de: "Ich helfe den Kindern.", pl: "Pomagam dzieciom." },
+      { de: "Mir ist kalt.", pl: "Jest mi zimno." },
+      { de: "Es gefällt mir.", pl: "Podoba mi się." },
+      { de: "Was fehlt dir?", pl: "Co ci jest?" },
+      { de: "Ich glaube dir.", pl: "Wierzę ci." },
+      { de: "Ich wünsche dir Glück.", pl: "Życzę ci szczęścia." },
+      { de: "dank der Hilfe", pl: "dzięki pomocy" }
+    ]
+  },
+  case_vocative: {
+    labelDe: "Fall: Vokativ (wołacz)",
+    rules:
+      "Vokativ (wołacz) – Anrede\n" +
+      "• Steht, wenn man jemanden direkt anspricht – mündlich und in Briefen/E-Mails: Mamo, chodź! Drogi Piotrze, …\n" +
+      "• Pflicht in der höflichen Anrede: Panie Marku! Pani Anno! Panie doktorze! (Pan → Panie, Pani bleibt Pani; Vorname bzw. Titel ebenfalls im Vokativ).\n" +
+      "• Unter Freunden ist bei Vornamen auch der Nominativ üblich: Anka, chodź!\n" +
+      "Endungen Singular:\n" +
+      "• männlich mit hartem Stamm: -e mit Lautwechsel wie im Lokativ: Piotr → Piotrze, Adam → Adamie, pan → panie, doktor → doktorze, Paweł → Pawle.\n" +
+      "• männlich auf k, g, ch und mit weichem Stamm: -u: Tomek → Tomku, Marek → Marku, Tomasz → Tomaszu, syn → synu.\n" +
+      "• Ausnahmen: Bóg → Boże, ojciec → ojcze, chłopiec → chłopcze.\n" +
+      "• Wörter auf -a (weiblich und männlich): -o: mama → mamo, Anna → Anno, tata → tato, kolega → kolego.\n" +
+      "• Koseformen und Verwandtschaftswörter auf -sia, -cia, -nia, -dzia: -u: Kasia → Kasiu, Basia → Basiu, babcia → babciu, ciocia → ciociu.\n" +
+      "• weiblich auf -i: unverändert: pani → pani.\n" +
+      "• sächlich: wie Nominativ: dziecko → dziecko!\n" +
+      "Weiteres:\n" +
+      "• Plural: immer wie Nominativ Plural: Panie i Panowie! Dzieci, chodźcie!\n" +
+      "• Adjektive stehen dabei in der Nominativform: Drogi Piotrze, Kochana Mamo, Szanowny Panie, Szanowni Państwo.\n" +
+      "• Achtung: proszę pana / proszę pani (Entschuldigung, mein Herr / meine Dame) ist Genitiv, kein Vokativ.",
+    pairs: [
+      { de: "Mama! (Anrede)", pl: "Mamo!" },
+      { de: "Papa! (Anrede)", pl: "Tato!" },
+      { de: "Oma! (Anrede)", pl: "Babciu!" },
+      { de: "Mein Sohn! (Anrede)", pl: "Synu!" },
+      { de: "Anna! (Anrede)", pl: "Anno!" },
+      { de: "Kasia! (Anrede)", pl: "Kasiu!" },
+      { de: "Peter! (Anrede)", pl: "Piotrze!" },
+      { de: "Tomek! (Anrede)", pl: "Tomku!" },
+      { de: "Kollege! (Anrede)", pl: "Kolego!" },
+      { de: "Herr Doktor!", pl: "Panie doktorze!" },
+      { de: "Sehr geehrter Herr …", pl: "Szanowny Panie …" },
+      { de: "Sehr geehrte Damen und Herren!", pl: "Szanowni Państwo!" },
+      { de: "Mein Gott!", pl: "Mój Boże!" }
+    ]
+  },
   verb_aspect: {
     labelDe: "Verbaspekt (unvollendet/vollendet)",
     rules:
-      "Aspekt – jedes polnische Verb hat meist zwei Formen:\n" +
-      "• Unvollendet (niedokonany): Vorgang, Wiederholung, Gewohnheit – „ich war dabei / mache regelmäßig“. Bildet Gegenwart, Vergangenheit und zusammengesetzte Zukunft (będę + Infinitiv).\n" +
-      "• Vollendet (dokonany): abgeschlossene, einmalige Handlung mit Ergebnis. Hat KEINE Gegenwart; die Präsens-Endungen ergeben hier die Zukunft (zrobię = ich werde (fertig) machen).\n" +
-      "• Oft entsteht der vollendete Aspekt durch eine Vorsilbe: robić → zrobić, pisać → napisać.\n" +
-      "Links: unvollendet – rechts: vollendet.",
+      "Verbaspekt (aspekt)\n" +
+      "• Fast jedes Verb gibt es als Paar: unvollendet (niedokonany) und vollendet (dokonany). Die Bedeutung ist gleich, der Blick auf die Handlung verschieden.\n" +
+      "• Unvollendet = Vorgang, Dauer, Wiederholung, Gewohnheit, allgemeine Aussage: Czytałem książkę. = Ich habe (eine Weile) im Buch gelesen. Codziennie piję kawę.\n" +
+      "• Vollendet = einmalige, abgeschlossene Handlung mit Ergebnis: Przeczytałem książkę. = Ich habe das Buch (zu Ende) gelesen.\n" +
+      "Zeiten:\n" +
+      "• unvollendet: Präsens (czytam), Vergangenheit (czytałem), Zukunft mit będę (będę czytać / będę czytał).\n" +
+      "• vollendet: KEIN Präsens. Vergangenheit (przeczytałem); die Präsens-Endungen ergeben die Zukunft (przeczytam = ich werde (zu Ende) lesen).\n" +
+      "Bildung der Paare:\n" +
+      "• Vorsilbe macht vollendet: robić → zrobić, pisać → napisać, czytać → przeczytać, jeść → zjeść, pić → wypić, uczyć się → nauczyć się. Welche Vorsilbe, muss man mitlernen.\n" +
+      "• Wechsel des Suffixes (das unvollendete Verb ist meist länger: -ywać, -iwać, -awać, -ować, -ać): kupować → kupić, dawać → dać, pomagać → pomóc, otwierać → otworzyć, zamykać → zamknąć.\n" +
+      "• Ganz verschiedene Wörter: brać → wziąć, mówić → powiedzieć, oglądać → obejrzeć, kłaść → położyć.\n" +
+      "Faustregeln:\n" +
+      "• Unvollendet bei: często, zawsze, codziennie, zwykle, długo, ciągle; nach zaczynać, kończyć, przestać + Infinitiv (Skończyłem czytać.).\n" +
+      "• Vollendet bei: nagle, wreszcie, w końcu, już (mit Ergebnis); bei einmaligen Bitten (Zrób to!).\n" +
+      "• Verbote mit nie meist unvollendet: Nie rób tego!\n" +
+      "• In den Paaren: (Vorgang) = unvollendet, (fertig/auf) = vollendet.",
     pairs: [
       { de: "machen (Vorgang)", pl: "robić" },
       { de: "machen (fertig)", pl: "zrobić" },
@@ -1455,10 +1717,21 @@ const lessons = {
   reflexive_verbs: {
     labelDe: "Reflexive Verben (się)",
     rules:
-      "Reflexive Verben mit „się“:\n" +
-      "• Das Wörtchen 'się' gehört zum Verb und ist unveränderlich (für alle Personen gleich).\n" +
-      "• Es steht meist direkt nach dem Verb, aber nie am Satzanfang: 'nazywam się …', aber 'Jak się nazywasz?'.\n" +
-      "• Viele Alltagsverben sind reflexiv, auch wenn sie es im Deutschen nicht sind.",
+      "Reflexive Verben mit się\n" +
+      "• się ist für alle Personen gleich: myję się, myjesz się, myje się … = ich wasche mich, du wäschst dich …\n" +
+      "• Stellung: möglichst früh im Satz, oft direkt nach dem ersten betonten Wort, aber nie ganz am Anfang: Jak się nazywasz? Tu się dobrze czuję. Am Satzende ist es erlaubt: Uczę się.\n" +
+      "• Verneinung: nie vor das Verb, się bleibt: Nie spieszę się. Vergangenheit: myłem się, spóźniłam się.\n" +
+      "Bedeutungen:\n" +
+      "• rückbezüglich: myć się (sich waschen), ubierać się (sich anziehen).\n" +
+      "• gegenseitig (einander): spotykać się (sich treffen), znać się (sich kennen).\n" +
+      "• ohne deutsche Entsprechung: uczyć się (lernen), bać się (Angst haben), śmiać się (lachen).\n" +
+      "• unpersönlich „man“: Jak się to mówi? = Wie sagt man das? Tu się nie pali. = Hier raucht man nicht.\n" +
+      "• Umgekehrt ist nicht jedes deutsche Reflexivverb polnisch reflexiv: odpoczywać (sich ausruhen), pamiętać (sich erinnern).\n" +
+      "Volle Formen:\n" +
+      "• siebie (Gen./Akk.), sobie (Dat./Lok.), sobą (Instr.) – bei Betonung und nach Präpositionen: Myślę o sobie. Jest zadowolony z siebie.\n" +
+      "• „sich/mir/dir“ im Dativ = sobie: Kupiłem sobie książkę. = Ich habe mir ein Buch gekauft. Wyobrażam sobie … = Ich stelle mir vor …\n" +
+      "Rektion (welcher Fall folgt):\n" +
+      "• interesować się + Instr. (Interesuję się sportem), bać się + Gen. (Boję się psa), uczyć się + Gen. (Uczę się polskiego), cieszyć się z + Gen. (über Vorhandenes) / na + Akk. (auf Kommendes): Cieszę się z prezentu / na urlop.",
     pairs: [
       { de: "ich heiße", pl: "nazywam się" },
       { de: "wie heißt du?", pl: "jak się nazywasz?" },
@@ -1477,11 +1750,25 @@ const lessons = {
   comparison_adjectives: {
     labelDe: "Steigerung von Adjektiven",
     rules:
-      "Steigerung (Komparativ & Superlativ):\n" +
-      "• Regelmäßig: Grundform + -szy/-iejszy (Komparativ), Superlativ mit Vorsilbe naj-: nowy → nowszy → najnowszy.\n" +
-      "• 'als' beim Vergleich = niż oder od + Genitiv: większy niż … / większy od …\n" +
-      "• Wichtige unregelmäßige Formen musst du auswendig lernen (siehe Paare).\n" +
-      "Format: Grundform – Komparativ – Superlativ.",
+      "Steigerung der Adjektive (stopniowanie)\n" +
+      "Komparativ – Endung -szy oder -ejszy:\n" +
+      "• -szy, wenn der Stamm auf einen einzelnen Konsonanten endet: nowy → nowszy, stary → starszy, młody → młodszy, tani → tańszy.\n" +
+      "• -ejszy (mit weichem Konsonanten davor), wenn der Stamm auf eine Konsonantengruppe endet: łatwy → łatwiejszy, trudny → trudniejszy, ciepły → cieplejszy, ładny → ładniejszy.\n" +
+      "• -ki, -oki, -eki fallen weg, oft mit Lautwechsel: szybki → szybszy, krótki → krótszy, wysoki → wyższy, niski → niższy, daleki → dalszy, bliski → bliższy, lekki → lżejszy.\n" +
+      "• g, s, z vor -szy werden zu ż: drogi → droższy, długi → dłuższy, wąski → węższy.\n" +
+      "• Der Komparativ wird wie jedes Adjektiv gebeugt: nowszy (m), nowsza (f), nowsze (n); Plural: nowsi (männlich-persönlich), nowsze (sonst).\n" +
+      "Superlativ:\n" +
+      "• naj- + Komparativ: nowszy → najnowszy, lepszy → najlepszy.\n" +
+      "• „von allen / in“: z + Genitiv oder w + Lokativ: najlepszy z nas, najwyższy w klasie.\n" +
+      "Umschreibung:\n" +
+      "• bardziej / najbardziej + Grundform bei Partizipien und vielen langen Adjektiven: bardziej zmęczony, najbardziej interesujący.\n" +
+      "• weniger / am wenigsten: mniej / najmniej + Grundform: mniej drogi.\n" +
+      "• Unregelmäßig (auswendig lernen): dobry → lepszy, zły → gorszy, duży → większy, mały → mniejszy.\n" +
+      "Vergleichen:\n" +
+      "• „als“ = niż + gleicher Fall wie das Verglichene (meist Nominativ): Anna jest starsza niż Piotr.\n" +
+      "• oder od + Genitiv: Anna jest starsza od Piotra.\n" +
+      "• so … wie = tak … jak: tak duży jak dom. – immer …er = coraz + Komparativ: coraz lepszy. – je … desto = im … tym: im więcej, tym lepiej.\n" +
+      "Format der Paare: Grundform – Komparativ bzw. Superlativ.",
     pairs: [
       { de: "gut – besser", pl: "dobry – lepszy" },
       { de: "gut – am besten", pl: "dobry – najlepszy" },
@@ -1500,11 +1787,22 @@ const lessons = {
   time_clock: {
     labelDe: "Uhrzeit & Datum",
     rules:
-      "Uhrzeit & Datum:\n" +
-      "• Frage: 'Która godzina?' = Wie spät ist es? Antwort mit Ordnungszahl (weiblich): 'Jest pierwsza' = Es ist eins.\n" +
-      "• Uhrzeit-Angabe „um …“: o + Lokativ der Ordnungszahl: o ósmej = um acht.\n" +
-      "• Wochentag „am …“: w + Akkusativ: w poniedziałek = am Montag.\n" +
-      "• Monat „im …“: w + Lokativ: w maju = im Mai.",
+      "Uhrzeit (godzina) – mit weiblichen Ordnungszahlen, weil godzina weiblich ist:\n" +
+      "• Wie spät ist es? = Która (jest) godzina? – Jest pierwsza / druga / trzecia … (Nominativ).\n" +
+      "• um … Uhr = o + Lokativ: o pierwszej, o drugiej, o ósmej, o dwunastej.\n" +
+      "• nach: Minuten + po + Lokativ: pięć po ósmej (8:05), kwadrans po trzeciej (3:15).\n" +
+      "• vor: za + Minuten + Nominativ der Stunde: za pięć ósma (7:55), za kwadrans trzecia (2:45).\n" +
+      "• halb: wpół do + Genitiv der FOLGENDEN Stunde: wpół do trzeciej = halb drei (2:30).\n" +
+      "• Fahrpläne, Termine: Stunde + Minuten als Grundzahl: ósma trzydzieści (8:30), o szesnastej piętnaście (um 16:15).\n" +
+      "• von … bis = od … do + Genitiv: od ósmej do szesnastej.\n" +
+      "Datum:\n" +
+      "• Tag als männliche Ordnungszahl (wegen dzień), Monat im Genitiv: Dzisiaj jest pierwszy maja. = Heute ist der 1. Mai.\n" +
+      "• am … = Ordnungszahl im Genitiv: pierwszego maja = am 1. Mai. Frage: Którego dzisiaj jest? – Piątego.\n" +
+      "• Monate im Genitiv: stycznia, lutego, marca, kwietnia, maja, czerwca, lipca, sierpnia, września, października, listopada, grudnia.\n" +
+      "• im Monat = w + Lokativ: w styczniu, w lutym, w marcu, w kwietniu, w maju, w czerwcu, w lipcu, w sierpniu, we wrześniu, w październiku, w listopadzie, w grudniu.\n" +
+      "• am Wochentag = w + Akkusativ: w poniedziałek, we wtorek, w środę, w czwartek, w piątek, w sobotę, w niedzielę.\n" +
+      "• im Jahr = w + Lokativ der Ordnungszahl + roku: w 2026 roku (w dwa tysiące dwudziestym szóstym roku).\n" +
+      "• Tageszeiten: rano (morgens), w południe (mittags), po południu (nachmittags), wieczorem (abends), w nocy (nachts).",
     pairs: [
       { de: "Wie spät ist es?", pl: "Która godzina?" },
       { de: "Es ist ein Uhr.", pl: "Jest pierwsza." },
@@ -1517,16 +1815,24 @@ const lessons = {
       { de: "im Mai", pl: "w maju" },
       { de: "welches Datum ist heute?", pl: "którego dzisiaj jest?" },
       { de: "die Minute", pl: "minuta" },
-      { de: "die Halbe Stunde", pl: "pół godziny" }
+      { de: "die halbe Stunde", pl: "pół godziny" }
     ]
   },
   quantities_packaging: {
     labelDe: "Mengen & Verpackungen",
     rules:
-      "Mengen & Verpackungen:\n" +
-      "• Mengenangaben stehen mit dem Genitiv: kilo cukru, butelka wody, dużo mleka.\n" +
-      "• Zählbares nach Zahlen 2–4: Nominativ Plural (dwa jabłka), ab 5: Genitiv Plural (pięć jabłek).\n" +
-      "• 'dużo/mało/trochę' immer + Genitiv.",
+      "Mengen & Zahlen mit Nomen\n" +
+      "• Maß- und Verpackungswörter + Genitiv: kilo cukru, litr mleka, butelka wody, paczka herbaty, kawałek chleba, plasterek sera.\n" +
+      "• Unbestimmte Mengen + Genitiv: dużo, mało, trochę, wiele, kilka, ile – zählbar im Genitiv Plural (dużo jabłek), unzählbar im Genitiv Singular (trochę cukru).\n" +
+      "• Danach steht das Verb in der 3. Person Singular, in der Vergangenheit sächlich: Jest dużo ludzi. Było trochę wody.\n" +
+      "Zahl + Nomen:\n" +
+      "• 1: Nominativ Singular, die Zahl passt sich an: jeden dom, jedna butelka, jedno jabłko.\n" +
+      "• 2, 3, 4 (auch 22–24, 32–34 …, aber nicht 12–14): Nominativ Plural, Verb im Plural: dwa jabłka, trzy butelki, dwadzieścia dwa domy – Są dwa jabłka.\n" +
+      "• 5 bis 21 und alle übrigen Zahlen (25–31 …): Genitiv Plural, Verb in der 3. Person Singular (Vergangenheit sächlich): pięć jabłek, dwanaście butelek – Jest pięć jabłek. Było pięć jabłek.\n" +
+      "• dwa für männlich/sächlich, dwie für weiblich: dwa domy, dwa jabłka, dwie butelki.\n" +
+      "• Männliche Personen: dwaj/trzej/czterej + Nominativ Plural oder dwóch/trzech/czterech + Genitiv Plural: dwaj panowie = dwóch panów; ab 5: pięciu panów.\n" +
+      "• pół (halb) + Genitiv: pół kilo, pół litra, pół godziny; półtora (anderthalb): półtora kilo.\n" +
+      "• deko (= 10 g) ist an der Theke üblich: 20 deko sera = 200 g Käse.",
     pairs: [
       { de: "ein Kilo", pl: "kilogram" },
       { de: "ein halbes Kilo", pl: "pół kilo" },
@@ -1545,12 +1851,19 @@ const lessons = {
   phrases_shopping: {
     labelDe: "Sätze: Im Geschäft",
     rules:
-      "Nützliche Sätze beim Einkaufen. „poproszę“ (ich hätte gern) ist die höfliche Standardformel und wird mit dem Akkusativ benutzt.",
+      "Im Geschäft\n" +
+      "• Poproszę + Akkusativ = Ich hätte gern …: Poproszę kawę / chleb / dwa bilety.\n" +
+      "• Mengen mit Genitiv: Poproszę kilo jabłek / butelkę wody.\n" +
+      "• Preis: Ile kosztuje + Singular? – Ile kosztują + Plural? (Ile kosztują pomidory?) Ile to kosztuje? = Was kostet das?\n" +
+      "• Czy jest … ? (+ Nominativ) = Gibt es … / Haben Sie …? Antwort: Jest. oder Nie ma + Genitiv: Nie ma chleba.\n" +
+      "• Direkt an den Verkäufer: Czy ma Pan / Pani …? (+ Akkusativ) = Haben Sie …?\n" +
+      "• za + Adjektiv = zu …, das Adjektiv richtet sich nach dem Nomen: za drogi (m), za droga (f), za drogie (n, auch nach to).\n" +
+      "• Bezahlen mit Instrumental (womit?): płacić kartą / gotówką.",
     pairs: [
       { de: "Ich hätte gern …", pl: "Poproszę …" },
       { de: "Was kostet das?", pl: "Ile to kosztuje?" },
       { de: "Wie viel macht das?", pl: "Ile płacę?" },
-      { de: "Haben Sie …?", pl: "Czy jest …?" },
+      { de: "Gibt es …? (Haben Sie …?)", pl: "Czy jest …?" },
       { de: "Ich schaue nur.", pl: "Tylko oglądam." },
       { de: "Das ist zu teuer.", pl: "To jest za drogie." },
       { de: "Kann ich mit Karte zahlen?", pl: "Czy mogę zapłacić kartą?" },
@@ -1564,7 +1877,14 @@ const lessons = {
   phrases_doctor: {
     labelDe: "Sätze: Beim Arzt",
     rules:
-      "Nützliche Sätze beim Arzt. Für Schmerzen: 'boli mnie …' (… tut mir weh) + Körperteil im Nominativ.",
+      "Beim Arzt\n" +
+      "• Schmerzen: boli mnie + Körperteil im Nominativ (das Körperteil ist Subjekt): Boli mnie głowa. Plural: Bolą mnie plecy / nogi.\n" +
+      "• Andere Personen (Akkusativ): boli cię / go / ją / nas / was / ich: Boli go ząb. = Er hat Zahnschmerzen.\n" +
+      "• Befinden mit Adverb: Czuję się dobrze / źle. – Jak się czujesz? = Wie fühlst du dich?\n" +
+      "• Adjektive nach być richten sich nach dem Geschlecht: Jestem chory (m) / chora (f), przeziębiony / przeziębiona.\n" +
+      "• Symptome mit mieć + Akkusativ: Mam gorączkę, katar, kaszel.\n" +
+      "• potrzebować + Genitiv: Potrzebuję lekarza / lekarstwa / recepty.\n" +
+      "• beim Arzt = u lekarza (u + Genitiv), zum Arzt = do lekarza. Was fehlt Ihnen? = Co Panu / Pani dolega? (Dativ).",
     pairs: [
       { de: "Ich fühle mich schlecht.", pl: "Źle się czuję." },
       { de: "Ich bin krank.", pl: "Jestem chory." },
@@ -1583,7 +1903,15 @@ const lessons = {
   phrases_directions: {
     labelDe: "Sätze: Nach dem Weg fragen",
     rules:
-      "Nützliche Sätze für die Wegbeschreibung. 'Przepraszam' (Entschuldigung) leitet höflich die Frage ein.",
+      "Nach dem Weg fragen\n" +
+      "• Höflicher Einstieg: Przepraszam, … = Entschuldigung, …\n" +
+      "• Höfliche Aufforderung: Proszę + Infinitiv: Proszę iść prosto / skręcić w lewo.\n" +
+      "• Höfliche Frage mit Pan/Pani + 3. Person: Czy może Pan / Pani pokazać?\n" +
+      "• zu Fuß: iść / dojść; mit Fahrzeug: jechać / dojechać: Jak dojść / dojechać na dworzec?\n" +
+      "• wohin: do + Genitiv (do centrum, do hotelu) oder na + Akkusativ bei Plätzen, Bahnhof, Post, Veranstaltungen (na dworzec, na pocztę, na plac).\n" +
+      "• wo: w + Lokativ (w centrum) bzw. na + Lokativ (na dworcu, na poczcie, na skrzyżowaniu).\n" +
+      "• Richtung: w lewo / w prawo (nach links / rechts) – Lage: na lewo / po lewej (stronie) = links.\n" +
+      "• Zgubiłem się (m) / Zgubiłam się (f) = Ich habe mich verlaufen.",
     pairs: [
       { de: "Entschuldigung, wo ist …?", pl: "Przepraszam, gdzie jest …?" },
       { de: "Wie komme ich zum Bahnhof?", pl: "Jak dojść na dworzec?" },
@@ -1602,7 +1930,14 @@ const lessons = {
   phrases_phone: {
     labelDe: "Sätze: Telefonieren",
     rules:
-      "Nützliche Sätze am Telefon. 'Słucham?' (wörtlich „ich höre?“) ist die typische Meldung beim Abheben.",
+      "Am Telefon\n" +
+      "• Słucham? (wörtlich „ich höre“) = Ja, bitte? beim Abheben; auch: Wie bitte?\n" +
+      "• Z tej strony + Name im Nominativ: Z tej strony Anna. = Hier spricht Anna.\n" +
+      "• rozmawiać z + Instrumental: Czy mogę rozmawiać z panem Nowakiem?\n" +
+      "• dzwonić / zadzwonić do + Genitiv: Zadzwonię do ciebie / do pana. (zadzwonić ist vollendet → zadzwonię = Zukunft).\n" +
+      "• Jemand ist nicht da: nie ma + Genitiv: Nie ma go (er) / jej (sie) / szefa.\n" +
+      "• Höflich mit Pan/Pani: Jaki jest Pana / Pani numer? Nie słyszę Pana / Pani.\n" +
+      "• Do usłyszenia! = Auf Wiederhören! (wie Do widzenia!).",
     pairs: [
       { de: "Hallo? (am Telefon)", pl: "Halo?" },
       { de: "Ja bitte? / Ich höre.", pl: "Słucham?" },
@@ -1621,7 +1956,14 @@ const lessons = {
   adverbs_frequency: {
     labelDe: "Adverbien: Häufigkeit & Grad",
     rules:
-      "Adverbien der Häufigkeit und des Grades. Sie stehen meist direkt vor dem Verb oder Adjektiv, das sie näher bestimmen: 'zawsze pracuję', 'bardzo dobry'.",
+      "Adverbien der Häufigkeit und des Grades\n" +
+      "• Stellung: meist direkt vor dem Verb bzw. Adjektiv, das sie bestimmen: Zawsze pracuję. Bardzo dobry.\n" +
+      "• nigdy verlangt doppelte Verneinung: Nigdy nie piję kawy. (Objekt nach nie im Genitiv). Ebenso nic, nikt, nigdzie: Nic nie wiem.\n" +
+      "• za = zu (zu viel): za drogi, za dużo, za późno.\n" +
+      "• dość vor Adjektiv = ziemlich (dość dobry); vor Nomen = genug + Genitiv (dość czasu). wystarczająco = ausreichend (wystarczająco dużo).\n" +
+      "• Adverbien aus Adjektiven: -o oder -ie statt -y/-i: szybki → szybko, częsty → często, rzadki → rzadko, ładny → ładnie; unregelmäßig: dobry → dobrze, zły → źle.\n" +
+      "• Wie oft? = Jak często? – Antwort auch mit raz: raz w tygodniu (einmal pro Woche), dwa razy dziennie (zweimal täglich).\n" +
+      "• Gleichbedeutend: zwykle = zazwyczaj (gewöhnlich, meistens), czasami = czasem (manchmal).",
     pairs: [
       { de: "immer", pl: "zawsze" },
       { de: "meistens", pl: "zazwyczaj" },
@@ -2167,10 +2509,24 @@ const lessons = {
   duo_grammar_imperative: {
     labelDe: "Grammatik: Imperativ",
     rules:
-      "• Der Imperativ (du-Form) entsteht meist aus der 3. Person Plural Präsens ohne Endung: piją → pij!, mówią → mów!, robią → rób!\n" +
-      "• Verben auf -ać (-ają) bekommen -aj: słuchają → słuchaj!, czekają → czekaj!\n" +
-      "• Bei schwer sprechbaren Konsonanten kommt -ij/-yj dazu: zamkną → zamknij!\n" +
-      "• Unregelmäßig: bądź (sei!), weź (nimm!), idź (geh!), jedz (iss!). Vollendet = einmalige Handlung (zrób!), unvollendet = allgemein oder wiederholt (rób!).",
+      "Imperativ (tryb rozkazujący)\n" +
+      "du-Form – aus der 3. Person Plural Präsens (oni), Endung -ą weg:\n" +
+      "• robią → rób, mówią → mów, piszą → pisz, patrzą → patrz, idą → idź (Konsonant wird weich).\n" +
+      "• -ają → -aj: czytają → czytaj, słuchają → słuchaj, czekają → czekaj; -eją → -ej: rozumieją → rozumiej; -ują → -uj: kupują → kupuj, dziękują → dziękuj.\n" +
+      "• Bleibt eine schwer sprechbare Konsonantengruppe übrig, kommt -ij/-yj dazu: zamkną → zamknij, śpią → śpij.\n" +
+      "• Vor dem Endkonsonanten wird o oft zu ó: robią → rób, otworzą → otwórz, pomogą → pomóż.\n" +
+      "Weitere Personen:\n" +
+      "• wir („lass uns“): du-Form + -my: róbmy, czytajmy, chodźmy.\n" +
+      "• ihr: du-Form + -cie: róbcie, czytajcie, idźcie.\n" +
+      "• er/sie, sie (Pl.) und höfliches Sie: niech + 3. Person Präsens: Niech on zadzwoni. Niech Pan wejdzie. = Kommen Sie herein.\n" +
+      "• Höfliche Bitte: Proszę + Infinitiv: Proszę usiąść. = Setzen Sie sich bitte.\n" +
+      "Unregelmäßig:\n" +
+      "• być → bądź, mieć → miej, jeść → jedz, wiedzieć → wiedz, dać → daj, wziąć → weź, iść → idź, przyjść → przyjdź, powiedzieć → powiedz, przynieść → przynieś, stać → stój.\n" +
+      "Aspekt:\n" +
+      "• Konkrete, einmalige Aufforderung: meist vollendet: Zrób to! Zamknij okno!\n" +
+      "• Allgemein, wiederholt, „fang an / mach weiter“: unvollendet: Rób, co chcesz! Słuchaj!\n" +
+      "• Verbote fast immer unvollendet: Nie rób tego! Nie zamykaj okna! Vollendet verneint ist eine Warnung: Nie zgub kluczy! = Verlier bloß nicht die Schlüssel!\n" +
+      "• In den Paaren: (ipf.) = unvollendet, (pf.) = vollendet.",
     pairs: [
       { de: "sag!", pl: "powiedz" },
       { de: "geh!", pl: "idź" },
@@ -2352,12 +2708,24 @@ const lessons = {
   duo_grammar_comparative: {
     labelDe: "Grammatik: Komparativ",
     rules:
-      "• Komparativ der Adjektive: Stamm + -szy oder -ejszy (szybki → szybszy, młody → młodszy, łatwy → łatwiejszy).\n" +
-      "• Lange Adjektive: bardziej (mehr) + Grundform, z.B. bardziej interesujący.\n" +
-      "• Adverbien: -ej oder -iej (szybko → szybciej, wolno → wolniej, rzadko → rzadziej).\n" +
-      "• Unregelmäßig: dobry → lepszy (besser), dobrze → lepiej, źle → gorzej.",
+      "Komparativ (stopień wyższy)\n" +
+      "Adjektive:\n" +
+      "• -szy nach einem einzelnen Konsonanten: młody → młodszy, tani → tańszy, słaby → słabszy.\n" +
+      "• -ejszy nach einer Konsonantengruppe: łatwy → łatwiejszy, trudny → trudniejszy, ważny → ważniejszy, silny → silniejszy, wolny → wolniejszy.\n" +
+      "• -ki, -oki, -eki fallen weg: szybki → szybszy, krótki → krótszy, wysoki → wyższy, niski → niższy; g → ż: długi → dłuższy.\n" +
+      "• bardziej + Grundform bei Partizipien und vielen langen Adjektiven: bardziej zmęczony.\n" +
+      "• Unregelmäßig: dobry → lepszy, zły → gorszy, duży → większy, mały → mniejszy.\n" +
+      "Adverbien:\n" +
+      "• Endung -ej, meist mit weichem Konsonanten (-iej): wolno → wolniej, ciepło → cieplej, zimno → zimniej, wcześnie → wcześniej, często → częściej.\n" +
+      "• -ko, -oko, -eko fallen weg, oft mit Lautwechsel: szybko → szybciej, rzadko → rzadziej, blisko → bliżej, daleko → dalej, wysoko → wyżej, nisko → niżej.\n" +
+      "• Unregelmäßig: dobrze → lepiej, źle → gorzej, dużo → więcej, mało → mniej.\n" +
+      "Weiteres:\n" +
+      "• Superlativ jeweils mit naj-: najszybszy, najszybciej, najlepiej.\n" +
+      "• bardziej = mehr vor Adjektiv/Adverb (bardziej ciekawy); więcej = mehr an Menge, + Genitiv (więcej czasu).\n" +
+      "• „als“ = niż + gleicher Fall (szybszy niż ja) oder bei Adjektiven od + Genitiv (szybszy ode mnie).\n" +
+      "• Adjektiv steht beim Nomen und nach być (Jestem szybszy.), Adverb beim Verb (Biegam szybciej.).",
     pairs: [
-      { de: "mehr", pl: "bardziej" },
+      { de: "mehr (vor Adjektiv)", pl: "bardziej" },
       { de: "höher", pl: "wyższy" },
       { de: "niedriger", pl: "niższy" },
       { de: "jünger", pl: "młodszy" },
@@ -2372,9 +2740,9 @@ const lessons = {
       { de: "schneller", pl: "szybszy" },
       { de: "schwieriger", pl: "trudniejszy" },
       { de: "langsamer (Adv.)", pl: "wolniej" },
-      { de: "besser", pl: "lepiej" },
+      { de: "besser (Adv.)", pl: "lepiej" },
       { de: "schneller (Adv.)", pl: "szybciej" },
-      { de: "schlechter", pl: "gorzej" },
+      { de: "schlechter (Adv.)", pl: "gorzej" },
       { de: "früher", pl: "wcześniej" },
       { de: "näher", pl: "bliżej" },
       { de: "kälter", pl: "zimniej" },
@@ -2435,10 +2803,23 @@ const lessons = {
   duo_grammar_conditional: {
     labelDe: "Grammatik: Konditional",
     rules:
-      "• Bildung: Vergangenheitsform + Personalendung -bym (ich), -byś (du), -by (er/sie/es): pisał → pisałbym = ich würde schreiben.\n" +
-      "• Männlich -łbym (chciałbym), weiblich -łabym (chciałabym).\n" +
-      "• Die Endung kann auch vorn stehen: Ja bym chciał … = Ich würde gern …\n" +
-      "• gdyby = wenn (irreal): Gdybym miał czas, pomagałbym. = Wenn ich Zeit hätte, würde ich helfen.",
+      "Konditional (tryb przypuszczający)\n" +
+      "Bildung: l-Form (wie Vergangenheit, 3. Person) + by + Personalendung:\n" +
+      "• männlich: -łbym, -łbyś, -łby – pisałbym, pisałbyś, pisałby.\n" +
+      "• weiblich: -łabym, -łabyś, -łaby – pisałabym, pisałabyś, pisałaby.\n" +
+      "• sächlich: -łoby – pisałoby.\n" +
+      "• Plural männlich-persönlich: -libyśmy, -libyście, -liby – pisalibyśmy, pisalibyście, pisaliby.\n" +
+      "• Plural sonst: -łybyśmy, -łybyście, -łyby – pisałybyśmy, pisałybyście, pisałyby.\n" +
+      "• Lautwechsel wie in der Vergangenheit: miałbym – mielibyśmy, mógłbym – mogłabym, chciałbym – chcielibyśmy.\n" +
+      "Das bewegliche by:\n" +
+      "• by + Endung kann sich vom Verb lösen und an ein früheres Wort treten (dann getrennt geschrieben): Ja bym chciał … Chętnie bym pomógł.\n" +
+      "• Mit Konjunktionen verschmilzt es: gdyby (wenn, irreal), żeby/aby (damit, dass), jakby (als ob) + Endung: gdybym, żebyś.\n" +
+      "Verwendung:\n" +
+      "• Höflicher Wunsch oder Bitte: Chciałbym kawę. = Ich möchte einen Kaffee. Mógłbyś mi pomóc? = Könntest du mir helfen?\n" +
+      "• Irreale Bedingung: Gdybym miał czas, pomagałbym. = Wenn ich Zeit hätte, würde ich helfen. Im gdyby-Satz nur die l-Form, ohne zweites by.\n" +
+      "• Gilt auch für die Vergangenheit: Gdybym wiedział, pomógłbym. = Wenn ich es gewusst hätte, hätte ich geholfen.\n" +
+      "• Reale Bedingung dagegen mit jeśli/jeżeli + Indikativ: Jeśli będę miał czas, pomogę. = Wenn ich Zeit habe, helfe ich.\n" +
+      "• Wunsch, dass ein anderer etwas tut: żeby + l-Form: Chcę, żebyś przyszedł. = Ich will, dass du kommst.",
     pairs: [
       { de: "ich würde schreiben", pl: "pisałbym" },
       { de: "wenn (irreal)", pl: "gdyby" },
