@@ -1680,6 +1680,47 @@ const lessons = {
       { de: "Mein Gott!", pl: "Mój Boże!" }
     ]
   },
+  pronouns_cases: {
+    labelDe: "Personalpronomen in allen Fällen",
+    rules:
+      "Personalpronomen (zaimki osobowe)\n" +
+      "Reihenfolge: Nominativ | Genitiv | Dativ | Akkusativ | Instrumental | Lokativ\n" +
+      "• ja: ja | mnie | mi, mnie | mnie | mną | mnie\n" +
+      "• ty: ty | cię, ciebie | ci, tobie | cię, ciebie | tobą | tobie\n" +
+      "• on: on | go, jego, niego | mu, jemu, niemu | go, jego, niego | nim | nim\n" +
+      "• ona: ona | jej, niej | jej, niej | ją, nią | nią | niej\n" +
+      "• ono: ono | go, jego, niego | mu, jemu, niemu | je, nie | nim | nim\n" +
+      "• my: my | nas | nam | nas | nami | nas\n" +
+      "• wy: wy | was | wam | was | wami | was\n" +
+      "• oni (mit Mann): oni | ich, nich | im, nim | ich, nich | nimi | nich\n" +
+      "• one (sonst): one | ich, nich | im, nim | je, nie | nimi | nich\n" +
+      "Kurz, lang oder mit n-?\n" +
+      "• Kurzformen (cię, ci, mi, go, mu) sind unbetont: im Normalfall, nie am Satzanfang: Widzę cię. Daj mi to!\n" +
+      "• Langformen (ciebie, tobie, mnie, jego, jemu) bei Betonung, Gegensatz und am Satzanfang: Ciebie kocham, nie jego.\n" +
+      "• Nach Präpositionen: Langform, und bei on/ona/ono/oni/one die Form mit n-: bez ciebie, dla niego, z nią, o nich, do nich.\n" +
+      "• Lokativ steht nur nach Präposition, darum gibt es dort nur n-Formen: o nim, o niej, o nich.\n" +
+      "• Vor mnie und mną wird aus der Präposition oft eine Form mit -e: ze mną, beze mnie, ode mnie, przede mną, nade mną, pode mną.\n" +
+      "Weiteres:\n" +
+      "• Das Subjektpronomen fällt meist weg (Mam czas.), außer bei Betonung (Ja mam czas, a ty nie.).\n" +
+      "• Höfliches Sie wird wie ein Nomen gebeugt: Pan – pana, panu, pana, panem, panu; Pani – pani, pani, panią, panią, pani; Państwo – państwa, państwu, państwa, państwem, państwu.\n" +
+      "• Reflexiv „sich“ für alle Personen: się / siebie, sobie, sobą (→ Reflexive Verben).",
+    pairs: [
+      { de: "Ich sehe dich.", pl: "Widzę cię." },
+      { de: "Ich kenne ihn.", pl: "Znam go." },
+      { de: "Ich liebe sie (Sg.).", pl: "Kocham ją." },
+      { de: "Ich sehe sie (Pl., Dinge).", pl: "Widzę je." },
+      { de: "Gib mir das!", pl: "Daj mi to!" },
+      { de: "Ich helfe ihm.", pl: "Pomagam mu." },
+      { de: "Ich danke euch.", pl: "Dziękuję wam." },
+      { de: "Komm mit mir!", pl: "Chodź ze mną!" },
+      { de: "ohne dich", pl: "bez ciebie" },
+      { de: "für ihn", pl: "dla niego" },
+      { de: "mit ihr", pl: "z nią" },
+      { de: "über sie (Pl.)", pl: "o nich" },
+      { de: "bei uns", pl: "u nas" },
+      { de: "Ich rufe sie (Pl.) an.", pl: "Dzwonię do nich." }
+    ]
+  },
   verb_aspect: {
     labelDe: "Verbaspekt (unvollendet/vollendet)",
     rules:
@@ -1980,6 +2021,242 @@ const lessons = {
     ]
   },
 
+  motion_verbs: {
+    labelDe: "Verben der Bewegung",
+    rules:
+      "Verben der Bewegung (czasowniki ruchu)\n" +
+      "Zu Fuß oder mit Fahrzeug?\n" +
+      "• iść / chodzić = zu Fuß gehen; jechać / jeździć = fahren (Auto, Bus, Zug, Rad, auch Reiten). Für Reisen in andere Orte immer jechać: Jadę do Krakowa.\n" +
+      "• Ebenso gepaart: lecieć / latać (fliegen), płynąć / pływać (schwimmen, mit dem Schiff fahren), biec / biegać (laufen), nieść / nosić (tragen), wieźć / wozić (im Fahrzeug bringen).\n" +
+      "Bestimmt oder unbestimmt?\n" +
+      "• bestimmt (iść, jechać, lecieć …): jetzt gerade, in eine Richtung, ein konkreter Weg: Idę do sklepu. = Ich gehe (gerade) zum Laden.\n" +
+      "• unbestimmt (chodzić, jeździć, latać …): regelmäßig, hin und zurück, ohne Richtung oder als Fähigkeit: Codziennie chodzę do pracy. Dziecko już chodzi. = Das Kind kann schon laufen.\n" +
+      "• Präsens: idę, idziesz, idą – chodzę, chodzisz, chodzą – jadę, jedziesz, jadą – jeżdżę, jeździsz, jeżdżą – lecę, lecisz, lecą – latam, latasz, latają.\n" +
+      "• Vergangenheit: szedłem/szłam, szedł, szła, szli – jechałem/jechałam – chodziłem, jeździłem.\n" +
+      "Mit Vorsilben:\n" +
+      "• Vorsilbe + bestimmtes Verb = vollendet: pójść, przyjść, wyjść, wejść; pojechać, przyjechać, wyjechać, wjechać. Aus iść wird -jść.\n" +
+      "• Vorsilbe + unbestimmtes Verb = unvollendeter Partner: przychodzić, wychodzić, wchodzić; przyjeżdżać, wyjeżdżać, wjeżdżać.\n" +
+      "• po- = los-, hin- (pójdę = ich werde hingehen); przy- = an-, her- (+ do: przyjść do domu); wy- = hinaus, weg-, verreisen (+ z: wyjść z domu); w(e)- = hinein (+ do: wejść do sklepu); do- = bis hin, erreichen (+ do: dojść do dworca); prze- = über, durch (+ przez: przejść przez ulicę); od- = weg (+ od: odejść od okna); z(e)- = herunter (+ z: zejść ze schodów); ob- = herum (obejść dom).\n" +
+      "• Vergangenheit der Vorsilbenverben: przyszedłem/przyszłam, wyszedł, weszła, poszli; przyjechałem, wyjechała.\n" +
+      "Zukunft & Ziel:\n" +
+      "• Zukunft meist vollendet: pójdę, pojadę, przyjdę, polecę = ich werde gehen, fahren, kommen, fliegen.\n" +
+      "• Ziel: do + Genitiv (do pracy, do Polski) oder na + Akkusativ (na dworzec, na koncert); Verkehrsmittel im Instrumental: jechać autobusem, pociągiem.",
+    pairs: [
+      { de: "ich gehe (gerade, zu Fuß)", pl: "idę" },
+      { de: "ich gehe (regelmäßig)", pl: "chodzę" },
+      { de: "ich fahre (gerade)", pl: "jadę" },
+      { de: "ich fahre (regelmäßig)", pl: "jeżdżę" },
+      { de: "ich fliege (gerade)", pl: "lecę" },
+      { de: "ich fliege (oft)", pl: "latam" },
+      { de: "losfahren, hinfahren (pf.)", pl: "pojechać" },
+      { de: "kommen (zu Fuß, pf.)", pl: "przyjść" },
+      { de: "hinausgehen (pf.)", pl: "wyjść" },
+      { de: "hineingehen (pf.)", pl: "wejść" },
+      { de: "überqueren (pf.)", pl: "przejść" },
+      { de: "ankommen (Fahrzeug, pf.)", pl: "przyjechać" },
+      { de: "wegfahren, verreisen (pf.)", pl: "wyjechać" },
+      { de: "Ich gehe jeden Tag zur Arbeit.", pl: "Codziennie chodzę do pracy." },
+      { de: "Morgen fahre ich nach Krakau.", pl: "Jutro jadę do Krakowa." }
+    ]
+  },
+  place_directions: {
+    labelDe: "Wo? Wohin? Woher?",
+    rules:
+      "Wo? Wohin? Woher? (gdzie? dokąd? skąd?)\n" +
+      "• Polnisch unterscheidet Ort, Ziel und Herkunft durch Präposition UND Fall. Die Präposition hängt vom Ort ab.\n" +
+      "Gebäude, Räume, Städte, die meisten Länder:\n" +
+      "• wo: w + Lokativ – wohin: do + Genitiv – woher: z + Genitiv: w szkole – do szkoły – ze szkoły; w Polsce – do Polski – z Polski; w Niemczech – do Niemiec – z Niemiec.\n" +
+      "Plätze, offene Flächen, Veranstaltungen, Bahnhof, Post, Uni, Inseln, Himmelsrichtungen:\n" +
+      "• wo: na + Lokativ – wohin: na + Akkusativ – woher: z + Genitiv: na dworcu – na dworzec – z dworca; na koncercie – na koncert – z koncertu; na północy – na północ – z północy.\n" +
+      "• auch einige Länder: na Węgrzech, na Ukrainie, na Litwie, na Słowacji – na Węgry, na Ukrainę – z Węgier, z Ukrainy.\n" +
+      "Personen:\n" +
+      "• wo: u + Genitiv – wohin: do + Genitiv – woher: od + Genitiv: u lekarza – do lekarza – od lekarza; u babci – do babci – od babci.\n" +
+      "Gewässer und Berge:\n" +
+      "• am Wasser: nad + Instrumental – ans Wasser: nad + Akkusativ – vom Wasser: znad + Genitiv: nad morzem – nad morze – znad morza.\n" +
+      "• Gebirge: w górach – w góry (Akkusativ!) – z gór.\n" +
+      "Lage mit nad, pod, przed, za, między:\n" +
+      "• wo: + Instrumental (pod stołem) – wohin: + Akkusativ (pod stół) – woher: spod, znad, sprzed, zza + Genitiv (spod stołu, zza domu).\n" +
+      "Merke:\n" +
+      "• zu Hause – nach Hause – von zu Hause: w domu – do domu – z domu.\n" +
+      "• Herkunft: Jestem z Niemiec. = Ich komme aus Deutschland.\n" +
+      "• Fragewörter: gdzie? = wo? (umgangssprachlich auch wohin?), dokąd? = wohin?, skąd? = woher?",
+    pairs: [
+      { de: "in Deutschland (wo)", pl: "w Niemczech" },
+      { de: "nach Deutschland", pl: "do Niemiec" },
+      { de: "aus Deutschland", pl: "z Niemiec" },
+      { de: "auf dem Bahnhof (wo)", pl: "na dworcu" },
+      { de: "zum Bahnhof", pl: "na dworzec" },
+      { de: "vom Bahnhof", pl: "z dworca" },
+      { de: "beim Arzt (wo)", pl: "u lekarza" },
+      { de: "zum Arzt", pl: "do lekarza" },
+      { de: "am Meer (wo)", pl: "nad morzem" },
+      { de: "ans Meer", pl: "nad morze" },
+      { de: "in den Bergen", pl: "w górach" },
+      { de: "in die Berge", pl: "w góry" },
+      { de: "in Ungarn", pl: "na Węgrzech" },
+      { de: "unter dem Tisch (wo)", pl: "pod stołem" },
+      { de: "unter den Tisch (wohin)", pl: "pod stół" },
+      { de: "unter dem Tisch hervor", pl: "spod stołu" }
+    ]
+  },
+  position_verbs: {
+    labelDe: "Stehen, liegen, sitzen – stellen, legen, setzen",
+    rules:
+      "Lage und Platzieren\n" +
+      "Zustand (wo?) – unvollendet, kein Objekt:\n" +
+      "• stać (stehen): stoję, stoisz, stoją – leżeć (liegen): leżę, leżysz, leżą – siedzieć (sitzen): siedzę, siedzisz, siedzą – wisieć (hängen): wiszę, wisisz, wiszą.\n" +
+      "Etwas irgendwohin bringen (unvollendet / vollendet):\n" +
+      "• stellen: stawiać / postawić – legen: kłaść / położyć – setzen (jemanden): sadzać / posadzić – hängen: wieszać / powiesić – hineinstecken, hineinlegen: wkładać / włożyć.\n" +
+      "• Präsens kłaść: kładę, kładziesz, kładą; Zukunft położyć: położę, położysz.\n" +
+      "Sich hinstellen, hinlegen, hinsetzen (unvollendet / vollendet):\n" +
+      "• siadać / usiąść (sich setzen): usiądę, usiądziesz; usiadłem/usiadłam.\n" +
+      "• kłaść się / położyć się (sich hinlegen).\n" +
+      "• stawać / stanąć (sich hinstellen, stehen bleiben): stanę; stanąłem/stanęłam.\n" +
+      "Fälle:\n" +
+      "• Anders als im Deutschen steht nach na und w meist auch beim Platzieren der Lokativ: Połóż książkę na stole. Powieś kurtkę na wieszaku. Usiądź na krześle.\n" +
+      "• hinein in etwas: do + Genitiv: Włóż to do szafy. Wkładam mleko do lodówki.\n" +
+      "• Zustand: Książka leży na stole. Kurtka wisi w szafie. Kot siedzi pod stołem.\n" +
+      "• Höflich: Proszę usiąść. = Setzen Sie sich bitte. Imperativ: usiądź!, połóż!, postaw!",
+    pairs: [
+      { de: "Ich stehe.", pl: "Stoję." },
+      { de: "Es liegt dort.", pl: "Leży tam." },
+      { de: "Wir sitzen.", pl: "Siedzimy." },
+      { de: "hängen (Zustand)", pl: "wisieć" },
+      { de: "stellen (ipf.)", pl: "stawiać" },
+      { de: "stellen (pf.)", pl: "postawić" },
+      { de: "legen (ipf.)", pl: "kłaść" },
+      { de: "legen (pf.)", pl: "położyć" },
+      { de: "sich setzen (pf.)", pl: "usiąść" },
+      { de: "sich hinlegen (pf.)", pl: "położyć się" },
+      { de: "aufhängen (pf.)", pl: "powiesić" },
+      { de: "hineinlegen (pf.)", pl: "włożyć" },
+      { de: "Das Buch liegt auf dem Tisch.", pl: "Książka leży na stole." },
+      { de: "Setzen Sie sich bitte.", pl: "Proszę usiąść." }
+    ]
+  },
+  relative_clauses: {
+    labelDe: "Nebensätze & który",
+    rules:
+      "Nebensätze (zdania podrzędne)\n" +
+      "Relativpronomen który (der, die, das / welcher):\n" +
+      "• Geschlecht und Zahl kommen vom Bezugswort, der Fall von der Rolle im Nebensatz: kobieta, którą znam (Akk., weil: znam ją).\n" +
+      "• Gebeugt wie ein Adjektiv (m | f | n):\n" +
+      "• Nominativ: który | która | które – Plural: którzy (männlich-persönlich) | które (sonst)\n" +
+      "• Genitiv: którego | której | którego – Plural: których\n" +
+      "• Dativ: któremu | której | któremu – Plural: którym\n" +
+      "• Akkusativ: którego (belebt) / który (unbelebt) | którą | które – Plural: których (männlich-persönlich) | które (sonst)\n" +
+      "• Instrumental: którym | którą | którym – Plural: którymi\n" +
+      "• Lokativ: (o) którym | której | którym – Plural: których\n" +
+      "• Die Präposition steht vor który: dom, w którym mieszkam; kolega, z którym pracuję.\n" +
+      "• „dessen/deren“ = Genitiv von który: mężczyzna, którego samochód stoi tu.\n" +
+      "Andere Relativwörter:\n" +
+      "• co nach wszystko, to, coś, nic: wszystko, co mam; to, co mówisz.\n" +
+      "• kto nach ten, każdy, ktoś: Ten, kto pyta, nie błądzi.\n" +
+      "• gdzie statt w którym: miasto, gdzie mieszkam.\n" +
+      "Konjunktionen:\n" +
+      "• że (dass), czy (ob), bo / ponieważ (weil), jeśli / jeżeli (wenn, falls), kiedy / gdy (wenn, als), chociaż (obwohl), zanim (bevor), dopóki (solange), więc (also).\n" +
+      "• żeby / aby (damit, dass) + l-Form bei anderem Subjekt: Chcę, żebyś przyszedł; + Infinitiv bei gleichem Subjekt: Uczę się, żeby pracować w Polsce.\n" +
+      "• Indirekte Fragen mit czy oder Fragewort: Nie wiem, czy przyjdzie. Powiedz, gdzie mieszkasz.\n" +
+      "Wortstellung & Komma:\n" +
+      "• Vor jedem Nebensatz steht ein Komma (auch vor że, który, żeby).\n" +
+      "• Das Verb wandert NICHT ans Ende – die Wortstellung ist wie im Hauptsatz: Wiem, że on ma czas. = Ich weiß, dass er Zeit hat.",
+    pairs: [
+      { de: "der Mann, der hier wohnt", pl: "mężczyzna, który tu mieszka" },
+      { de: "die Frau, die ich kenne", pl: "kobieta, którą znam" },
+      { de: "das Haus, in dem ich wohne", pl: "dom, w którym mieszkam" },
+      { de: "der Kollege, mit dem ich arbeite", pl: "kolega, z którym pracuję" },
+      { de: "die Leute, die hier arbeiten", pl: "ludzie, którzy tu pracują" },
+      { de: "die Bücher, die ich lese", pl: "książki, które czytam" },
+      { de: "der Mann, dessen Auto hier steht", pl: "mężczyzna, którego samochód tu stoi" },
+      { de: "alles, was ich habe", pl: "wszystko, co mam" },
+      { de: "Ich weiß, dass …", pl: "Wiem, że …" },
+      { de: "Ich weiß nicht, ob …", pl: "Nie wiem, czy …" },
+      { de: "bevor", pl: "zanim" },
+      { de: "Ich will, dass du kommst.", pl: "Chcę, żebyś przyszedł." }
+    ]
+  },
+  numbers_large: {
+    labelDe: "Zahlen ab 100, Jahre & Sammelzahlen",
+    rules:
+      "Große Zahlen, Jahreszahlen, Sammelzahlen\n" +
+      "Hunderter und Tausender:\n" +
+      "• sto, dwieście, trzysta, czterysta, pięćset, sześćset, siedemset, osiemset, dziewięćset.\n" +
+      "• tysiąc wird wie ein Nomen gezählt: tysiąc, dwa/trzy/cztery tysiące, pięć tysięcy; ebenso milion: dwa miliony, pięć milionów; miliard.\n" +
+      "• Zusammengesetzte Zahlen werden ohne „und“ aneinandergereiht, die Einer kommen zuletzt: 1999 = tysiąc dziewięćset dziewięćdziesiąt dziewięć; 2026 = dwa tysiące dwadzieścia sześć.\n" +
+      "Zahl + Nomen (die letzte Zahl entscheidet):\n" +
+      "• endet auf 2, 3, 4 (nicht 12–14): Nominativ Plural: dwadzieścia dwa złote, sto trzy domy.\n" +
+      "• alle übrigen: Genitiv Plural: sto pięć złotych, tysiąc złotych.\n" +
+      "• Achtung: am Ende einer längeren Zahl bleibt jeden unverändert und das Nomen steht im Genitiv Plural: dwadzieścia jeden złotych, sto jeden dni.\n" +
+      "• Geld: 1 złoty, 2–4 złote, 5+ złotych; 1 grosz, 2–4 grosze, 5+ groszy.\n" +
+      "Jahreszahlen:\n" +
+      "• Nur die letzte Stelle ist Ordnungszahl: rok dwa tysiące dwudziesty szósty.\n" +
+      "• im Jahr …: w + Lokativ + roku: w tysiąc dziewięćset osiemdziesiątym dziewiątym roku (1989).\n" +
+      "• in den 90ern: w latach dziewięćdziesiątych.\n" +
+      "• Ordnungszahlen: setny (100.), dwusetny (200.), tysięczny (1000.).\n" +
+      "Sammelzahlen (dwoje, troje, czworo, pięcioro …):\n" +
+      "• für gemischte Gruppen aus Männern und Frauen, für Kinder und Jungtiere (Wörter auf -ę) und für Wörter, die es nur im Plural gibt: dwoje dzieci, troje studentów (gemischt), czworo drzwi.\n" +
+      "• immer + Genitiv Plural, Verb in der 3. Person Singular (Vergangenheit sächlich): Dwoje dzieci bawiło się.\n" +
+      "• beide: oboje (gemischt, Paar), obaj (zwei Männer), oba (m/n Dinge), obie (f).\n" +
+      "Brüche:\n" +
+      "• pół (halb), półtora (anderthalb), ćwierć (Viertel) + Genitiv: pół godziny, półtorej godziny (f!).\n" +
+      "• dwa i pół = zweieinhalb; Dezimalzahl: 2,5 = dwa przecinek pięć.",
+    pairs: [
+      { de: "dreihundert", pl: "trzysta" },
+      { de: "vierhundert", pl: "czterysta" },
+      { de: "sechshundert", pl: "sześćset" },
+      { de: "neunhundert", pl: "dziewięćset" },
+      { de: "zweitausend", pl: "dwa tysiące" },
+      { de: "fünftausend", pl: "pięć tysięcy" },
+      { de: "zwei Millionen", pl: "dwa miliony" },
+      { de: "21 Złoty", pl: "dwadzieścia jeden złotych" },
+      { de: "22 Złoty", pl: "dwadzieścia dwa złote" },
+      { de: "in den 90ern", pl: "w latach dziewięćdziesiątych" },
+      { de: "zwei Kinder", pl: "dwoje dzieci" },
+      { de: "drei Kinder", pl: "troje dzieci" },
+      { de: "anderthalb", pl: "półtora" },
+      { de: "zweieinhalb", pl: "dwa i pół" }
+    ]
+  },
+  b1_participles: {
+    labelDe: "B1: Partizipien & unpersönliche Formen",
+    rules:
+      "Partizipien und unpersönliche Formen (B1)\n" +
+      "Aktivpartizip (-ący) – „lesend“:\n" +
+      "• Nur von unvollendeten Verben: 3. Person Plural Präsens + -cy, -ca, -ce: czytają → czytający, pracują → pracujący, idą → idący.\n" +
+      "• Wird wie ein Adjektiv gebeugt: pracująca kobieta, z czytającym dzieckiem.\n" +
+      "Passivpartizip (-ny, -ony, -ty) – „geschrieben“:\n" +
+      "• -ać → -any: napisać → napisany, czytać → czytany.\n" +
+      "• -ić, -yć, -eć → -ony, mit Lautwechsel: zrobić → zrobiony, zapłacić → zapłacony, zaprosić → zaproszony, widzieć → widziany.\n" +
+      "• -nąć → -nięty: zamknąć → zamknięty; viele kurze Verben → -ty: otworzyć → otwarty, umyć → umyty, wziąć → wzięty, zacząć → zaczęty.\n" +
+      "• Wie ein Adjektiv gebeugt; männlich-persönlich Plural mit Lautwechsel: zaproszeni goście.\n" +
+      "Passiv:\n" +
+      "• Zustand: być + Passivpartizip: Sklep jest zamknięty.\n" +
+      "• Vorgang: zostać (vollendet) / być (unvollendet) + Passivpartizip: Dom został zbudowany w 1990 roku.\n" +
+      "• Der Handelnde: przez + Akkusativ: zbudowany przez mojego dziadka.\n" +
+      "Adverbialpartizipien (unveränderlich):\n" +
+      "• gleichzeitig, nur unvollendet: 3. Person Plural + -c: czytają → czytając, idą → idąc = beim Lesen, im Gehen. Czytając, piję kawę.\n" +
+      "• vorzeitig, nur vollendet: -wszy / -łszy: zrobiwszy, przeczytawszy, wszedłszy = nachdem … (gehoben, schriftlich).\n" +
+      "• Das Subjekt beider Satzteile muss dasselbe sein.\n" +
+      "Unpersönliche Formen:\n" +
+      "• -no / -to = „man hat …“ (nur Vergangenheit, kein Subjekt, Objekt im Akkusativ): zrobiono, otwarto, zbudowano: Zbudowano nowy most.\n" +
+      "• się + 3. Person Singular = man (alle Zeiten): Tu się nie pali. Jak się to pisze?\n" +
+      "• można (man kann), trzeba (man muss), wolno / nie wolno (man darf / nicht), warto (es lohnt sich) + Infinitiv: Warto to zobaczyć.",
+    pairs: [
+      { de: "lesend", pl: "czytający" },
+      { de: "arbeitend", pl: "pracujący" },
+      { de: "geschrieben", pl: "napisany" },
+      { de: "gemacht", pl: "zrobiony" },
+      { de: "bezahlt", pl: "zapłacony" },
+      { de: "eingeladen", pl: "zaproszony" },
+      { de: "beim Lesen (während)", pl: "czytając" },
+      { de: "im Gehen, unterwegs", pl: "idąc" },
+      { de: "man hat gemacht", pl: "zrobiono" },
+      { de: "Man hat eine Brücke gebaut.", pl: "Zbudowano most." },
+      { de: "Das Haus wurde gebaut.", pl: "Dom został zbudowany." },
+      { de: "Der Laden ist geschlossen.", pl: "Sklep jest zamknięty." },
+      { de: "es lohnt sich", pl: "warto" }
+    ]
+  },
   a2_review_mixed: {
     labelDe: "A2 Wiederholung (gemischt)",
     pairs: [
