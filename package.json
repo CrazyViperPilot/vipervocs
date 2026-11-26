@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "ViperVocs PWA",
   "scripts": {
-    "dev": "npx serve ."
+    "dev": "npx serve .",
+    "check": "node scripts/check-course.mjs"
   },
   "author": "",
   "license": "ISC"

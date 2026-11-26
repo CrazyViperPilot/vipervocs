@@ -595,3 +595,285 @@ body {
   font-size: 1.1rem;
   opacity: 0.8;
 }
+
+/* Elements with display set in CSS still have to disappear when hidden. */
+[hidden] {
+  display: none !important;
+}
+
+/* Grammar course (js/course.js) */
+.course {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 32px;
+  padding: 0 24px;
+}
+
+.course-card {
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-card-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.course-tag {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.course-tag-build {
+  background-color: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.course-title {
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.course-text {
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.course-examples {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.course-example {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-card-border);
+  border-radius: 12px;
+  background-color: var(--color-surface-var);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.course-example::before {
+  content: "🔊";
+  float: right;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.course-pl {
+  font-weight: 600;
+}
+
+.course-de {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.course-prompt {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+}
+
+.course-sentence {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.course-gap {
+  display: inline-block;
+  min-width: 4em;
+  border-bottom: 2.5px solid var(--color-accent);
+}
+
+.course-input {
+  width: 9em;
+  max-width: 100%;
+  padding: 4px 8px;
+  border: none;
+  border-bottom: 2.5px solid var(--color-accent);
+  background-color: var(--color-accent-soft);
+  border-radius: 8px 8px 0 0;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.course-input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.course-input.correct, .course-line.correct {
+  border-color: var(--color-success);
+  background-color: var(--color-success-soft);
+}
+
+.course-input.wrong, .course-line.wrong {
+  border-color: var(--color-error);
+  background-color: var(--color-error-soft);
+}
+
+.course-hint {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.course-chars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.course-char {
+  min-width: 40px;
+  min-height: 40px;
+  border: 1.5px solid var(--color-card-border);
+  border-radius: 10px;
+  background-color: var(--color-surface-var);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.course-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.course-options-wide {
+  grid-template-columns: 1fr;
+}
+
+.course-option, .course-tile {
+  border: 1.5px solid var(--color-card-border);
+  border-radius: 14px;
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.course-option {
+  min-height: 52px;
+  padding: 10px 12px;
+}
+
+.course-option.correct {
+  border-color: var(--color-success);
+  background-color: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.course-option.wrong {
+  border-color: var(--color-error);
+  background-color: var(--color-error-soft);
+  color: var(--color-error);
+}
+
+.course-option:disabled, .course-tile:disabled {
+  cursor: default;
+}
+
+.course-line, .course-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 56px;
+  padding: 8px;
+  border-radius: 14px;
+}
+
+.course-line {
+  border: 2px dashed var(--color-card-border);
+}
+
+.course-tile {
+  padding: 8px 14px;
+}
+
+.course-feedback {
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.course-feedback.ok {
+  background-color: var(--color-success-soft);
+}
+
+.course-feedback.fail {
+  background-color: var(--color-error-soft);
+}
+
+.course-feedback-title {
+  font-weight: 700;
+}
+
+.course-feedback.ok .course-feedback-title {
+  color: var(--color-success);
+}
+
+.course-feedback.fail .course-feedback-title {
+  color: var(--color-error);
+}
+
+.course-feedback-pl {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.course-why {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.course-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.course-done .stats {
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .course {
+    padding: 0 16px;
+  }
+
+  .course-card {
+    padding: 16px;
+  }
+
+  .course-actions .btn-primary, .course-actions .btn-secondary {
+    flex: 1;
+  }
+}

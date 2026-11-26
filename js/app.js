@@ -58,13 +58,24 @@ document.addEventListener("DOMContentLoaded", () => {
   quick.value = QUICK_ROUND;
   quick.textContent = "⚡ Schnellrunde (fällige Wörter)";
   lessonSelect.appendChild(quick);
-  if (typeof lessons !== "undefined") {
-    for (const [key, data] of Object.entries(lessons)) {
+
+  function addGroup(label, entries) {
+    const group = document.createElement("optgroup");
+    group.label = label;
+    for (const [value, text] of entries) {
       const option = document.createElement("option");
-      option.value = key;
-      option.textContent = data.labelDe;
-      lessonSelect.appendChild(option);
+      option.value = value;
+      option.textContent = text;
+      group.appendChild(option);
     }
+    lessonSelect.appendChild(group);
+  }
+  // Grammar course: understand, practise and apply (js/course.js).
+  if (typeof course !== "undefined") {
+    addGroup("📘 Grammatik-Kurs", Object.keys(course).map(key => [COURSE_PREFIX + key, courseLabel(key)]));
+  }
+  if (typeof lessons !== "undefined") {
+    addGroup("🃏 Vokabeln & Regeln", Object.entries(lessons).map(([key, data]) => [key, data.labelDe]));
   }
 
   lessonSelect.value = "";
@@ -73,7 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function startCurrentLesson() {
     if (!lessonSelect.value) return;
     if (startHint) startHint.hidden = true;
-    window.initGame(lessonSelect.value, languageSelect.value);
+    if (lessonSelect.value.startsWith(COURSE_PREFIX)) {
+      window.startCourse(lessonSelect.value.slice(COURSE_PREFIX.length));
+    } else {
+      window.initGame(lessonSelect.value, languageSelect.value);
+    }
   }
 
   lessonSelect.addEventListener("change", () => {

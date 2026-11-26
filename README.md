@@ -7,6 +7,7 @@ Läuft als PWA im Browser (auch offline) und als `/vocs`-Skill in Claude.
 
 - **⚡ Schnellrunde** (Standard): 10 Paare über alle Lektionen. Zuerst die heute fälligen Wörter, dann ein paar neue aus den nächsten Lektionen.
 - **Lektionen**: 100+ Themen, teils mit Grammatik-Regeln unter den Karten.
+- **📘 Grammatik-Kurs**: 22 Lektionen in kleinen Schritten – *Verstehen* (eine Regel mit Beispielen), *Üben* (Form wählen oder eintippen, mit Leiste für ą ę ł …) und *Anwenden* (Satz aus Bausteinen bauen). Nach jeder Antwort kommt eine kurze Begründung, falsche Aufgaben kommen am Ende der Lektion wieder. Abgeschlossene Lektionen bekommen ein ✓ (gespeichert im Browser).
 - Matching-Spiel mit 5 Paaren. Gelöste Paare werden an Ort und Stelle ersetzt; falsch zugeordnete Wörter kommen 2 Paare später wieder und müssen fehlerfrei gelöst werden.
 - 🔊 liest das polnische Wort beim Treffer vor (Browser-Sprachausgabe, `pl-PL`).
 - Die zuletzt gewählte Lektion wird gemerkt.
@@ -50,6 +51,9 @@ Für claude.ai auf dem Handy: `mobile-skill/vocs/SKILL.md`.
 | Datei | Inhalt |
 |---|---|
 | `js/vocabulary.js` | alle Lektionen (`lessons`) |
+| `js/course-data.js` | Grammatik-Kurs (`course`): Schritte learn / choose / type / build |
+| `js/course.js` | Ablauf des Grammatik-Kurses |
+| `scripts/check-course.mjs` | prüft Kurs und Vokabeln: `npm run check` |
 | `js/srs.js` | Leitner-Fächer, Wortauswahl, Statistik (Browser + Node) |
 | `js/stats.js` | Lernstand im Browser, Abgleich mit dem Server |
 | `js/game.js` | Matching-Spiel |

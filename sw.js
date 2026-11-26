@@ -1,6 +1,6 @@
 // Bump when the list below changes. Content updates arrive without a bump:
 // files come from the cache right away and are refreshed in the background.
-const CACHE_NAME = 'vipervocs-v9';
+const CACHE_NAME = 'vipervocs-v10';
 const urlsToCache = [
   './',
   './index.html',
@@ -11,6 +11,8 @@ const urlsToCache = [
   './js/stats.js',
   './js/vocabulary.js',
   './js/game.js',
+  './js/course-data.js',
+  './js/course.js',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
   './assets/fonts/Outfit/fonts.css',

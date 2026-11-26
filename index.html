@@ -54,7 +54,10 @@
         </div>
     </main>
 
-    <!-- Grammatik-Regeln (nur bei Verb-Lektionen sichtbar) -->
+    <!-- Grammatik-Kurs: Verstehen, Üben, Anwenden (js/course.js) -->
+    <main id="course" class="course" hidden></main>
+
+    <!-- Grammatik-Regeln (nur bei Lektionen mit Regeltext sichtbar) -->
     <section id="lesson-rules" class="lesson-rules" hidden>
         <button type="button" id="rules-toggle" class="rules-toggle" aria-expanded="true" aria-controls="rules-body">
             <span class="rules-title">📘 Grammatik: So wird die Form gebildet</span>
@@ -113,6 +116,8 @@
     <script src="js/stats.js"></script>
     <script src="js/vocabulary.js"></script>
     <script src="js/game.js"></script>
+    <script src="js/course-data.js"></script>
+    <script src="js/course.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

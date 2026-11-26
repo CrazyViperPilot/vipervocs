@@ -53,6 +53,11 @@ function initGame(lessonKey = QUICK_ROUND, targetLang = "pl") {
   const pool = buildPool(lessonKey, targetLang);
   if (!pool) return;
 
+  // Leave the grammar course view, show the matching board.
+  const courseView = document.getElementById("course");
+  if (courseView) courseView.hidden = true;
+  document.getElementById("game-board").hidden = false;
+
   gameState.queue = pool;
   gameState.missed = new Set();
   gameState.recorded = new Set();
