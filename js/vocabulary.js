@@ -38,6 +38,18 @@ const lessons = {
   },
   numbers_up_to_20: {
     labelDe: "Zahlen bis 20",
+    rules:
+      "Grundzahlen 1–20\n" +
+      "• 1 richtet sich nach dem Geschlecht: jeden (m), jedna (f), jedno (n): jeden dom, jedna kawa, jedno okno.\n" +
+      "• 2: dwa (m, n), dwie (f): dwa domy, dwie kawy; männliche Personen: dwaj panowie oder dwóch panów.\n" +
+      "• 3, 4: trzy, cztery für alle Geschlechter; männliche Personen: trzej/czterej oder trzech/czterech.\n" +
+      "• 11–19 enden auf -naście: jedenaście … dziewiętnaście. Schreibung beachten: pięć → piętnaście, sześć → szesnaście, dziewięć → dziewiętnaście.\n" +
+      "Zahl + Nomen:\n" +
+      "• 1 + Nominativ Singular, 2–4 + Nominativ Plural, 5–20 + Genitiv Plural: jeden kot, dwa koty, pięć kotów, dwanaście kotów.\n" +
+      "• Verb: bei 2–4 im Plural (Są trzy koty.), ab 5 in der 3. Person Singular, Vergangenheit sächlich (Jest pięć kotów. Było pięć kotów.).\n" +
+      "• Männliche Personen ab 5: Zahl auf -u + Genitiv Plural: pięciu studentów, dziesięciu panów.\n" +
+      "• Zahlen werden selbst gebeugt: od pięciu lat (seit fünf Jahren), z dwoma kolegami (mit zwei Kollegen), dla trzech osób (für drei Personen).\n" +
+      "• Alter: 1 rok, 2–4 lata, ab 5 lat: Mam dwanaście lat.",
     pairs: [
       { de: "eins", pl: "jeden" },
       { de: "zwei", pl: "dwa" },
@@ -759,6 +771,17 @@ const lessons = {
 
   numbers_20_100: {
     labelDe: "Zahlen 20–100 & mehr",
+    rules:
+      "Zahlen 20–100\n" +
+      "• Zehner: dwadzieścia, trzydzieści, czterdzieści (-dzieści bei 20–40), pięćdziesiąt … dziewięćdziesiąt (-dziesiąt ab 50).\n" +
+      "• Zusammengesetzt: Zehner zuerst, ohne „und“: dwadzieścia jeden (21), trzydzieści pięć (35).\n" +
+      "• Hunderter und Tausender: sto, dwieście, trzysta, pięćset; tysiąc, dwa tysiące, pięć tysięcy (→ Zahlen ab 100).\n" +
+      "Zahl + Nomen – die LETZTE Zahl entscheidet:\n" +
+      "• endet auf 2, 3, 4 (nicht 12–14): Nominativ Plural: dwadzieścia dwa koty, trzydzieści cztery domy.\n" +
+      "• alle übrigen Endungen (0, 1, 5–9 und 11–19): Genitiv Plural: dwadzieścia pięć kotów, trzydzieści kotów, sto dwanaście kotów.\n" +
+      "• Endet die Zahl auf jeden (21, 31 …), bleibt jeden unverändert und das Nomen steht im Genitiv Plural: dwadzieścia jeden kotów, trzydzieści jeden lat.\n" +
+      "• dwa/dwie auch in zusammengesetzten Zahlen: dwadzieścia dwie kobiety.\n" +
+      "• Alter: Mam trzydzieści dwa lata. Mam czterdzieści pięć lat.",
     pairs: [
       { de: "einundzwanzig", pl: "dwadzieścia jeden" },
       { de: "zweiundzwanzig", pl: "dwadzieścia dwa" },
@@ -779,6 +802,16 @@ const lessons = {
   },
   ordinal_numbers: {
     labelDe: "Ordnungszahlen",
+    rules:
+      "Ordnungszahlen\n" +
+      "• Ordnungszahlen sind Adjektive: pierwszy, pierwsza, pierwsze; Plural pierwsi (männlich-persönlich) / pierwsze – gebeugt wie dobry (→ Adjektive in allen Fällen).\n" +
+      "• Unregelmäßig: pierwszy (1.), drugi (2.), trzeci (3.), czwarty (4.); dann piąty, szósty, siódmy, ósmy (mit ó), dziewiąty, dziesiąty.\n" +
+      "• 11.–19. auf -nasty: jedenasty, dwunasty, trzynasty … dziewiętnasty; 20. dwudziesty, 30. trzydziesty, 40. czterdziesty, 50. pięćdziesiąty, 100. setny, 1000. tysięczny.\n" +
+      "• Zusammengesetzt: Zehner und Einer beide als Ordnungszahl: dwudziesty pierwszy (21.), trzydziesty piąty (35.). Hunderter und Tausender bleiben Grundzahl: rok dwa tysiące dwudziesty szósty.\n" +
+      "• Datum: Tag als männliche Ordnungszahl (dzień): pierwszy maja; „am“ im Genitiv: pierwszego maja.\n" +
+      "• Uhrzeit: weibliche Ordnungszahl (godzina): pierwsza, o ósmej (→ Uhrzeit & Datum).\n" +
+      "• Stockwerk: na pierwszym piętrze = im 1. Stock; parter = Erdgeschoss.\n" +
+      "• Jahrhunderte mit römischen Zahlen: XXI wiek = 21. Jahrhundert, w XX wieku.",
     pairs: [
       { de: "erster", pl: "pierwszy" },
       { de: "zweiter", pl: "drugi" },
@@ -1047,6 +1080,17 @@ const lessons = {
   },
   directions_prepositions: {
     labelDe: "Wegbeschreibung & Präpositionen",
+    rules:
+      "Ortsangaben und ihre Fälle\n" +
+      "• w (in): wo + Lokativ (w domu); Wochentag + Akkusativ (w piątek).\n" +
+      "• na (auf, an): wo + Lokativ (na stole); wohin + Akkusativ (na stół).\n" +
+      "• pod (unter), nad (über), przed (vor), za (hinter), między (zwischen): wo + Instrumental (pod stołem); wohin + Akkusativ (pod stół).\n" +
+      "• obok (neben): immer Genitiv: obok domu. przy (bei, direkt an): immer Lokativ: przy oknie.\n" +
+      "• Ohne Fall: tutaj / tu (hier), tam (dort), prosto (geradeaus).\n" +
+      "• links / rechts: na lewo / na prawo oder po lewej / po prawej (stronie); abbiegen: skręcić w lewo / w prawo.\n" +
+      "• oben / unten: na górze / na dole (wo) – na górę / na dół (wohin).\n" +
+      "• Ecke: na rogu (an der Ecke), za rogiem (um die Ecke).\n" +
+      "• Mehr dazu → „Wo? Wohin? Woher?“ und „Präpositionen mit zwei Fällen“.",
     pairs: [
       { de: "links", pl: "na lewo" },
       { de: "rechts", pl: "na prawo" },
@@ -1334,6 +1378,17 @@ const lessons = {
   },
   question_words: {
     labelDe: "Fragewörter",
+    rules:
+      "Fragewörter\n" +
+      "• kto (wer) und co (was) werden gebeugt: kogo, komu, kim; czego, czemu, czym (→ Fragewörter in den Fällen).\n" +
+      "• Nach kto: Verb in der 3. Person Singular (männlich): Kto przyszedł? Nach co: sächlich: Co się stało?\n" +
+      "• jaki, jaka, jakie (was für ein, wie), który, która, które (welcher) und czyj, czyja, czyje (wessen) passen sich wie Adjektive an: Jaka jest pogoda? Który autobus? Czyja to torba?\n" +
+      "• ile (wie viel, wie viele) + Genitiv: Ile kosztuje? Ile masz lat? – bei männlichen Personen ilu: Ilu was jest?\n" +
+      "• gdzie = wo (umgangssprachlich auch wohin), dokąd = wohin, skąd = woher.\n" +
+      "• kiedy (wann), jak (wie), dlaczego / czemu (warum), po co (wozu), jak długo (wie lange), od kiedy (seit wann), o której (um wie viel Uhr), jak często (wie oft).\n" +
+      "• Ja/Nein-Fragen beginnen mit czy: Czy masz czas? (umgangssprachlich auch nur durch Satzmelodie).\n" +
+      "• Das Fragewort steht am Satzanfang, die Wortstellung ändert sich sonst nicht: Gdzie mieszkasz?\n" +
+      "• Indirekt mit Komma: Nie wiem, kto to jest. Powiedz, gdzie mieszkasz.",
     pairs: [
       { de: "wer", pl: "kto" },
       { de: "was", pl: "co" },
@@ -1353,6 +1408,18 @@ const lessons = {
   },
   conjunctions_adverbs: {
     labelDe: "Bindewörter & Adverbien",
+    rules:
+      "Bindewörter (spójniki) und Adverbien\n" +
+      "• i = und (gleichartige Dinge): kawa i herbata. a = und/während (Gegenüberstellung): Ja piję kawę, a ty herbatę. A ty? = Und du?\n" +
+      "• ale = aber: Jest drogi, ale dobry. albo / lub = oder; in Fragen czy: Kawa czy herbata?\n" +
+      "• ponieważ = weil (auch am Satzanfang); bo = weil, denn (umgangssprachlich, nicht am Satzanfang); dlatego = deshalb; więc = also.\n" +
+      "• że = dass; jeśli / jeżeli = wenn, falls; kiedy / gdy = wenn, als.\n" +
+      "• Komma: vor ale, a, więc, dlatego und vor jedem Nebensatz (że, bo, ponieważ, jeśli, kiedy); nicht vor einfachem i, albo, lub.\n" +
+      "• Keine Umstellung wie im Deutschen: Dlatego nie przyszedłem. = Deshalb bin ich nicht gekommen. Wiem, że on ma czas. = Ich weiß, dass er Zeit hat.\n" +
+      "• też = auch, steht nach dem Bezugswort: Ja też. Verneint: Ja też nie. Gehoben: także, również.\n" +
+      "• już = schon, verneint nicht mehr (już nie); jeszcze = noch, verneint noch nicht (jeszcze nie).\n" +
+      "• sam, sama, samo, sami, same = allein, passt sich an: Mieszkam sama. (Frau)\n" +
+      "• tylko = nur; dopiero = erst (zeitlich): Dopiero o ósmej. znowu = wieder; razem = zusammen.",
     pairs: [
       { de: "und", pl: "i" },
       { de: "oder", pl: "albo" },
@@ -1719,6 +1786,324 @@ const lessons = {
       { de: "über sie (Pl.)", pl: "o nich" },
       { de: "bei uns", pl: "u nas" },
       { de: "Ich rufe sie (Pl.) an.", pl: "Dzwonię do nich." }
+    ]
+  },
+  adjective_declension: {
+    labelDe: "Adjektive in allen Fällen",
+    rules:
+      "Adjektivdeklination – Muster dobry (gut)\n" +
+      "Singular: männlich | weiblich | sächlich\n" +
+      "• Nominativ: dobry | dobra | dobre\n" +
+      "• Genitiv: dobrego | dobrej | dobrego\n" +
+      "• Dativ: dobremu | dobrej | dobremu\n" +
+      "• Akkusativ: dobrego (belebt) / dobry (unbelebt) | dobrą | dobre\n" +
+      "• Instrumental: dobrym | dobrą | dobrym\n" +
+      "• Lokativ: dobrym | dobrej | dobrym\n" +
+      "• Vokativ: wie Nominativ\n" +
+      "Plural: männlich-persönlich | alle anderen\n" +
+      "• Nominativ: dobrzy | dobre\n" +
+      "• Genitiv: dobrych | dobrych\n" +
+      "• Dativ: dobrym | dobrym\n" +
+      "• Akkusativ: dobrych | dobre\n" +
+      "• Instrumental: dobrymi | dobrymi\n" +
+      "• Lokativ: dobrych | dobrych\n" +
+      "Varianten:\n" +
+      "• Nach k, g steht i statt y, und vor e kommt ein i: polski, polskiego, polskim, polskich; drogi, drogiego, drogim.\n" +
+      "• Weiche Stämme ebenso mit i: tani, taniego, tanim, tanich; ostatni, ostatniego.\n" +
+      "• Männlich-persönlicher Plural mit Lautwechsel: dobry → dobrzy, nowy → nowi, młody → młodzi, miły → mili, duży → duzi, wysoki → wysocy, polski → polscy, drogi → drodzy, zadowolony → zadowoleni.\n" +
+      "Merkhilfe:\n" +
+      "• -ego/-emu nur männlich und sächlich (Gen./Dat.), -ej nur weiblich (Gen./Dat./Lok.).\n" +
+      "• -ym: Instr./Lok. Singular m/n und Dativ Plural; -ych: Gen./Lok. Plural; -ymi: Instrumental Plural.\n" +
+      "Genauso gebeugt:\n" +
+      "• Ordnungszahlen (pierwszy, drugi), Partizipien (czytający, zrobiony), mój/twój/nasz/wasz/swój, ten/który/jaki (mit kleinen Abweichungen), Komparative (lepszy) und Nomen in Adjektivform: znajomy (Bekannter), narzeczona (Verlobte), Zakopane (w Zakopanem).\n" +
+      "Stellung:\n" +
+      "• meist vor dem Nomen: nowy dom. Nachgestellt bei festen Begriffen und Einteilungen: język polski, kawa rozpuszczalna, pociąg osobowy.",
+    pairs: [
+      { de: "ein guter Freund (Nom.)", pl: "dobry kolega" },
+      { de: "ohne guten Freund (Gen.)", pl: "bez dobrego kolegi" },
+      { de: "dem guten Freund (Dat.)", pl: "dobremu koledze" },
+      { de: "mit einem guten Freund (Instr.)", pl: "z dobrym kolegą" },
+      { de: "über einen guten Freund (Lok.)", pl: "o dobrym koledze" },
+      { de: "die neue Schule (Nom.)", pl: "nowa szkoła" },
+      { de: "zur neuen Schule (Gen.)", pl: "do nowej szkoły" },
+      { de: "ich sehe die neue Schule (Akk.)", pl: "widzę nową szkołę" },
+      { de: "in der neuen Schule (Lok.)", pl: "w nowej szkole" },
+      { de: "polnische Studenten (Nom. Pl.)", pl: "polscy studenci" },
+      { de: "polnische Bücher (Nom. Pl.)", pl: "polskie książki" },
+      { de: "für polnische Studenten (Gen. Pl.)", pl: "dla polskich studentów" },
+      { de: "mit polnischen Freunden (Instr. Pl.)", pl: "z polskimi przyjaciółmi" },
+      { de: "in polnischen Städten (Lok. Pl.)", pl: "w polskich miastach" },
+      { de: "Liebe Freunde! (Vok. Pl.)", pl: "Drodzy przyjaciele!" }
+    ]
+  },
+  noun_declension: {
+    labelDe: "Nomen in allen Fällen",
+    rules:
+      "Nomendeklination – Musterwörter\n" +
+      "Reihenfolge: Nom. | Gen. | Dat. | Akk. | Instr. | Lok. | Vok.\n" +
+      "Männlich:\n" +
+      "• Person: student | studenta | studentowi | studenta | studentem | studencie | studencie\n" +
+      "• Tier: kot | kota | kotu | kota | kotem | kocie | kocie\n" +
+      "• Ding: stół | stołu | stołowi | stół | stołem | stole | stole\n" +
+      "• weicher Stamm: lekarz | lekarza | lekarzowi | lekarza | lekarzem | lekarzu | lekarzu\n" +
+      "• auf -a: kolega | kolegi | koledze | kolegę | kolegą | koledze | kolego\n" +
+      "Weiblich:\n" +
+      "• harter Stamm: kawa | kawy | kawie | kawę | kawą | kawie | kawo\n" +
+      "• auf -ka/-ga: książka | książki | książce | książkę | książką | książce | książko\n" +
+      "• weicher Stamm: ulica | ulicy | ulicy | ulicę | ulicą | ulicy | ulico\n" +
+      "• auf -ja/-ia: lekcja | lekcji | lekcji | lekcję | lekcją | lekcji | lekcjo\n" +
+      "• auf Konsonant: noc | nocy | nocy | noc | nocą | nocy | nocy\n" +
+      "Sächlich:\n" +
+      "• auf -o: okno | okna | oknu | okno | oknem | oknie | okno\n" +
+      "• auf -e: pytanie | pytania | pytaniu | pytanie | pytaniem | pytaniu | pytanie\n" +
+      "• auf -ę: imię | imienia | imieniowi | imię | imieniem | imieniu | imię\n" +
+      "Plural: Nom. | Gen. | Dat. | Akk. | Instr. | Lok. (Vok. = Nom.)\n" +
+      "• männlich-persönlich: studenci | studentów | studentom | studentów | studentami | studentach\n" +
+      "• männlich sonst: koty | kotów | kotom | koty | kotami | kotach\n" +
+      "• weiblich: kawy | kaw | kawom | kawy | kawami | kawach\n" +
+      "• sächlich: okna | okien | oknom | okna | oknami | oknach\n" +
+      "Faustregeln:\n" +
+      "• Plural: Dativ -om, Instrumental -ami, Lokativ -ach – fast ohne Ausnahme.\n" +
+      "• Weiblich und männlich auf -a: Dativ = Lokativ.\n" +
+      "• Akkusativ = Nominativ bei sächlich, weiblich auf Konsonant und männlich unbelebt; Akkusativ = Genitiv bei männlich belebt (Singular) und männlich-persönlich (Plural).\n" +
+      "• Männlicher Vokativ = meist wie Lokativ (Ausnahmen → Vokativ-Lektion).\n" +
+      "• Unregelmäßig: człowiek – ludzie (ludzi, ludziom, ludźmi, ludziach); dziecko – dzieci (dzieci, dzieciom, dziećmi, dzieciach); brat – bracia (braci, braciom, braćmi, braciach); ręka – ręce (rąk, rękom, rękami, rękach).",
+    pairs: [
+      { de: "des Studenten", pl: "studenta" },
+      { de: "dem Studenten", pl: "studentowi" },
+      { de: "mit dem Studenten", pl: "ze studentem" },
+      { de: "über den Studenten", pl: "o studencie" },
+      { de: "den Studenten (Dat. Pl.)", pl: "studentom" },
+      { de: "auf der Straße", pl: "na ulicy" },
+      { de: "die Straße (Akk.)", pl: "ulicę" },
+      { de: "in der Unterrichtsstunde", pl: "na lekcji" },
+      { de: "des Namens", pl: "imienia" },
+      { de: "mit dem Namen", pl: "z imieniem" },
+      { de: "ohne Fenster (Pl.)", pl: "bez okien" },
+      { de: "mit den Kindern", pl: "z dziećmi" },
+      { de: "über Menschen", pl: "o ludziach" }
+    ]
+  },
+  prepositions_cases: {
+    labelDe: "Präpositionen mit zwei Fällen",
+    rules:
+      "Präpositionen mit mehreren Fällen – die Bedeutung entscheidet\n" +
+      "• w + Lokativ = in (wo): w domu | + Akkusativ = an (Wochentag), in (Richtung, selten): w piątek, w góry.\n" +
+      "• na + Lokativ = auf, an (wo): na stole, na poczcie | + Akkusativ = auf, zu (wohin), für (Zeitraum, Zweck): na stół, na pocztę, na tydzień, na obiad.\n" +
+      "• o + Lokativ = über (Thema), um (Uhrzeit): o rodzinie, o ósmej | + Akkusativ = um, nach (bitten, fragen, sich kümmern), gegen (lehnen, stoßen): proszę o pomoc, pytać o drogę, dbać o zdrowie, oprzeć się o ścianę.\n" +
+      "• po + Lokativ = nach (zeitlich), herum: po obiedzie, po mieście | + Akkusativ = um zu holen, bis (an): idę po chleb, woda po kolana.\n" +
+      "• za + Akkusativ = für (Dank, Preis), in (Zeitspanne), hinter (wohin): dziękuję za pomoc, za dziesięć złotych, za tydzień, za dom | + Instrumental = hinter (wo), für (dafür sein), nach (sich sehnen): za domem, jestem za tym, tęsknię za tobą | + Genitiv (selten) = zur Zeit von: za moich czasów.\n" +
+      "• nad, pod, przed, między + Instrumental = wo: pod stołem, nad morzem, przed domem | + Akkusativ = wohin: pod stół, nad morze, przed dom.\n" +
+      "• przed + Instrumental auch zeitlich: przed obiadem (vor dem Mittagessen), przed tygodniem (vor einer Woche).\n" +
+      "• z + Genitiv = aus, von … herab, seit: z Polski, ze stołu, z rana | + Instrumental = mit: z kolegą, z mlekiem | + Akkusativ (umgangssprachlich) = etwa: z godzinę.\n" +
+      "Faustregel:\n" +
+      "• Ruhe, Ort (wo?) → Lokativ bzw. Instrumental; Richtung, Ziel (wohin?) → Akkusativ (oder do + Genitiv).\n" +
+      "Präpositionen mit nur einem Fall (zum Vergleich):\n" +
+      "• Genitiv: bez, dla, do, od, u, obok, koło, podczas, według, oprócz, zamiast, wśród, około, naprzeciwko.\n" +
+      "• Dativ: dzięki, przeciw(ko), wbrew, ku.\n" +
+      "• Akkusativ: przez (durch, über, wegen, während; beim Passiv „von“).\n" +
+      "• Lokativ: przy (bei, an).",
+    pairs: [
+      { de: "auf die Post (wohin)", pl: "na pocztę" },
+      { de: "für eine Woche", pl: "na tydzień" },
+      { de: "zum Mittagessen", pl: "na obiad" },
+      { de: "nach dem Weg fragen", pl: "pytać o drogę" },
+      { de: "nach dem Mittagessen", pl: "po obiedzie" },
+      { de: "Brot holen gehen", pl: "iść po chleb" },
+      { de: "in einer Woche", pl: "za tydzień" },
+      { de: "hinter dem Haus (wo)", pl: "za domem" },
+      { de: "hinter das Haus (wohin)", pl: "za dom" },
+      { de: "für zehn Złoty", pl: "za dziesięć złotych" },
+      { de: "vor dem Mittagessen", pl: "przed obiadem" },
+      { de: "vom Tisch (herunter)", pl: "ze stołu" },
+      { de: "mit Milch", pl: "z mlekiem" },
+      { de: "Ich vermisse dich.", pl: "tęsknię za tobą" },
+      { de: "Ich bin dafür.", pl: "jestem za tym" }
+    ]
+  },
+  verb_cases: {
+    labelDe: "Verben und ihr Fall",
+    rules:
+      "Rektion – welcher Fall folgt auf das Verb?\n" +
+      "Akkusativ (Normalfall für das direkte Objekt):\n" +
+      "• mieć, lubić, kochać, znać, widzieć, czytać, pisać, robić, kupować, jeść, pić, odwiedzać, pytać (kogoś = jemanden fragen): Pytam nauczyciela.\n" +
+      "• Bei Verneinung wird daraus der Genitiv: Nie lubię kawy.\n" +
+      "Genitiv:\n" +
+      "• potrzebować (brauchen), szukać (suchen), słuchać (zuhören), używać (benutzen), uczyć się (lernen), uczyć (kogoś czegoś = jemanden etwas lehren), bać się (Angst haben vor), wstydzić się (sich schämen), spodziewać się (erwarten), pilnować (aufpassen auf), unikać (meiden), próbować (probieren, kosten), dotykać (berühren).\n" +
+      "• życzyć: Person im Dativ, Sache im Genitiv: Życzę ci zdrowia.\n" +
+      "• chcieć bei Stoffen und Mengen oft mit Genitiv: Chcę wody.\n" +
+      "Dativ:\n" +
+      "• pomagać (helfen), dziękować (danken), wierzyć (glauben), ufać (vertrauen), przeszkadzać (stören), podobać się (gefallen), smakować (schmecken), wybaczać (verzeihen), towarzyszyć (begleiten), przyglądać się (betrachten).\n" +
+      "• Person im Dativ, Sache im Akkusativ: dawać, pokazywać, mówić, kupować, wysyłać, opowiadać: Pokażę ci miasto.\n" +
+      "Instrumental:\n" +
+      "• być, zostać + Nomen: Jest lekarzem. Został kierowcą.\n" +
+      "• interesować się (sich interessieren für), zajmować się (sich beschäftigen mit), opiekować się (sich kümmern um), kierować (leiten, lenken), rządzić (regieren), pachnieć (riechen nach): Pachnie kawą.\n" +
+      "Feste Verbindungen mit Präposition:\n" +
+      "• czekać na + Akk. (warten auf), patrzeć na + Akk. (schauen auf), liczyć na + Akk. (rechnen mit).\n" +
+      "• myśleć o + Lok. (denken an), mówić o + Lok. (sprechen über), marzyć o + Lok. (träumen von).\n" +
+      "• prosić o + Akk. (bitten um), pytać o + Akk. (fragen nach), dbać o + Akk. (achten auf), martwić się o + Akk. (sich Sorgen machen um).\n" +
+      "• tęsknić za + Instr. (vermissen), rozmawiać z + Instr. (sprechen mit), zgadzać się z + Instr. (einverstanden sein mit).\n" +
+      "• zależeć od + Gen. (abhängen von), dzwonić do + Gen. (anrufen), pisać do + Gen. (schreiben an).\n" +
+      "Achtung, anders als im Deutschen:\n" +
+      "• anrufen = dzwonić DO + Gen.; warten auf = czekać NA + Akk.; sich interessieren für = interesować się + Instr. ohne Präposition; brauchen, suchen, zuhören = Genitiv; jemanden fragen = Akkusativ.",
+    pairs: [
+      { de: "Ich brauche Hilfe.", pl: "Potrzebuję pomocy." },
+      { de: "Ich suche den Schlüssel.", pl: "Szukam klucza." },
+      { de: "Ich höre Musik.", pl: "Słucham muzyki." },
+      { de: "Ich habe Angst vor dem Hund.", pl: "Boję się psa." },
+      { de: "Ich helfe dir.", pl: "Pomagam ci." },
+      { de: "Es schmeckt mir.", pl: "Smakuje mi." },
+      { de: "Ich warte auf dich.", pl: "Czekam na ciebie." },
+      { de: "Ich denke an dich.", pl: "Myślę o tobie." },
+      { de: "Ich bitte um Hilfe.", pl: "Proszę o pomoc." },
+      { de: "Ich interessiere mich für Musik.", pl: "Interesuję się muzyką." },
+      { de: "Ich rufe die Mutter an.", pl: "Dzwonię do mamy." },
+      { de: "Es riecht nach Kaffee.", pl: "Pachnie kawą." },
+      { de: "Das hängt von dir ab.", pl: "To zależy od ciebie." },
+      { de: "Ich frage den Lehrer.", pl: "Pytam nauczyciela." }
+    ]
+  },
+  question_cases: {
+    labelDe: "Fragewörter in den Fällen",
+    rules:
+      "Fragepronomen kto und co in allen Fällen\n" +
+      "Reihenfolge: Nom. | Gen. | Dat. | Akk. | Instr. | Lok.\n" +
+      "• kto (wer): kto | kogo | komu | kogo | kim | (o) kim\n" +
+      "• co (was): co | czego | czemu | co | czym | (o) czym\n" +
+      "• Mit Präposition: z kim? (mit wem?), do kogo? (zu wem?), dla kogo? (für wen?), o czym? (worüber?), czym? (womit?).\n" +
+      "• Nach kto steht das Verb in der 3. Person Singular, in der Vergangenheit männlich: Kto przyszedł? Nach co sächlich: Co się stało?\n" +
+      "• czego? auch nach Verneinung und Genitiv-Verben: Czego szukasz? = Was suchst du?\n" +
+      "Fragewörter wie Adjektive:\n" +
+      "• jaki, jaka, jakie (was für ein, wie): Jaki to film? Jaka jest pogoda? – jakiego, jakiej, jakim …\n" +
+      "• który, która, które (welcher): Który autobus? W którym pokoju?\n" +
+      "• czyj, czyja, czyje (wessen): Czyj to długopis? Czyja to torba? Czyje to dziecko?\n" +
+      "Mengen:\n" +
+      "• ile + Genitiv (wie viel, wie viele): Ile kosztuje? Ile masz lat? Bei männlichen Personen ilu: Ilu było studentów?",
+    pairs: [
+      { de: "wen?", pl: "kogo?" },
+      { de: "wem?", pl: "komu?" },
+      { de: "mit wem?", pl: "z kim?" },
+      { de: "über wen?", pl: "o kim?" },
+      { de: "wessen? / wovon? (Gen.)", pl: "czego?" },
+      { de: "womit?", pl: "czym?" },
+      { de: "worüber?", pl: "o czym?" },
+      { de: "für wen?", pl: "dla kogo?" },
+      { de: "zu wem?", pl: "do kogo?" },
+      { de: "Wer ist gekommen?", pl: "Kto przyszedł?" },
+      { de: "Was ist passiert?", pl: "Co się stało?" },
+      { de: "Wessen Tasche ist das?", pl: "Czyja to torba?" },
+      { de: "Wie alt bist du?", pl: "Ile masz lat?" },
+      { de: "Mit wem sprichst du?", pl: "Z kim rozmawiasz?" },
+      { de: "Woran denkst du?", pl: "O czym myślisz?" },
+      { de: "wie viele (Männer)?", pl: "ilu?" }
+    ]
+  },
+  demonstratives: {
+    labelDe: "ten, ta, to & Co. in allen Fällen",
+    rules:
+      "Demonstrativpronomen und verwandte Wörter\n" +
+      "ten (dieser): männlich | weiblich | sächlich\n" +
+      "• Nominativ: ten | ta | to – Plural: ci (männlich-persönlich) | te (sonst)\n" +
+      "• Genitiv: tego | tej | tego – Plural: tych\n" +
+      "• Dativ: temu | tej | temu – Plural: tym\n" +
+      "• Akkusativ: tego (belebt) / ten (unbelebt) | tę (umgangssprachlich tą) | to – Plural: tych (männlich-persönlich) | te\n" +
+      "• Instrumental: tym | tą | tym – Plural: tymi\n" +
+      "• Lokativ: tym | tej | tym – Plural: tych\n" +
+      "• tamten (jener) geht genauso: tamtego, tamtej, tamtym; tamci / tamte.\n" +
+      "• to als Satzsubjekt „das“ bleibt unverändert: To jest mój dom. To są moi rodzice.\n" +
+      "• ten sam, ta sama, to samo = derselbe; taki, taka, takie = solch, so ein (wie Adjektiv): taki duży dom.\n" +
+      "Alle, jeder, kein:\n" +
+      "• wszyscy = alle (Personen, männlich-persönlich), wszystkie = alle (sonst), wszystko = alles. Gen./Lok. Plural wszystkich, Instr. wszystkimi; wszystko: wszystkiego, wszystkiemu, wszystkim.\n" +
+      "• każdy, każda, każde (jeder) – wie Adjektiv: każdego dnia = jeden Tag.\n" +
+      "• żaden, żadna, żadne (kein einziger) – immer mit nie: Nie mam żadnego pytania.\n" +
+      "• sam, sama, samo, sami, same = selbst, allein: Zrobiłem to sam. Jestem sama.\n" +
+      "• oba/obie/obaj/oboje (beide) → Zahlen ab 100 & Sammelzahlen.",
+    pairs: [
+      { de: "dieser Mann", pl: "ten mężczyzna" },
+      { de: "diese Frau", pl: "ta kobieta" },
+      { de: "dieses Kind", pl: "to dziecko" },
+      { de: "diese Leute", pl: "ci ludzie" },
+      { de: "diese Bücher", pl: "te książki" },
+      { de: "Ich kenne diesen Mann.", pl: "znam tego mężczyznę" },
+      { de: "Ich sehe diese Frau.", pl: "widzę tę kobietę" },
+      { de: "mit diesem Kind", pl: "z tym dzieckiem" },
+      { de: "in dieser Stadt", pl: "w tym mieście" },
+      { de: "jener Tag", pl: "tamten dzień" },
+      { de: "derselbe", pl: "ten sam" },
+      { de: "jeden Tag", pl: "każdego dnia" },
+      { de: "Ich habe keine einzige Frage.", pl: "nie mam żadnego pytania" },
+      { de: "Ich habe es selbst gemacht.", pl: "zrobiłem to sam" },
+      { de: "für alle", pl: "dla wszystkich" }
+    ]
+  },
+  indefinite_pronouns: {
+    labelDe: "Irgendwer, irgendwo – unbestimmte Pronomen",
+    rules:
+      "Unbestimmte Pronomen und Adverbien\n" +
+      "• -ś = irgend-: ktoś (jemand), coś (etwas), gdzieś (irgendwo), dokądś (irgendwohin), skądś (irgendwoher), kiedyś (irgendwann, einmal; auch: früher), jakiś (irgendein), czyjś (irgendjemandes), jakoś (irgendwie).\n" +
+      "• -kolwiek = egal wer/was …, … auch immer: ktokolwiek, cokolwiek, gdziekolwiek, kiedykolwiek, jakikolwiek.\n" +
+      "• byle = irgendein, egal (oft abwertend): byle co (irgendwas), byle jak (irgendwie, schlampig), byle kto.\n" +
+      "• Verneint mit ni- und immer mit nie: nikt, nic, nigdzie, nigdy, żaden, niczyj (→ Verneinung).\n" +
+      "Beugung:\n" +
+      "• ktoś, ktokolwiek wie kto: kogoś, komuś, kimś; coś wie co: czegoś, czemuś, czymś.\n" +
+      "• jakiś, czyjś, jakikolwiek wie Adjektive: jakiegoś, jakąś, jakimś.\n" +
+      "• Adjektiv nach coś, nic, nikt im Genitiv: coś dobrego (etwas Gutes), nic nowego (nichts Neues), nikogo innego.\n" +
+      "Weitere:\n" +
+      "• kilka (einige) + Gen. Pl., bei männlichen Personen kilku: kilka książek, kilku kolegów; parę (ein paar): parę minut.\n" +
+      "• niektórzy (manche Leute), niektóre (manche, sonst); inny (ein anderer).\n" +
+      "• In Fragen: Czy ktoś dzwonił? Masz coś do picia?",
+    pairs: [
+      { de: "Hat jemand angerufen?", pl: "Czy ktoś dzwonił?" },
+      { de: "etwas Gutes", pl: "coś dobrego" },
+      { de: "nichts Neues", pl: "nic nowego" },
+      { de: "irgendwohin", pl: "dokądś" },
+      { de: "irgendwoher", pl: "skądś" },
+      { de: "irgendein", pl: "jakiś" },
+      { de: "irgendwie", pl: "jakoś" },
+      { de: "wer auch immer", pl: "ktokolwiek" },
+      { de: "was auch immer", pl: "cokolwiek" },
+      { de: "egal wo", pl: "gdziekolwiek" },
+      { de: "irgendwas, egal was", pl: "byle co" },
+      { de: "für jemanden", pl: "dla kogoś" },
+      { de: "mit jemandem", pl: "z kimś" },
+      { de: "an etwas denken", pl: "myśleć o czymś" },
+      { de: "manche (Leute)", pl: "niektórzy" }
+    ]
+  },
+  negation: {
+    labelDe: "Verneinung",
+    rules:
+      "Verneinung (przeczenie)\n" +
+      "• nie steht direkt vor dem verneinten Wort, meist vor dem Verb: Nie mam czasu. Nie on, tylko ona.\n" +
+      "• Schreibung: beim Verb getrennt (nie wiem), bei Adjektiven, Adverbien und Partizipien in Adjektivform zusammen (niedobry, niedaleko, nieznany) – außer bei Gegensatz und Komparativ: nie dobry, ale zły; nie lepszy.\n" +
+      "Doppelte Verneinung (Pflicht):\n" +
+      "• nikt, nic, nigdy, nigdzie, żaden, niczyj stehen immer zusammen mit nie: Nikt nie dzwonił. Nic nie wiem. Nigdy nigdzie nie byłem.\n" +
+      "Genitiv der Verneinung:\n" +
+      "• Ein Akkusativ-Objekt wird zum Genitiv: Mam samochód → Nie mam samochodu. Lubię kawę → Nie lubię kawy.\n" +
+      "• Andere Fälle bleiben: Pomagam mu → Nie pomagam mu (Dativ). Interesuję się sportem → Nie interesuję się sportem.\n" +
+      "• Nach być bleibt Nominativ/Instrumental: To nie jest mój dom. On nie jest lekarzem.\n" +
+      "nie ma = es gibt nicht / ist nicht da:\n" +
+      "• nie ma + Genitiv: Nie ma chleba. Nie ma go w domu.\n" +
+      "• Vergangenheit nie było, Zukunft nie będzie – immer sächlich Singular: Nie było nikogo. Jutro nie będzie lekcji.\n" +
+      "Kurze Wendungen:\n" +
+      "• jeszcze nie (noch nicht), już nie (nicht mehr), wcale nie / w ogóle nie (gar nicht), też nie (auch nicht), ani … ani (weder … noch): Nie piję ani kawy, ani herbaty.\n" +
+      "• Nein = Nie. Nein, danke. = Nie, dziękuję. Verneinter Imperativ meist unvollendet: Nie rób tego!",
+    pairs: [
+      { de: "Ich habe kein Auto.", pl: "Nie mam samochodu." },
+      { de: "Ich mag keinen Kaffee.", pl: "Nie lubię kawy." },
+      { de: "Niemand hat angerufen.", pl: "Nikt nie dzwonił." },
+      { de: "Ich weiß nichts.", pl: "Nic nie wiem." },
+      { de: "Ich war nie dort.", pl: "Nigdy tam nie byłem." },
+      { de: "Er ist nicht zu Hause.", pl: "Nie ma go w domu." },
+      { de: "Es war niemand da.", pl: "Nie było nikogo." },
+      { de: "Das ist nicht mein Haus.", pl: "To nie jest mój dom." },
+      { de: "noch nicht", pl: "jeszcze nie" },
+      { de: "nicht mehr", pl: "już nie" },
+      { de: "gar nicht", pl: "wcale nie" },
+      { de: "auch nicht", pl: "też nie" },
+      { de: "weder … noch", pl: "ani … ani" },
+      { de: "nicht weit", pl: "niedaleko" },
+      { de: "Nein, danke.", pl: "Nie, dziękuję." }
     ]
   },
   verb_aspect: {
@@ -2217,6 +2602,42 @@ const lessons = {
       { de: "zweieinhalb", pl: "dwa i pół" }
     ]
   },
+  diminutives: {
+    labelDe: "Verkleinerungsformen",
+    rules:
+      "Verkleinerungsformen (zdrobnienia)\n" +
+      "• Sie drücken Kleinheit, Zuneigung oder Höflichkeit aus und sind im Alltag sehr häufig: Poproszę kawkę. Chwileczkę!\n" +
+      "• Das Geschlecht bleibt gleich.\n" +
+      "Bildung:\n" +
+      "• männlich: -ek, -ik/-yk: dom → domek, kot → kotek, nos → nosek, stół → stolik, chłopiec → chłopczyk.\n" +
+      "• weiblich: -ka, -ółka/-eczka: kawa → kawka, głowa → główka, noga → nóżka, ręka → rączka, książka → książeczka.\n" +
+      "• sächlich: -ko, -eczko, -ątko: piwo → piwko, okno → okienko, słońce → słoneczko, mleko → mleczko.\n" +
+      "• Lautwechsel vor -k-: g → ż (noga → nóżka), k → cz (ręka → rączka), ch → sz (mucha → muszka); o → ó (noga → nóżka, głowa → główka).\n" +
+      "• Zweite Stufe, noch zärtlicher: kot → kotek → koteczek; ręka → rączka → rączeczka.\n" +
+      "Vornamen:\n" +
+      "• Koseformen sind die normale Anrede unter Freunden: Katarzyna → Kasia, Małgorzata → Gosia, Anna → Ania, Barbara → Basia, Piotr → Piotrek, Tomasz → Tomek, Jakub → Kuba, Stanisław → Staszek.\n" +
+      "• Vokativ: Kasiu! Gosiu! Piotrku! Tomku!\n" +
+      "Weiteres:\n" +
+      "• Gebeugt wie normale Nomen: z kotkiem, do domku, w okienku.\n" +
+      "• Manche haben eine eigene Bedeutung: łyżka → łyżeczka (Teelöffel), wódka (ursprünglich „Wässerchen“ von woda).\n" +
+      "• Mama/Papa zärtlich: mamusia, tatuś.",
+    pairs: [
+      { de: "das Häuschen", pl: "domek" },
+      { de: "das Kätzchen", pl: "kotek" },
+      { de: "das Tischchen", pl: "stolik" },
+      { de: "ein kleiner Kaffee", pl: "kawka" },
+      { de: "das Händchen", pl: "rączka" },
+      { de: "das Füßchen", pl: "nóżka" },
+      { de: "das Fensterchen", pl: "okienko" },
+      { de: "das Bierchen", pl: "piwko" },
+      { de: "das Sönnchen", pl: "słoneczko" },
+      { de: "der Teelöffel", pl: "łyżeczka" },
+      { de: "ein Momentchen", pl: "chwileczka" },
+      { de: "das Büchlein", pl: "książeczka" },
+      { de: "Jakob (Koseform)", pl: "Kuba" },
+      { de: "Mutti", pl: "mamusia" }
+    ]
+  },
   b1_participles: {
     labelDe: "B1: Partizipien & unpersönliche Formen",
     rules:
@@ -2255,6 +2676,40 @@ const lessons = {
       { de: "Das Haus wurde gebaut.", pl: "Dom został zbudowany." },
       { de: "Der Laden ist geschlossen.", pl: "Sklep jest zamknięty." },
       { de: "es lohnt sich", pl: "warto" }
+    ]
+  },
+  verbal_nouns: {
+    labelDe: "Verbalsubstantive (-nie, -cie)",
+    rules:
+      "Verbalsubstantive – „das Lesen“, „das Trinken“\n" +
+      "• Aus fast jedem Verb entsteht ein sächliches Nomen auf -nie oder -cie: czytać → czytanie (das Lesen), pić → picie (das Trinken).\n" +
+      "• Es entspricht dem Passivpartizip mit -ie statt -y: czytany → czytanie, zrobiony → zrobienie, zamknięty → zamknięcie, myty → mycie.\n" +
+      "Bildung:\n" +
+      "• -ać → -anie: czekać → czekanie, śpiewać → śpiewanie, sprzątać → sprzątanie.\n" +
+      "• -ić, -yć, -eć → -enie, oft mit Lautwechsel: mówić → mówienie, palić → palenie, płacić → płacenie, widzieć → widzenie (Do widzenia!).\n" +
+      "• -ować → -owanie: gotować → gotowanie, podróżować → podróżowanie.\n" +
+      "• kurze Verben und -nąć → -cie, -ięcie: pić → picie, myć → mycie, żyć → życie, zamknąć → zamknięcie.\n" +
+      "• się bleibt erhalten: uczenie się (das Lernen), mycie się.\n" +
+      "• Beide Aspekte möglich: pisanie (das Schreiben) – napisanie (das Fertigschreiben).\n" +
+      "Gebrauch:\n" +
+      "• Gebeugt wie sächliche Nomen auf -e: bez czekania, przed jedzeniem, o pływaniu, ze spaniem.\n" +
+      "• Pływanie jest zdrowe. Palenie wzbronione. Mam problem ze spaniem.\n" +
+      "• Viele haben eine feste, konkrete Bedeutung: jedzenie (Essen), mieszkanie (Wohnung), zdanie (Satz, Meinung), danie (Gericht), spotkanie (Treffen), zadanie (Aufgabe), pytanie (Frage), zaproszenie (Einladung).",
+    pairs: [
+      { de: "das Rauchen", pl: "palenie" },
+      { de: "das Waschen", pl: "mycie" },
+      { de: "das Schließen", pl: "zamknięcie" },
+      { de: "das Lernen", pl: "uczenie się" },
+      { de: "das Singen", pl: "śpiewanie" },
+      { de: "das Bezahlen", pl: "płacenie" },
+      { de: "das Aufräumen", pl: "sprzątanie" },
+      { de: "das Schlafen", pl: "spanie" },
+      { de: "das Schreiben", pl: "pisanie" },
+      { de: "Rauchen verboten.", pl: "Palenie wzbronione." },
+      { de: "Schwimmen ist gesund.", pl: "Pływanie jest zdrowe." },
+      { de: "vor dem Essen", pl: "przed jedzeniem" },
+      { de: "ohne Warten", pl: "bez czekania" },
+      { de: "die Einladung", pl: "zaproszenie" }
     ]
   },
   a2_review_mixed: {
